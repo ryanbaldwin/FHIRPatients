@@ -10,7 +10,7 @@ import UIKit
 import FireKit
 import RealmSwift
 
-extension MasterViewController {
+extension PatientListViewController {
     // MARK: - Table View
     
     func load(_ changes: RealmCollectionChange<Results<Patient>>, into tableView: UITableView?) {
@@ -35,13 +35,13 @@ extension MasterViewController {
     }
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return patients.count
+        return model.patients.count
     }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath)
         
-        let patient = patients[indexPath.row]
+        let patient = model.patients[indexPath.row]
         let familyName = patient.name.first?.family.first?.value ?? "Doe"
         let givenName = patient.name.first?.given.first?.value ?? "J."
         let id = patient.id ?? "<<unknown>>"
@@ -56,10 +56,7 @@ extension MasterViewController {
     
     override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
         if editingStyle == .delete {
-            let patient = patients[indexPath.row]
-            try? realm?.write {
-                patient.cascadeDelete()
-            }
+            model.deleteLocalPatient(model.patients[indexPath.row])
         } else if editingStyle == .insert {
             // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view.
         }

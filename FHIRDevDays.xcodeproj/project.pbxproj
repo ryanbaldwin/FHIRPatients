@@ -7,21 +7,26 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		7D3407EB1F8A80F200F4115E /* PatientListModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D3407EA1F8A80F200F4115E /* PatientListModel.swift */; };
+		7D3407F01F8A98F600F4115E /* EditPatientViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D3407EE1F8A98F600F4115E /* EditPatientViewController.swift */; };
+		7D3407F11F8A98F600F4115E /* EditPatientViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7D3407EF1F8A98F600F4115E /* EditPatientViewController.xib */; };
+		7D3407F31F8A9D5300F4115E /* UnderlinedTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D3407F21F8A9D5300F4115E /* UnderlinedTextField.swift */; };
+		7D3407F71F8A9F8800F4115E /* PatientModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D3407F61F8A9F8800F4115E /* PatientModel.swift */; };
+		7D3407FA1F8AB9FA00F4115E /* EditPatientViewController+Interaction.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D3407F91F8AB9FA00F4115E /* EditPatientViewController+Interaction.swift */; };
 		7D5E0EC61F857DA6009FD0BB /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D5E0EC51F857DA6009FD0BB /* AppDelegate.swift */; };
-		7D5E0EC81F857DA6009FD0BB /* MasterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D5E0EC71F857DA6009FD0BB /* MasterViewController.swift */; };
+		7D5E0EC81F857DA6009FD0BB /* PatientListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D5E0EC71F857DA6009FD0BB /* PatientListViewController.swift */; };
 		7D5E0ECA1F857DA6009FD0BB /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D5E0EC91F857DA6009FD0BB /* DetailViewController.swift */; };
 		7D5E0ECD1F857DA6009FD0BB /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7D5E0ECB1F857DA6009FD0BB /* Main.storyboard */; };
 		7D5E0ECF1F857DA6009FD0BB /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 7D5E0ECE1F857DA6009FD0BB /* Assets.xcassets */; };
 		7D5E0ED21F857DA6009FD0BB /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7D5E0ED01F857DA6009FD0BB /* LaunchScreen.storyboard */; };
 		7D5E0EDD1F857DA6009FD0BB /* FHIRDevDaysTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D5E0EDC1F857DA6009FD0BB /* FHIRDevDaysTests.swift */; };
-		7D5E0EF51F85A346009FD0BB /* PatientRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D5E0EF41F85A346009FD0BB /* PatientRequest.swift */; };
+		7D5E0EF51F85A346009FD0BB /* HttpPatients.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D5E0EF41F85A346009FD0BB /* HttpPatients.swift */; };
 		7D5E0EF61F85A397009FD0BB /* FireKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7D5E0EF11F858480009FD0BB /* FireKit.framework */; };
 		7D5E0EF71F85A39D009FD0BB /* Realm.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7D5E0EF01F858480009FD0BB /* Realm.framework */; };
 		7D5E0EF81F85A39D009FD0BB /* RealmSwift.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7D5E0EEF1F858480009FD0BB /* RealmSwift.framework */; };
 		7D5E0EF91F85A39D009FD0BB /* Restivus.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7D5E0EF21F858480009FD0BB /* Restivus.framework */; };
 		7D5E0EFB1F85A3B3009FD0BB /* HttpDefaults.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D5E0EFA1F85A3B3009FD0BB /* HttpDefaults.swift */; };
-		7D5E0EFD1F85A4F1009FD0BB /* MasterlViewController+DataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D5E0EFC1F85A4F1009FD0BB /* MasterlViewController+DataSource.swift */; };
-		7D5E0EFF1F85A541009FD0BB /* MasterViewController+Http.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D5E0EFE1F85A541009FD0BB /* MasterViewController+Http.swift */; };
+		7D5E0EFD1F85A4F1009FD0BB /* PatientListViewController+DataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D5E0EFC1F85A4F1009FD0BB /* PatientListViewController+DataSource.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -35,9 +40,15 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		7D3407EA1F8A80F200F4115E /* PatientListModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PatientListModel.swift; sourceTree = "<group>"; };
+		7D3407EE1F8A98F600F4115E /* EditPatientViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditPatientViewController.swift; sourceTree = "<group>"; };
+		7D3407EF1F8A98F600F4115E /* EditPatientViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = EditPatientViewController.xib; sourceTree = "<group>"; };
+		7D3407F21F8A9D5300F4115E /* UnderlinedTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UnderlinedTextField.swift; sourceTree = "<group>"; };
+		7D3407F61F8A9F8800F4115E /* PatientModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PatientModel.swift; sourceTree = "<group>"; };
+		7D3407F91F8AB9FA00F4115E /* EditPatientViewController+Interaction.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "EditPatientViewController+Interaction.swift"; sourceTree = "<group>"; };
 		7D5E0EC21F857DA6009FD0BB /* FHIRDevDays.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FHIRDevDays.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		7D5E0EC51F857DA6009FD0BB /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		7D5E0EC71F857DA6009FD0BB /* MasterViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MasterViewController.swift; sourceTree = "<group>"; };
+		7D5E0EC71F857DA6009FD0BB /* PatientListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PatientListViewController.swift; sourceTree = "<group>"; };
 		7D5E0EC91F857DA6009FD0BB /* DetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailViewController.swift; sourceTree = "<group>"; };
 		7D5E0ECC1F857DA6009FD0BB /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		7D5E0ECE1F857DA6009FD0BB /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -50,10 +61,9 @@
 		7D5E0EF01F858480009FD0BB /* Realm.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Realm.framework; path = Carthage/Build/iOS/Realm.framework; sourceTree = "<group>"; };
 		7D5E0EF11F858480009FD0BB /* FireKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = FireKit.framework; path = Carthage/Build/iOS/FireKit.framework; sourceTree = "<group>"; };
 		7D5E0EF21F858480009FD0BB /* Restivus.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Restivus.framework; path = Carthage/Build/iOS/Restivus.framework; sourceTree = "<group>"; };
-		7D5E0EF41F85A346009FD0BB /* PatientRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PatientRequest.swift; sourceTree = "<group>"; };
+		7D5E0EF41F85A346009FD0BB /* HttpPatients.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HttpPatients.swift; sourceTree = "<group>"; };
 		7D5E0EFA1F85A3B3009FD0BB /* HttpDefaults.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HttpDefaults.swift; sourceTree = "<group>"; };
-		7D5E0EFC1F85A4F1009FD0BB /* MasterlViewController+DataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "MasterlViewController+DataSource.swift"; sourceTree = "<group>"; };
-		7D5E0EFE1F85A541009FD0BB /* MasterViewController+Http.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "MasterViewController+Http.swift"; sourceTree = "<group>"; };
+		7D5E0EFC1F85A4F1009FD0BB /* PatientListViewController+DataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "PatientListViewController+DataSource.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -78,6 +88,28 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		7D3407F51F8A9F7200F4115E /* patient */ = {
+			isa = PBXGroup;
+			children = (
+				7D3407EE1F8A98F600F4115E /* EditPatientViewController.swift */,
+				7D3407EF1F8A98F600F4115E /* EditPatientViewController.xib */,
+				7D3407F91F8AB9FA00F4115E /* EditPatientViewController+Interaction.swift */,
+				7D3407F61F8A9F8800F4115E /* PatientModel.swift */,
+				7D3407EA1F8A80F200F4115E /* PatientListModel.swift */,
+				7D5E0EC71F857DA6009FD0BB /* PatientListViewController.swift */,
+				7D5E0EFC1F85A4F1009FD0BB /* PatientListViewController+DataSource.swift */,
+			);
+			path = patient;
+			sourceTree = "<group>";
+		};
+		7D3407F81F8AA4BE00F4115E /* uikit */ = {
+			isa = PBXGroup;
+			children = (
+				7D3407F21F8A9D5300F4115E /* UnderlinedTextField.swift */,
+			);
+			path = uikit;
+			sourceTree = "<group>";
+		};
 		7D5E0EB91F857DA6009FD0BB = {
 			isa = PBXGroup;
 			children = (
@@ -100,11 +132,10 @@
 		7D5E0EC41F857DA6009FD0BB /* FHIRDevDays */ = {
 			isa = PBXGroup;
 			children = (
+				7D3407F81F8AA4BE00F4115E /* uikit */,
+				7D3407F51F8A9F7200F4115E /* patient */,
 				7D5E0EF31F85A32C009FD0BB /* http */,
 				7D5E0EC51F857DA6009FD0BB /* AppDelegate.swift */,
-				7D5E0EC71F857DA6009FD0BB /* MasterViewController.swift */,
-				7D5E0EFC1F85A4F1009FD0BB /* MasterlViewController+DataSource.swift */,
-				7D5E0EFE1F85A541009FD0BB /* MasterViewController+Http.swift */,
 				7D5E0EC91F857DA6009FD0BB /* DetailViewController.swift */,
 				7D5E0ECB1F857DA6009FD0BB /* Main.storyboard */,
 				7D5E0ECE1F857DA6009FD0BB /* Assets.xcassets */,
@@ -137,7 +168,7 @@
 		7D5E0EF31F85A32C009FD0BB /* http */ = {
 			isa = PBXGroup;
 			children = (
-				7D5E0EF41F85A346009FD0BB /* PatientRequest.swift */,
+				7D5E0EF41F85A346009FD0BB /* HttpPatients.swift */,
 				7D5E0EFA1F85A3B3009FD0BB /* HttpDefaults.swift */,
 			);
 			path = http;
@@ -227,6 +258,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				7D3407F11F8A98F600F4115E /* EditPatientViewController.xib in Resources */,
 				7D5E0ED21F857DA6009FD0BB /* LaunchScreen.storyboard in Resources */,
 				7D5E0ECF1F857DA6009FD0BB /* Assets.xcassets in Resources */,
 				7D5E0ECD1F857DA6009FD0BB /* Main.storyboard in Resources */,
@@ -269,12 +301,16 @@
 			buildActionMask = 2147483647;
 			files = (
 				7D5E0ECA1F857DA6009FD0BB /* DetailViewController.swift in Sources */,
-				7D5E0EFF1F85A541009FD0BB /* MasterViewController+Http.swift in Sources */,
-				7D5E0EF51F85A346009FD0BB /* PatientRequest.swift in Sources */,
+				7D5E0EF51F85A346009FD0BB /* HttpPatients.swift in Sources */,
 				7D5E0EFB1F85A3B3009FD0BB /* HttpDefaults.swift in Sources */,
-				7D5E0EC81F857DA6009FD0BB /* MasterViewController.swift in Sources */,
-				7D5E0EFD1F85A4F1009FD0BB /* MasterlViewController+DataSource.swift in Sources */,
+				7D3407FA1F8AB9FA00F4115E /* EditPatientViewController+Interaction.swift in Sources */,
+				7D5E0EC81F857DA6009FD0BB /* PatientListViewController.swift in Sources */,
+				7D3407F31F8A9D5300F4115E /* UnderlinedTextField.swift in Sources */,
+				7D3407F01F8A98F600F4115E /* EditPatientViewController.swift in Sources */,
+				7D5E0EFD1F85A4F1009FD0BB /* PatientListViewController+DataSource.swift in Sources */,
 				7D5E0EC61F857DA6009FD0BB /* AppDelegate.swift in Sources */,
+				7D3407EB1F8A80F200F4115E /* PatientListModel.swift in Sources */,
+				7D3407F71F8A9F8800F4115E /* PatientModel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
