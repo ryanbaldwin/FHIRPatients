@@ -15,6 +15,7 @@ extension EditPatientViewController {
     }
     
     @objc func doneEditButtonTapped(_ sender: UIBarButtonItem) {
+        model.save()
         dismiss(animated: true)
     }
     
@@ -25,18 +26,46 @@ extension EditPatientViewController {
     }
     
     /// MARK: DatePicker
-    
-    @IBAction func datePickerValueChanged(_ sender: UIDatePicker) {
+    private func updateBirthdateTextField(_ date: Date) {
         let formatter = DateFormatter()
         formatter.dateStyle = .long
-        birthdateTextField.text = formatter.string(from: sender.date)
+        birthdateTextField.text = formatter.string(from: date)
+    }
+    
+    @IBAction func datePickerEditingDidBeging(_ sender: UIDatePicker) {
+        updateBirthdateTextField(sender.date)
+    }
+    
+    @IBAction func datePickerValueChanged(_ sender: UIDatePicker) {
+        updateBirthdateTextField(sender.date)
     }
     
     @IBAction func dateDoneTapped(_ sender: UIBarButtonItem) {
+        updateBirthdateTextField(datePicker.date)
+        model.dateOfBirth = datePicker.date
         birthdateTextField.resignFirstResponder()
     }
     
     @IBAction func dateCancelTapped(_ sender: UIBarButtonItem) {
         birthdateTextField.resignFirstResponder()
+    }
+    
+    /// MARK: Textfields
+    
+    @IBAction func givenNameEditingChanged(_ sender: UITextField) {
+        model.givenName = sender.text
+        print(model)
+    }
+    
+    @IBAction func familyNameEditingChanged(_ sender: UnderlinedTextField) {
+        model.familyName = sender.text
+        print(model)
+    }
+}
+
+extension EditPatientViewController: UITextFieldDelegate {
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        textField.resignFirstResponder()
+        return true
     }
 }

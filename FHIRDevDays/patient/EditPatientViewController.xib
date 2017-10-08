@@ -48,13 +48,22 @@
                                     </constraints>
                                     <nil key="textColor"/>
                                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                    <textInputTraits key="textInputTraits"/>
+                                    <textInputTraits key="textInputTraits" autocapitalizationType="words" autocorrectionType="no" spellCheckingType="no" returnKeyType="done"/>
+                                    <connections>
+                                        <action selector="givenNameEditingChanged:" destination="-1" eventType="editingChanged" id="bl4-mK-wfp"/>
+                                        <outlet property="delegate" destination="-1" id="NEV-Cg-FYi"/>
+                                    </connections>
                                 </textField>
                                 <textField opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="249" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Last name" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="SzY-SN-cPP" customClass="UnderlinedTextField" customModule="FHIRDevDays" customModuleProvider="target">
                                     <rect key="frame" x="0.0" y="38" width="277" height="30"/>
                                     <nil key="textColor"/>
                                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                    <textInputTraits key="textInputTraits"/>
+                                    <textInputTraits key="textInputTraits" autocapitalizationType="words" autocorrectionType="no" spellCheckingType="no" returnKeyType="done"/>
+                                    <connections>
+                                        <action selector="familyNameDidChange:" destination="-1" eventType="valueChanged" id="dh6-T7-yhx"/>
+                                        <action selector="familyNameEditingChanged:" destination="-1" eventType="editingChanged" id="fWP-EW-W8O"/>
+                                        <outlet property="delegate" destination="-1" id="kcs-hO-jHM"/>
+                                    </connections>
                                 </textField>
                                 <segmentedControl opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="249" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" translatesAutoresizingMaskIntoConstraints="NO" id="Bca-nt-KUY">
                                     <rect key="frame" x="0.0" y="76" width="272" height="29"/>
@@ -108,12 +117,13 @@
             <point key="canvasLocation" x="46.5" y="54.5"/>
         </view>
         <datePicker contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" datePickerMode="date" minuteInterval="1" id="D52-fb-6I7">
-            <rect key="frame" x="0.0" y="0.0" width="375" height="162"/>
+            <rect key="frame" x="0.0" y="0.0" width="375" height="220"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
             <date key="date" timeIntervalSinceReferenceDate="529182017.17830598">
                 <!--2017-10-08 19:00:17 +0000-->
             </date>
             <connections>
+                <action selector="datePickerEditingDidBeging:" destination="-1" eventType="editingDidBegin" id="2Bv-Bd-bfB"/>
                 <action selector="datePickerValueChanged:" destination="-1" eventType="valueChanged" id="TVC-uE-yhy"/>
             </connections>
             <point key="canvasLocation" x="47" y="619"/>
@@ -134,7 +144,7 @@
                     </connections>
                 </barButtonItem>
             </items>
-            <point key="canvasLocation" x="47" y="463"/>
+            <point key="canvasLocation" x="47" y="447"/>
         </toolbar>
     </objects>
 </document>

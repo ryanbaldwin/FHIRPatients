@@ -29,9 +29,7 @@ class PatientListViewController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         navigationItem.largeTitleDisplayMode = .automatic
-        // Do any additional setup after loading the view, typically from a nib.
-        navigationItem.leftBarButtonItem = editButtonItem
-
+        
         let addButton = UIBarButtonItem(barButtonSystemItem: .add, target: self, action: #selector(addPatient))
         navigationItem.rightBarButtonItem = addButton
         
@@ -49,8 +47,7 @@ class PatientListViewController: UITableViewController {
         super.viewWillAppear(animated)
     }
 
-    @objc
-    func addPatient(_ sender: Any) {
+    @objc func addPatient(_ sender: Any) {
         let vc = EditPatientViewController(nibName: String(describing: EditPatientViewController.self), bundle: nil)
         vc.model = PatientModel()
         let navController = UINavigationController(rootViewController: vc)

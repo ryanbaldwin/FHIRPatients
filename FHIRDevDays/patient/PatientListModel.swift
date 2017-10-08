@@ -25,7 +25,7 @@ struct PatientListModel {
     
     lazy var patients: Results<Patient> = {
         return self.realm!.objects(Patient.self)
-        }()
+    }()
     
     func loadRemotePatients() {
         let request = Random20PatientsRequest()
