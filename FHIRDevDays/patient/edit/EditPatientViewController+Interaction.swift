@@ -54,12 +54,10 @@ extension EditPatientViewController {
     
     @IBAction func givenNameEditingChanged(_ sender: UITextField) {
         model.givenName = sender.text
-        print(model)
     }
     
     @IBAction func familyNameEditingChanged(_ sender: UnderlinedTextField) {
         model.familyName = sender.text
-        print(model)
     }
 }
 

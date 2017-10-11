@@ -15,13 +15,6 @@ class PatientListViewController: UITableViewController {
     var detailViewController: DetailViewController? = nil
     var notificationToken: NotificationToken? = nil
     
-    var patientRefreshControl: UIRefreshControl = {
-        let refresher = UIRefreshControl()
-        refresher.attributedTitle = NSAttributedString(string: "Grab 20 random patients from the server")
-        refresher.addTarget(self, action: #selector(loadRemotePatients), for: [.valueChanged])
-        return refresher
-    }()
-    
     @objc func loadRemotePatients() {
         self.model.loadRemotePatients()
     }
@@ -30,10 +23,15 @@ class PatientListViewController: UITableViewController {
         super.viewDidLoad()
         navigationItem.largeTitleDisplayMode = .automatic
         
+        let clearButton = UIBarButtonItem(title: "Clear", style: .plain, target: self,
+                                          action: #selector(clearPatients))
+        navigationItem.leftBarButtonItem = clearButton
+        
         let addButton = UIBarButtonItem(barButtonSystemItem: .add, target: self, action: #selector(addPatient))
         navigationItem.rightBarButtonItem = addButton
         
-        refreshControl = patientRefreshControl
+        refreshControl?.attributedTitle = NSAttributedString(string: "Grab 20 patients frmo the server")
+        refreshControl?.addTarget(self, action: #selector(loadRemotePatients), for: .valueChanged)
         
         // hook into a realm notification for loading our patients
         notificationToken = model.patients.addNotificationBlock() { [weak self] changes in
@@ -54,6 +52,10 @@ class PatientListViewController: UITableViewController {
         navigationController?.present(navController, animated: true)
     }
 
+    @objc func clearPatients() {
+        model.deleteAllLocalPatients()
+    }
+    
     deinit {
         notificationToken?.stop()
     }
@@ -64,7 +66,7 @@ class PatientListViewController: UITableViewController {
             if let indexPath = tableView.indexPathForSelectedRow {
                 let object = model.patients[indexPath.row]
                 let controller = (segue.destination as! UINavigationController).topViewController as! DetailViewController
-                controller.detailItem = object
+                controller.model = PatientModel(patient: object)
                 controller.navigationItem.leftBarButtonItem = splitViewController?.displayModeButtonItem
                 controller.navigationItem.leftItemsSupplementBackButton = true
             }

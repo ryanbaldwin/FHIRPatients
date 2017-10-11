@@ -91,13 +91,9 @@
 		7D3407F51F8A9F7200F4115E /* patient */ = {
 			isa = PBXGroup;
 			children = (
-				7D3407EE1F8A98F600F4115E /* EditPatientViewController.swift */,
-				7D3407EF1F8A98F600F4115E /* EditPatientViewController.xib */,
-				7D3407F91F8AB9FA00F4115E /* EditPatientViewController+Interaction.swift */,
-				7D3407F61F8A9F8800F4115E /* PatientModel.swift */,
-				7D3407EA1F8A80F200F4115E /* PatientListModel.swift */,
-				7D5E0EC71F857DA6009FD0BB /* PatientListViewController.swift */,
-				7D5E0EFC1F85A4F1009FD0BB /* PatientListViewController+DataSource.swift */,
+				7DC43D801F8DA3A900AD6187 /* edit */,
+				7DC43D7F1F8DA3A000AD6187 /* detail */,
+				7DC43D7E1F8DA38B00AD6187 /* master */,
 			);
 			path = patient;
 			sourceTree = "<group>";
@@ -136,7 +132,6 @@
 				7D3407F51F8A9F7200F4115E /* patient */,
 				7D5E0EF31F85A32C009FD0BB /* http */,
 				7D5E0EC51F857DA6009FD0BB /* AppDelegate.swift */,
-				7D5E0EC91F857DA6009FD0BB /* DetailViewController.swift */,
 				7D5E0ECB1F857DA6009FD0BB /* Main.storyboard */,
 				7D5E0ECE1F857DA6009FD0BB /* Assets.xcassets */,
 				7D5E0ED01F857DA6009FD0BB /* LaunchScreen.storyboard */,
@@ -172,6 +167,35 @@
 				7D5E0EFA1F85A3B3009FD0BB /* HttpDefaults.swift */,
 			);
 			path = http;
+			sourceTree = "<group>";
+		};
+		7DC43D7E1F8DA38B00AD6187 /* master */ = {
+			isa = PBXGroup;
+			children = (
+				7D3407EA1F8A80F200F4115E /* PatientListModel.swift */,
+				7D5E0EC71F857DA6009FD0BB /* PatientListViewController.swift */,
+				7D5E0EFC1F85A4F1009FD0BB /* PatientListViewController+DataSource.swift */,
+			);
+			path = master;
+			sourceTree = "<group>";
+		};
+		7DC43D7F1F8DA3A000AD6187 /* detail */ = {
+			isa = PBXGroup;
+			children = (
+				7D5E0EC91F857DA6009FD0BB /* DetailViewController.swift */,
+			);
+			path = detail;
+			sourceTree = "<group>";
+		};
+		7DC43D801F8DA3A900AD6187 /* edit */ = {
+			isa = PBXGroup;
+			children = (
+				7D3407EE1F8A98F600F4115E /* EditPatientViewController.swift */,
+				7D3407EF1F8A98F600F4115E /* EditPatientViewController.xib */,
+				7D3407F91F8AB9FA00F4115E /* EditPatientViewController+Interaction.swift */,
+				7D3407F61F8A9F8800F4115E /* PatientModel.swift */,
+			);
+			path = edit;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */

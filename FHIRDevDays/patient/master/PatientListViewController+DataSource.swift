@@ -15,6 +15,7 @@ extension PatientListViewController {
     
     func load(_ changes: RealmCollectionChange<Results<Patient>>, into tableView: UITableView?) {
         guard let tableView = tableView else { return }
+        refreshControl?.endRefreshing()
         
         switch changes {
         case .initial:
@@ -44,8 +45,7 @@ extension PatientListViewController {
         let patient = model.patients[indexPath.row]
         let familyName = patient.name.first?.family.first?.value ?? "Doe"
         let givenName = patient.name.first?.given.first?.value ?? "J."
-        let id = patient.id ?? "<<unknown>>"
-        cell.textLabel!.text = "\(familyName), \(givenName) (id: \(id))"
+        cell.textLabel!.text = "\(familyName), \(givenName)"
         return cell
     }
 }

@@ -21,6 +21,20 @@ class EditPatientViewController: UIViewController {
     @IBOutlet weak var datePicker: UIDatePicker!
     @IBOutlet var datePickerToolbar: UIToolbar!
     
+    lazy var cancelButton: UIBarButtonItem = {
+        return UIBarButtonItem(barButtonSystemItem: .cancel,
+                               target: self,
+                               action: #selector(cancelEditButtonTapped))
+    }()
+    
+    lazy var doneButton: UIBarButtonItem = {
+        let doneButton = UIBarButtonItem(barButtonSystemItem: .done,
+                                         target: self,
+                                         action: #selector(doneEditButtonTapped))
+        doneButton.isEnabled = model.canSave()
+        return doneButton
+    }()
+    
     var model: PatientModel!
 
     override func viewDidLoad() {
@@ -32,12 +46,11 @@ class EditPatientViewController: UIViewController {
     }
     
     private func setupNavigation() {
-        navigationItem.leftBarButtonItem = UIBarButtonItem(barButtonSystemItem: .cancel,
-                                                           target: self,
-                                                           action: #selector(cancelEditButtonTapped))
-        navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .done,
-                                                            target: self,
-                                                            action: #selector(doneEditButtonTapped))
+        navigationItem.leftBarButtonItem = cancelButton
+        navigationItem.rightBarButtonItem = doneButton
+        model.patientCanSaveChanged = { [weak self] canSave in
+            self?.doneButton.isEnabled = canSave
+        }
     }
     
     private func setupBirthdate() {
@@ -62,5 +75,7 @@ class EditPatientViewController: UIViewController {
         if let gender = model.gender {
             genderControl.selectedSegmentIndex = gender.rawValue
         }
+        
+        
     }
 }

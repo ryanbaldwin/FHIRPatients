@@ -2,17 +2,17 @@
   "images" : [
     {
       "idiom" : "universal",
-      "filename" : "glyphicons-4-user.png",
+      "filename" : "glyphicons-191-plus-sign.png",
       "scale" : "1x"
     },
     {
       "idiom" : "universal",
-      "filename" : "glyphicons-4-user@2x.png",
+      "filename" : "glyphicons-191-plus-sign@2x.png",
       "scale" : "2x"
     },
     {
       "idiom" : "universal",
-      "filename" : "glyphicons-4-user@3x.png",
+      "filename" : "glyphicons-191-plus-sign@3x.png",
       "scale" : "3x"
     }
   ],

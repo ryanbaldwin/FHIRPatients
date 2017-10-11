@@ -16,55 +16,71 @@ struct PatientModel {
         case male, female, other, unknown
     }
     
-    private var realm = try! Realm()
+    var patientCanSaveChanged: ((Bool) -> ())? = nil
     
+    private var realm = try! Realm()
     private var patient: Patient
     
+    mutating func canSave() -> Bool {
+        return self.givenName != nil
+            && self.familyName != nil
+            && self.dateOfBirth != nil
+            && self.gender != nil
+    }
+    
     lazy var image: UIImage = {
-        guard let base64String = patient.photo.first?.data?.value else {
+        guard let base64String = patient.photo.first?.data?.value,
+            let data = base64String.data(using: .utf8),
+            let image = UIImage(data: data) else {
             return #imageLiteral(resourceName: "user")
         }
         
-        guard let data = base64String.data(using: .utf8) else {
-            return #imageLiteral(resourceName: "user")
-        }
-        
-        return UIImage(data: data) ?? #imageLiteral(resourceName: "user")
+        return image
     }()
 
-    lazy var givenName: String? = {
-        return self.patient.name.first?.given.first?.value
-    }()
-    
-    lazy var familyName: String? = {
-        return self.patient.name.first?.family.first?.value
-    }()
-    
-    lazy var dateOfBirth: Date? = {
-        return self.patient.birthDate?.nsDate
-    }()
-    
-    lazy var gender: Gender? = {
-        guard let patientGender = self.patient.gender else {
-            return nil
+    var givenName: String? {
+        didSet {
+            patientCanSaveChanged?(canSave())
         }
-        
-        switch patientGender {
-        case "male": return Gender.male
-        case "female": return Gender.female
-        case "other": return Gender.other
-        default: return Gender.unknown
+    }
+    
+    var familyName: String? {
+        didSet {
+            patientCanSaveChanged?(canSave())
         }
-    }()
+    }
+    
+    var dateOfBirth: Date? {
+        didSet {
+            patientCanSaveChanged?(canSave())
+        }
+    }
+    
+    var gender: Gender? {
+        didSet {
+            patientCanSaveChanged?(canSave())
+        }
+    }
     
     init(patient: Patient? = nil) {
         guard let patient = patient else {
             self.patient = Patient()
-            self.patient.id = UUID().uuidString
             return
         }
         
         self.patient = patient
+        givenName = patient.name.first?.given.first?.value
+        familyName = patient.name.first?.family.first?.value
+        dateOfBirth = patient.birthDate?.nsDate
+        
+        if let patientGender = patient.gender {
+            switch patientGender {
+            case "male": gender = .male
+            case "female": gender = .female
+            case "other": gender = .other
+            default: gender = .unknown
+            }
+        }
     }
     
     mutating func save() {

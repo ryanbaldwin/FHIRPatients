@@ -10,7 +10,9 @@ import Foundation
 import FireKit
 import RealmSwift
 
-struct PatientListModel {
+class PatientListModel {
+    private var continuationURL: URL?
+    
     private lazy var realm: Realm? = {
         do {
             let r =  try Realm()
@@ -28,16 +30,32 @@ struct PatientListModel {
     }()
     
     func loadRemotePatients() {
-        let request = Random20PatientsRequest()
-        _ = try? request.submit(callbackOnMain: false) { result in
+        let request = Random20PatientsRequest(url: continuationURL)
+        
+        _ = try? request.submit(callbackOnMain: false) { [weak self] result in
             switch result {
             case let .success(bundle):
-                self.save(patients: bundle.entry.flatMap { $0.resource?.resource as? Patient })
+                self?.process(bundle: bundle)
             case let .failure(error):
                 print("Failed to fetch 20 random patients from \(request.fullPath): \(error)")
             }
-            
-            //DispatchQueue.main.async { self?.refreshControl?.endRefreshing() }
+        }
+    }
+    
+    func process(bundle: FireKit.Bundle) {
+        self.save(patients: bundle.entry.flatMap { $0.resource?.resource as? Patient })
+        if let continueUrl = bundle.link.first(where: { $0.relation == "next" })?.url {
+            self.continuationURL = URL(string: continueUrl)
+        }
+    }
+    
+    func deleteAllLocalPatients() {
+        do {
+            try realm?.write {
+                realm?.deleteAll()
+            }
+        } catch let error {
+            print(error)
         }
     }
     
@@ -70,7 +88,7 @@ struct PatientListModel {
         }
     }
     
-    mutating func deleteLocalPatient(_ patient: Patient) {
+    func deleteLocalPatient(_ patient: Patient) {
         try? realm?.write {
             patient.cascadeDelete()
         }

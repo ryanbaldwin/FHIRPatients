@@ -12,6 +12,6 @@ import Restivus
 
 struct Random20PatientsRequest: Gettable {
     typealias ResponseType = FireKit.Bundle
-    
+    var url: URL?
     var path: String { return "/Patient?_count=20" }
 }
