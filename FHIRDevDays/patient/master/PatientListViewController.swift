@@ -30,13 +30,12 @@ class PatientListViewController: UITableViewController {
         let addButton = UIBarButtonItem(barButtonSystemItem: .add, target: self, action: #selector(addPatient))
         navigationItem.rightBarButtonItem = addButton
         
-        refreshControl?.attributedTitle = NSAttributedString(string: "Grab 20 patients frmo the server")
+        refreshControl?.attributedTitle = NSAttributedString(string: "Grab 20 patients from the server")
         refreshControl?.addTarget(self, action: #selector(loadRemotePatients), for: .valueChanged)
         
         // hook into a realm notification for loading our patients
         notificationToken = model.patients.addNotificationBlock() { [weak self] changes in
             self?.load(changes, into: self?.tableView)
-            
         }
     }
 

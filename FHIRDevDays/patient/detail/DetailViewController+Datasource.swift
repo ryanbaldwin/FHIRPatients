@@ -57,7 +57,7 @@ extension DetailViewController {
         case .contactPoints:
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "PatientTelecomCell",
                                                           for: indexPath) as! PatientTelecomCell
-            
+            cell.contactPoint = model?.telecoms[indexPath.row]
             return cell
         default:
             assert(false, "UICollectionView is asking for a cell in an unknown section: \(indexPath.section)")

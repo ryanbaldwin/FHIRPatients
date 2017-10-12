@@ -96,30 +96,30 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="wNo-Qd-INF">
-                            <size key="itemSize" width="213" height="61"/>
+                            <size key="itemSize" width="221" height="93"/>
                             <size key="headerReferenceSize" width="50" height="161"/>
                             <size key="footerReferenceSize" width="0.0" height="0.0"/>
                             <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                         </collectionViewFlowLayout>
                         <cells>
                             <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="PatientTelecomCell" id="Zev-fU-QSv" customClass="PatientTelecomCell" customModule="FHIRDevDays" customModuleProvider="target">
-                                <rect key="frame" x="81" y="161" width="213" height="61"/>
+                                <rect key="frame" x="77" y="161" width="221" height="93"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO">
-                                    <rect key="frame" x="0.0" y="0.0" width="213" height="61"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="221" height="93"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="4" translatesAutoresizingMaskIntoConstraints="NO" id="T4e-mF-Pl2">
-                                            <rect key="frame" x="0.0" y="20" width="89" height="87"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="89" height="87"/>
                                             <subviews>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Phone" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5kt-DS-qLZ">
-                                                    <rect key="frame" x="0.0" y="0.0" width="148" height="18"/>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="1000" text="Phone" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5kt-DS-qLZ">
+                                                    <rect key="frame" x="0.0" y="0.0" width="221" height="18"/>
                                                     <fontDescription key="fontDescription" style="UICTFontTextStyleSubhead"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="+1 (647) 822-2625" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2Wj-cH-n0O">
-                                                    <rect key="frame" x="0.0" y="22" width="148" height="20.5"/>
+                                                    <rect key="frame" x="0.0" y="22" width="221" height="71"/>
                                                     <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
@@ -129,9 +129,16 @@
                                     </subviews>
                                 </view>
                                 <constraints>
-                                    <constraint firstItem="T4e-mF-Pl2" firstAttribute="leading" secondItem="Zev-fU-QSv" secondAttribute="leading" constant="4" id="A2L-46-Uiw"/>
-                                    <constraint firstItem="T4e-mF-Pl2" firstAttribute="top" secondItem="Zev-fU-QSv" secondAttribute="top" constant="4" id="kfO-Gk-31h"/>
+                                    <constraint firstItem="T4e-mF-Pl2" firstAttribute="leadingMargin" secondItem="Zev-fU-QSv" secondAttribute="leading" id="A2L-46-Uiw"/>
+                                    <constraint firstAttribute="trailingMargin" secondItem="T4e-mF-Pl2" secondAttribute="trailing" id="b9Z-tX-yrA"/>
+                                    <constraint firstAttribute="bottom" secondItem="T4e-mF-Pl2" secondAttribute="bottom" id="jLE-jc-3d3"/>
+                                    <constraint firstItem="T4e-mF-Pl2" firstAttribute="top" secondItem="Zev-fU-QSv" secondAttribute="top" id="kfO-Gk-31h"/>
                                 </constraints>
+                                <connections>
+                                    <outlet property="contactPointLabel" destination="5kt-DS-qLZ" id="XJF-3W-Ue0"/>
+                                    <outlet property="layout" destination="T4e-mF-Pl2" id="F0V-MM-Jva"/>
+                                    <outlet property="valueLabel" destination="2Wj-cH-n0O" id="Hw0-Oe-Kln"/>
+                                </connections>
                             </collectionViewCell>
                         </cells>
                         <collectionReusableView key="sectionHeaderView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" reuseIdentifier="PatientDetailHeaderView" id="mM3-2j-LJn" customClass="PatientDetailHeaderView" customModule="FHIRDevDays" customModuleProvider="target">
@@ -139,10 +146,10 @@
                             <autoresizingMask key="autoresizingMask"/>
                             <subviews>
                                 <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" spacingType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="mwb-rR-6li">
-                                    <rect key="frame" x="8" y="8" width="359" height="145"/>
+                                    <rect key="frame" x="0.0" y="8" width="375" height="153"/>
                                     <subviews>
                                         <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="249" verticalHuggingPriority="249" translatesAutoresizingMaskIntoConstraints="NO" id="2K5-AC-Rwl" customClass="PatientAvatarView" customModule="FHIRDevDays" customModuleProvider="target">
-                                            <rect key="frame" x="140" y="0.0" width="79" height="79"/>
+                                            <rect key="frame" x="148" y="0.0" width="79" height="79"/>
                                             <constraints>
                                                 <constraint firstAttribute="height" relation="lessThanOrEqual" constant="79" id="35G-Qm-VWP"/>
                                                 <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="22" id="NrG-xd-GZH"/>
@@ -150,16 +157,16 @@
                                             </constraints>
                                         </imageView>
                                         <stackView opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="1000" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="BiP-ab-dTB">
-                                            <rect key="frame" x="99" y="87" width="161" height="58"/>
+                                            <rect key="frame" x="107" y="87" width="161" height="66"/>
                                             <subviews>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="1000" ambiguous="YES" text="Joey Balogna" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Q0b-0L-Ljb">
-                                                    <rect key="frame" x="0.0" y="0.0" width="161" height="34"/>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="999" text="Joey Balogna" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Q0b-0L-Ljb">
+                                                    <rect key="frame" x="0.0" y="0.0" width="161" height="42"/>
                                                     <fontDescription key="fontDescription" style="UICTFontTextStyleTitle1"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="1000" ambiguous="YES" text="Male - 24/11/1978" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="RiU-PD-rj2">
-                                                    <rect key="frame" x="0.0" y="34" width="161" height="24"/>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="1000" text="Male - 24/11/1978" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="RiU-PD-rj2">
+                                                    <rect key="frame" x="0.0" y="42" width="161" height="24"/>
                                                     <fontDescription key="fontDescription" style="UICTFontTextStyleTitle3"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
@@ -172,9 +179,9 @@
                             <constraints>
                                 <constraint firstItem="mwb-rR-6li" firstAttribute="top" secondItem="mM3-2j-LJn" secondAttribute="topMargin" constant="8" id="brO-oA-pg0"/>
                                 <constraint firstItem="mwb-rR-6li" firstAttribute="centerX" secondItem="mM3-2j-LJn" secondAttribute="centerX" id="f62-eU-Cwx"/>
-                                <constraint firstItem="mwb-rR-6li" firstAttribute="leading" secondItem="mM3-2j-LJn" secondAttribute="leading" constant="8" id="fjM-vS-Yhw"/>
-                                <constraint firstAttribute="trailing" secondItem="mwb-rR-6li" secondAttribute="trailing" constant="8" id="kOR-LS-qK6"/>
-                                <constraint firstAttribute="bottomMargin" secondItem="mwb-rR-6li" secondAttribute="bottom" constant="8" id="zCM-QU-YRg"/>
+                                <constraint firstItem="mwb-rR-6li" firstAttribute="leading" secondItem="mM3-2j-LJn" secondAttribute="leading" id="fjM-vS-Yhw"/>
+                                <constraint firstAttribute="trailing" secondItem="mwb-rR-6li" secondAttribute="trailing" id="kOR-LS-qK6"/>
+                                <constraint firstAttribute="bottomMargin" secondItem="mwb-rR-6li" secondAttribute="bottom" id="zCM-QU-YRg"/>
                             </constraints>
                             <connections>
                                 <outlet property="birthLabel" destination="RiU-PD-rj2" id="d44-fE-G78"/>

@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		7D17130F1F8FF62E008A1D14 /* PatientTelecomCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D17130E1F8FF62E008A1D14 /* PatientTelecomCell.swift */; };
+		7D2D9EF61F90064B001B4D61 /* DetailViewController+Layout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D2D9EF51F90064B001B4D61 /* DetailViewController+Layout.swift */; };
 		7D32E0581F8FD94100925EF3 /* PatientDetailHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D32E0571F8FD94100925EF3 /* PatientDetailHeaderView.swift */; };
 		7D32E05A1F8FDA0C00925EF3 /* DetailViewController+Datasource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D32E0591F8FDA0C00925EF3 /* DetailViewController+Datasource.swift */; };
 		7D3407EB1F8A80F200F4115E /* PatientListModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D3407EA1F8A80F200F4115E /* PatientListModel.swift */; };
@@ -45,6 +46,7 @@
 
 /* Begin PBXFileReference section */
 		7D17130E1F8FF62E008A1D14 /* PatientTelecomCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PatientTelecomCell.swift; sourceTree = "<group>"; };
+		7D2D9EF51F90064B001B4D61 /* DetailViewController+Layout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "DetailViewController+Layout.swift"; sourceTree = "<group>"; };
 		7D32E0571F8FD94100925EF3 /* PatientDetailHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PatientDetailHeaderView.swift; sourceTree = "<group>"; };
 		7D32E0591F8FDA0C00925EF3 /* DetailViewController+Datasource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "DetailViewController+Datasource.swift"; sourceTree = "<group>"; };
 		7D3407EA1F8A80F200F4115E /* PatientListModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PatientListModel.swift; sourceTree = "<group>"; };
@@ -99,8 +101,8 @@
 		7D3407F51F8A9F7200F4115E /* patient */ = {
 			isa = PBXGroup;
 			children = (
-				7DC43D801F8DA3A900AD6187 /* edit */,
 				7DC43D7F1F8DA3A000AD6187 /* detail */,
+				7DC43D801F8DA3A900AD6187 /* edit */,
 				7DC43D7E1F8DA38B00AD6187 /* master */,
 			);
 			path = patient;
@@ -193,6 +195,7 @@
 			children = (
 				7D5E0EC91F857DA6009FD0BB /* DetailViewController.swift */,
 				7D32E0591F8FDA0C00925EF3 /* DetailViewController+Datasource.swift */,
+				7D2D9EF51F90064B001B4D61 /* DetailViewController+Layout.swift */,
 				7D32E0571F8FD94100925EF3 /* PatientDetailHeaderView.swift */,
 				7D17130E1F8FF62E008A1D14 /* PatientTelecomCell.swift */,
 			);
@@ -341,6 +344,7 @@
 				7D5E0EFB1F85A3B3009FD0BB /* HttpDefaults.swift in Sources */,
 				7D3407FA1F8AB9FA00F4115E /* EditPatientViewController+Interaction.swift in Sources */,
 				7D5E0EC81F857DA6009FD0BB /* PatientListViewController.swift in Sources */,
+				7D2D9EF61F90064B001B4D61 /* DetailViewController+Layout.swift in Sources */,
 				7D3407F31F8A9D5300F4115E /* UnderlinedTextField.swift in Sources */,
 				7D3407F01F8A98F600F4115E /* EditPatientViewController.swift in Sources */,
 				7D5E0EFD1F85A4F1009FD0BB /* PatientListViewController+DataSource.swift in Sources */,
