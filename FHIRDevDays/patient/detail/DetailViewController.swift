@@ -19,10 +19,16 @@ class DetailViewController: UIViewController {
         let imageView = UIImageView(image: model?.image)
         imageView.backgroundColor = .gray
         imageView.tintColor = .white
+        
+        imageView.widthAnchor.constraint(equalTo: imageView.heightAnchor).isActive = true
+        imageView.heightAnchor.constraint(equalToConstant: 40).isActive = true
+        imageView.layer.cornerRadius = 20
+        
         return imageView
     }()
     
-    override func viewDidLoad() {
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
         configureView()
     }
     
@@ -33,18 +39,12 @@ class DetailViewController: UIViewController {
     
     private func configureTitleView() {
         navigationItem.titleView = imageTitle
-        imageTitle.widthAnchor.constraint(equalTo: imageTitle.heightAnchor).isActive = true
-        imageTitle.heightAnchor.constraint(equalToConstant: 80).isActive = true
     }
     
     private func configureNameLabel() {
         let firstName = model?.givenName ?? "J."
         let lastName = model?.familyName ?? "Doe"
-        navigationItem.title = "\(firstName) \(lastName)"
-    }
-    
-    override func viewDidLayoutSubviews() {
-        imageTitle.layer.cornerRadius = 20
+        nameLabel.text = "\(firstName) \(lastName)"
     }
 }
 

@@ -30,7 +30,7 @@ struct PatientModel {
     
     lazy var image: UIImage = {
         guard let base64String = patient.photo.first?.data?.value,
-            let data = base64String.data(using: .utf8),
+            let data = Data(base64Encoded: base64String),
             let image = UIImage(data: data) else {
             return #imageLiteral(resourceName: "user")
         }
