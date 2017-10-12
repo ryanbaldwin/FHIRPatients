@@ -21,7 +21,7 @@ struct PatientModel {
     private var realm = try! Realm()
     private var patient: Patient
     
-    mutating func canSave() -> Bool {
+    func canSave() -> Bool {
         return self.givenName != nil
             && self.familyName != nil
             && self.dateOfBirth != nil
@@ -61,6 +61,8 @@ struct PatientModel {
             patientCanSaveChanged?(canSave())
         }
     }
+    
+    var telecoms: [ContactPoint] { return Array(patient.telecom) }
     
     init(patient: Patient? = nil) {
         guard let patient = patient else {
