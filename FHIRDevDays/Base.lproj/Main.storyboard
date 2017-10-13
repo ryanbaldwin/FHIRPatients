@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13196" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="H1p-Uh-vWS">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13196" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="RMx-3f-FxP">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
@@ -26,19 +26,6 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="8fS-aE-onr" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-38" y="-630"/>
-        </scene>
-        <!--Split View Controller-->
-        <scene sceneID="Nki-YV-4Qg">
-            <objects>
-                <splitViewController id="H1p-Uh-vWS" sceneMemberID="viewController">
-                    <toolbarItems/>
-                    <connections>
-                        <segue destination="RMx-3f-FxP" kind="relationship" relationship="masterViewController" id="BlO-5A-QYV"/>
-                    </connections>
-                </splitViewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="cZU-Oi-B1e" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="-856" y="-330"/>
         </scene>
         <!--Patients-->
         <scene sceneID="smW-Zh-WAh">
@@ -67,7 +54,7 @@
                                 </tableViewCellContentView>
                                 <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <connections>
-                                    <segue destination="rzn-yv-BVE" kind="showDetail" identifier="showDetail" id="I3y-jD-HW7"/>
+                                    <segue destination="mPP-qc-DVi" kind="show" identifier="showDetail" id="SmY-4e-F05"/>
                                 </connections>
                             </tableViewCell>
                         </prototypes>
@@ -77,7 +64,7 @@
                             <outlet property="delegate" destination="7bK-jq-Zjz" id="RA6-mI-bju"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" title="Patients" largeTitleDisplayMode="never" id="Zdf-7t-Un8"/>
+                    <navigationItem key="navigationItem" title="Patients" largeTitleDisplayMode="always" id="Zdf-7t-Un8"/>
                     <refreshControl key="refreshControl" opaque="NO" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" enabled="NO" contentHorizontalAlignment="center" contentVerticalAlignment="center" id="OIU-qO-HjP">
                         <rect key="frame" x="0.0" y="0.0" width="1000" height="1000"/>
                         <autoresizingMask key="autoresizingMask"/>
@@ -90,8 +77,8 @@
         <!--Detail View Controller-->
         <scene sceneID="lsT-3x-5Xz">
             <objects>
-                <collectionViewController extendedLayoutIncludesOpaqueBars="YES" id="mPP-qc-DVi" customClass="DetailViewController" customModule="FHIRDevDays" customModuleProvider="target" sceneMemberID="viewController">
-                    <collectionView key="view" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" id="S03-Xr-5uj">
+                <collectionViewController extendedLayoutIncludesOpaqueBars="YES" automaticallyAdjustsScrollViewInsets="NO" id="mPP-qc-DVi" customClass="DetailViewController" customModule="FHIRDevDays" customModuleProvider="target" sceneMemberID="viewController">
+                    <collectionView key="view" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" contentInsetAdjustmentBehavior="never" dataMode="prototypes" id="S03-Xr-5uj">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -141,15 +128,15 @@
                                 </connections>
                             </collectionViewCell>
                         </cells>
-                        <collectionReusableView key="sectionHeaderView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" reuseIdentifier="PatientDetailHeaderView" id="mM3-2j-LJn" customClass="PatientDetailHeaderView" customModule="FHIRDevDays" customModuleProvider="target">
+                        <collectionReusableView key="sectionHeaderView" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" reuseIdentifier="PatientDetailHeaderView" id="mM3-2j-LJn" customClass="PatientDetailHeaderView" customModule="FHIRDevDays" customModuleProvider="target">
                             <rect key="frame" x="0.0" y="0.0" width="375" height="161"/>
                             <autoresizingMask key="autoresizingMask"/>
                             <subviews>
                                 <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" spacingType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="mwb-rR-6li">
-                                    <rect key="frame" x="0.0" y="8" width="375" height="153"/>
+                                    <rect key="frame" x="0.0" y="20" width="375" height="141"/>
                                     <subviews>
-                                        <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="249" verticalHuggingPriority="249" translatesAutoresizingMaskIntoConstraints="NO" id="2K5-AC-Rwl" customClass="PatientAvatarView" customModule="FHIRDevDays" customModuleProvider="target">
-                                            <rect key="frame" x="148" y="0.0" width="79" height="79"/>
+                                        <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="249" verticalHuggingPriority="249" image="user" translatesAutoresizingMaskIntoConstraints="NO" id="2K5-AC-Rwl" customClass="PatientAvatarView" customModule="FHIRDevDays" customModuleProvider="target">
+                                            <rect key="frame" x="149" y="0.0" width="77.5" height="77.5"/>
                                             <constraints>
                                                 <constraint firstAttribute="height" relation="lessThanOrEqual" constant="79" id="35G-Qm-VWP"/>
                                                 <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="22" id="NrG-xd-GZH"/>
@@ -157,16 +144,16 @@
                                             </constraints>
                                         </imageView>
                                         <stackView opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="1000" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="BiP-ab-dTB">
-                                            <rect key="frame" x="107" y="87" width="161" height="66"/>
+                                            <rect key="frame" x="107" y="85.5" width="161" height="55.5"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="999" text="Joey Balogna" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Q0b-0L-Ljb">
-                                                    <rect key="frame" x="0.0" y="0.0" width="161" height="42"/>
+                                                    <rect key="frame" x="0.0" y="0.0" width="161" height="31.5"/>
                                                     <fontDescription key="fontDescription" style="UICTFontTextStyleTitle1"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="1000" text="Male - 24/11/1978" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="RiU-PD-rj2">
-                                                    <rect key="frame" x="0.0" y="42" width="161" height="24"/>
+                                                    <rect key="frame" x="0.0" y="31.5" width="161" height="24"/>
                                                     <fontDescription key="fontDescription" style="UICTFontTextStyleTitle3"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
@@ -176,8 +163,9 @@
                                     </subviews>
                                 </stackView>
                             </subviews>
+                            <color key="backgroundColor" red="0.97637468576431274" green="0.97653776407241821" blue="0.9763532280921936" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             <constraints>
-                                <constraint firstItem="mwb-rR-6li" firstAttribute="top" secondItem="mM3-2j-LJn" secondAttribute="topMargin" constant="8" id="brO-oA-pg0"/>
+                                <constraint firstItem="mwb-rR-6li" firstAttribute="top" secondItem="mM3-2j-LJn" secondAttribute="topMargin" constant="20" id="brO-oA-pg0"/>
                                 <constraint firstItem="mwb-rR-6li" firstAttribute="centerX" secondItem="mM3-2j-LJn" secondAttribute="centerX" id="f62-eU-Cwx"/>
                                 <constraint firstItem="mwb-rR-6li" firstAttribute="leading" secondItem="mM3-2j-LJn" secondAttribute="leading" id="fjM-vS-Yhw"/>
                                 <constraint firstAttribute="trailing" secondItem="mwb-rR-6li" secondAttribute="trailing" id="kOR-LS-qK6"/>
@@ -204,25 +192,10 @@
                 </collectionViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="B7C-3S-0SL" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="708" y="164.16791604197903"/>
-        </scene>
-        <!--Navigation Controller-->
-        <scene sceneID="JOA-Ir-lB9">
-            <objects>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="rzn-yv-BVE" sceneMemberID="viewController">
-                    <toolbarItems/>
-                    <navigationBar key="navigationBar" opaque="NO" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="68F-99-miw">
-                        <rect key="frame" x="0.0" y="20" width="375" height="44"/>
-                        <autoresizingMask key="autoresizingMask"/>
-                    </navigationBar>
-                    <nil name="viewControllers"/>
-                    <connections>
-                        <segue destination="mPP-qc-DVi" kind="relationship" relationship="rootViewController" id="5R8-yE-y0l"/>
-                    </connections>
-                </navigationController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="Tjl-x8-vYK" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="-39" y="165"/>
+            <point key="canvasLocation" x="1452" y="-630"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="user" width="23" height="22"/>
+    </resources>
 </document>

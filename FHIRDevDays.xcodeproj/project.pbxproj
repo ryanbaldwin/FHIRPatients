@@ -508,7 +508,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = 54F2GBB767;
+				DEVELOPMENT_TEAM = 7365BP9627;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/FHIRDevDays/Carthage/Build/iOS",
@@ -528,7 +528,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = 54F2GBB767;
+				DEVELOPMENT_TEAM = 7365BP9627;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/FHIRDevDays/Carthage/Build/iOS",

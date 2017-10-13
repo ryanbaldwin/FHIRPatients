@@ -13,19 +13,24 @@ class DetailViewController: UICollectionViewController {
     enum Sections: Int {
         case contactPoints, count
     }
-    
     var model: PatientModel?
+    
+    private var previousShadowImage: UIImage?
+    private var previousBackgroundImage: UIImage?
     let sectionInsets = UIEdgeInsets(top: 8, left: 16, bottom: 8, right: 16)
     
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        navigationController?.navigationBar.isTranslucent = true
+    override func viewWillAppear(_ animated: Bool) {
+        print("DetailViewController.viewWillAppear")
+        super.viewWillAppear(animated)
         navigationController?.navigationBar.shadowImage = UIImage()
-        navigationController?.view.backgroundColor = .clear
         navigationController?.navigationBar.setBackgroundImage(UIImage(), for: .default)
-        navigationController?.navigationBar.backgroundColor = .clear
-        navigationController?.navigationBar.barTintColor = .clear
-        
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        print("DetailViewController.viewWillDisappear")
+        super.viewWillDisappear(animated)
+        navigationController?.navigationBar.shadowImage = previousShadowImage
+        navigationController?.navigationBar.setBackgroundImage(previousBackgroundImage, for: .default)
     }
     
     @IBAction func editButtonTapped(_ sender: UIBarButtonItem) {

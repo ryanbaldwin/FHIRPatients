@@ -39,11 +39,6 @@ class PatientListViewController: UITableViewController {
         }
     }
 
-    override func viewWillAppear(_ animated: Bool) {
-        clearsSelectionOnViewWillAppear = splitViewController!.isCollapsed
-        super.viewWillAppear(animated)
-    }
-
     @objc func addPatient(_ sender: Any) {
         let vc = EditPatientViewController(nibName: String(describing: EditPatientViewController.self), bundle: nil)
         vc.model = PatientModel()
@@ -64,7 +59,7 @@ class PatientListViewController: UITableViewController {
         if segue.identifier == "showDetail" {
             if let indexPath = tableView.indexPathForSelectedRow {
                 let object = model.patients[indexPath.row]
-                let controller = (segue.destination as! UINavigationController).topViewController as! DetailViewController
+                let controller = segue.destination as! DetailViewController
                 controller.model = PatientModel(patient: object)
                 controller.navigationItem.leftBarButtonItem = splitViewController?.displayModeButtonItem
                 controller.navigationItem.leftItemsSupplementBackButton = true
