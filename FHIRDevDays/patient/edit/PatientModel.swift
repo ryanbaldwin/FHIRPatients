@@ -62,7 +62,9 @@ struct PatientModel {
         }
     }
     
-    var telecoms: [ContactPoint] { return Array(patient.telecom) }
+    lazy var telecoms: [ContactPoint] = {
+        return Array(self.patient.telecom)
+    }()
     
     init(patient: Patient? = nil) {
         guard let patient = patient else {

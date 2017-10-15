@@ -41,6 +41,10 @@ class EditPatientViewController: UITableViewController {
         super.viewDidLoad()
         tableView.register(UINib.init(nibName: "AddCollectionItemCell", bundle: nil),
                            forCellReuseIdentifier: "AddCollectionItemCell")
+        
+        tableView.register(UINib.init(nibName: "EditContactPointCell", bundle: nil),
+                           forCellReuseIdentifier: "EditContactPointCell")
+        
         setupNavigation()
         setupBirthdate()
         bindData()
