@@ -5,9 +5,6 @@
     </device>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13173"/>
-        <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
-        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
-        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -25,12 +22,12 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="8fS-aE-onr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-38" y="-630"/>
+            <point key="canvasLocation" x="1559" y="-1553"/>
         </scene>
         <!--Patients-->
         <scene sceneID="smW-Zh-WAh">
             <objects>
-                <tableViewController title="Patients" clearsSelectionOnViewWillAppear="NO" id="7bK-jq-Zjz" customClass="PatientListViewController" customModule="FHIRDevDays" customModuleProvider="target" sceneMemberID="viewController">
+                <tableViewController title="Patients" clearsSelectionOnViewWillAppear="NO" id="7bK-jq-Zjz" customClass="PatientListViewController" customModule="FHIRPatients" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="r7i-6Z-zg0">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -54,7 +51,7 @@
                                 </tableViewCellContentView>
                                 <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <connections>
-                                    <segue destination="mPP-qc-DVi" kind="show" identifier="showDetail" id="SmY-4e-F05"/>
+                                    <segue destination="aDN-K0-LlM" kind="show" identifier="showDetail" id="D0y-pP-n0D"/>
                                 </connections>
                             </tableViewCell>
                         </prototypes>
@@ -72,140 +69,35 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Rux-fX-hf1" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="709" y="-630"/>
+            <point key="canvasLocation" x="2306" y="-1553"/>
         </scene>
         <!--Detail View Controller-->
-        <scene sceneID="lsT-3x-5Xz">
+        <scene sceneID="cOE-de-K3r">
             <objects>
-                <collectionViewController extendedLayoutIncludesOpaqueBars="YES" id="mPP-qc-DVi" customClass="DetailViewController" customModule="FHIRDevDays" customModuleProvider="target" sceneMemberID="viewController">
-                    <collectionView key="view" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" dataMode="prototypes" id="S03-Xr-5uj">
+                <tableViewController id="aDN-K0-LlM" customClass="DetailViewController" customModule="FHIRPatients" customModuleProvider="target" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="grouped" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="18" sectionFooterHeight="18" id="DyU-Mx-EAm">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                        <viewLayoutGuide key="safeArea" id="RZe-uF-aWb"/>
-                        <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="wNo-Qd-INF">
-                            <size key="itemSize" width="221" height="93"/>
-                            <size key="headerReferenceSize" width="50" height="53"/>
-                            <size key="footerReferenceSize" width="0.0" height="0.0"/>
-                            <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
-                        </collectionViewFlowLayout>
-                        <cells>
-                            <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="PatientTelecomCell" id="Zev-fU-QSv" customClass="PatientTelecomCell" customModule="FHIRDevDays" customModuleProvider="target">
-                                <rect key="frame" x="77" y="53" width="221" height="93"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO">
-                                    <rect key="frame" x="0.0" y="0.0" width="221" height="93"/>
+                        <color key="backgroundColor" red="0.99999600649999998" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <prototypes>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="d8W-Jw-NML">
+                                <rect key="frame" x="0.0" y="55.5" width="375" height="44"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="d8W-Jw-NML" id="s9H-yJ-FT5">
+                                    <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                                     <autoresizingMask key="autoresizingMask"/>
-                                    <subviews>
-                                        <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="4" translatesAutoresizingMaskIntoConstraints="NO" id="T4e-mF-Pl2">
-                                            <rect key="frame" x="0.0" y="0.0" width="89" height="87"/>
-                                            <subviews>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="1000" text="Phone" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5kt-DS-qLZ">
-                                                    <rect key="frame" x="0.0" y="0.0" width="221" height="18"/>
-                                                    <fontDescription key="fontDescription" style="UICTFontTextStyleSubhead"/>
-                                                    <nil key="textColor"/>
-                                                    <nil key="highlightedColor"/>
-                                                </label>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="+1 (647) 822-2625" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2Wj-cH-n0O">
-                                                    <rect key="frame" x="0.0" y="22" width="221" height="71"/>
-                                                    <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
-                                                    <nil key="textColor"/>
-                                                    <nil key="highlightedColor"/>
-                                                </label>
-                                            </subviews>
-                                        </stackView>
-                                    </subviews>
-                                </view>
-                                <constraints>
-                                    <constraint firstItem="T4e-mF-Pl2" firstAttribute="leadingMargin" secondItem="Zev-fU-QSv" secondAttribute="leading" id="A2L-46-Uiw"/>
-                                    <constraint firstAttribute="trailingMargin" secondItem="T4e-mF-Pl2" secondAttribute="trailing" id="b9Z-tX-yrA"/>
-                                    <constraint firstAttribute="bottom" secondItem="T4e-mF-Pl2" secondAttribute="bottom" id="jLE-jc-3d3"/>
-                                    <constraint firstItem="T4e-mF-Pl2" firstAttribute="top" secondItem="Zev-fU-QSv" secondAttribute="top" id="kfO-Gk-31h"/>
-                                </constraints>
-                                <connections>
-                                    <outlet property="contactPointLabel" destination="5kt-DS-qLZ" id="XJF-3W-Ue0"/>
-                                    <outlet property="layout" destination="T4e-mF-Pl2" id="F0V-MM-Jva"/>
-                                    <outlet property="valueLabel" destination="2Wj-cH-n0O" id="Hw0-Oe-Kln"/>
-                                </connections>
-                            </collectionViewCell>
-                        </cells>
-                        <collectionReusableView key="sectionHeaderView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" reuseIdentifier="PatientDetailHeaderView" id="O2h-nm-Vcu" customClass="PatientDetailHeaderView" customModule="FHIRDevDays" customModuleProvider="target">
-                            <rect key="frame" x="0.0" y="0.0" width="375" height="53"/>
-                            <autoresizingMask key="autoresizingMask"/>
-                            <subviews>
-                                <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="4" translatesAutoresizingMaskIntoConstraints="NO" id="Y8w-7X-IdE">
-                                    <rect key="frame" x="0.0" y="0.0" width="375" height="53"/>
-                                    <subviews>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="750" verticalHuggingPriority="749" text="Joey Balogna" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="637-eP-vxY">
-                                            <rect key="frame" x="0.0" y="0.0" width="375" height="31"/>
-                                            <fontDescription key="fontDescription" style="UICTFontTextStyleTitle1"/>
-                                            <nil key="textColor"/>
-                                            <nil key="highlightedColor"/>
-                                        </label>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" verticalHuggingPriority="750" horizontalCompressionResistancePriority="751" verticalCompressionResistancePriority="751" text="Male - 11/24/1978" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="IOK-xY-mWK">
-                                            <rect key="frame" x="0.0" y="35" width="375" height="18"/>
-                                            <fontDescription key="fontDescription" style="UICTFontTextStyleSubhead"/>
-                                            <nil key="textColor"/>
-                                            <nil key="highlightedColor"/>
-                                        </label>
-                                    </subviews>
-                                </stackView>
-                            </subviews>
-                            <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
-                            <constraints>
-                                <constraint firstAttribute="bottomMargin" secondItem="Y8w-7X-IdE" secondAttribute="bottom" id="3mI-zP-qfQ"/>
-                                <constraint firstAttribute="trailingMargin" secondItem="Y8w-7X-IdE" secondAttribute="trailing" id="Swd-pY-cUh"/>
-                                <constraint firstItem="Y8w-7X-IdE" firstAttribute="leading" secondItem="O2h-nm-Vcu" secondAttribute="leadingMargin" id="bnj-Gz-VeG"/>
-                                <constraint firstItem="Y8w-7X-IdE" firstAttribute="top" secondItem="O2h-nm-Vcu" secondAttribute="topMargin" id="mhD-C1-Wsl"/>
-                            </constraints>
-                            <viewLayoutGuide key="safeArea" id="5dW-Tc-y2a"/>
-                            <connections>
-                                <outlet property="birthLabel" destination="IOK-xY-mWK" id="164-ea-fnP"/>
-                                <outlet property="layout" destination="Y8w-7X-IdE" id="LYg-03-8hY"/>
-                                <outlet property="nameLabel" destination="637-eP-vxY" id="8Sf-74-GcS"/>
-                            </connections>
-                        </collectionReusableView>
+                                </tableViewCellContentView>
+                            </tableViewCell>
+                        </prototypes>
                         <connections>
-                            <outlet property="dataSource" destination="mPP-qc-DVi" id="2l5-vS-EB0"/>
-                            <outlet property="delegate" destination="mPP-qc-DVi" id="Jqe-ET-UzI"/>
+                            <outlet property="dataSource" destination="aDN-K0-LlM" id="Zpq-6c-8Ke"/>
+                            <outlet property="delegate" destination="aDN-K0-LlM" id="jVD-Bk-nG8"/>
                         </connections>
-                    </collectionView>
-                    <navigationItem key="navigationItem" largeTitleDisplayMode="never" id="8qf-J1-9bo">
-                        <nil key="title"/>
-                        <view key="titleView" contentMode="scaleToFill" id="l3N-o2-zLg">
-                            <rect key="frame" x="187.5" y="22" width="0.0" height="0.0"/>
-                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                            <subviews>
-                                <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="user" translatesAutoresizingMaskIntoConstraints="NO" id="0yZ-UV-xmn" customClass="PatientAvatarView" customModule="FHIRDevDays" customModuleProvider="target">
-                                    <rect key="frame" x="-20" y="-20" width="40" height="40"/>
-                                    <constraints>
-                                        <constraint firstAttribute="width" secondItem="0yZ-UV-xmn" secondAttribute="height" multiplier="1:1" id="49w-0c-SaY"/>
-                                        <constraint firstAttribute="height" constant="40" id="GKj-Ug-k2b"/>
-                                    </constraints>
-                                </imageView>
-                            </subviews>
-                            <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                            <constraints>
-                                <constraint firstItem="0yZ-UV-xmn" firstAttribute="centerX" secondItem="l3N-o2-zLg" secondAttribute="centerX" id="Io4-Fa-FfX"/>
-                                <constraint firstItem="0yZ-UV-xmn" firstAttribute="centerY" secondItem="l3N-o2-zLg" secondAttribute="centerY" id="wso-Wp-oho"/>
-                            </constraints>
-                        </view>
-                        <barButtonItem key="rightBarButtonItem" systemItem="edit" id="0Kc-lM-FSC">
-                            <connections>
-                                <action selector="editButtonTapped:" destination="mPP-qc-DVi" id="RiM-WD-xUq"/>
-                            </connections>
-                        </barButtonItem>
-                    </navigationItem>
-                    <connections>
-                        <outlet property="avatar" destination="0yZ-UV-xmn" id="t8b-eH-wAn"/>
-                    </connections>
-                </collectionViewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="B7C-3S-0SL" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                    </tableView>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="g3V-cx-SA0" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1452" y="-630.13493253373315"/>
+            <point key="canvasLocation" x="3135" y="-1554"/>
         </scene>
     </scenes>
-    <resources>
-        <image name="user" width="23" height="22"/>
-    </resources>
 </document>

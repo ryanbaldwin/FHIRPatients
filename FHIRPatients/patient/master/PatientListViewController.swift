@@ -21,7 +21,7 @@ class PatientListViewController: UITableViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        clearsSelectionOnViewWillAppear = false
+        clearsSelectionOnViewWillAppear = true
         navigationItem.largeTitleDisplayMode = .automatic
         
         configureInteractions()
