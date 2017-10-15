@@ -52,6 +52,21 @@ extension EditPatientViewController {
         }
     }
     
+    // MARK: Editing the row
+    
+    override func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
+        return indexPath.section == EditPatientViewController.Sections.telecoms.rawValue
+    }
+    
+    override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle,
+                            forRowAt indexPath: IndexPath) {
+        
+        if editingStyle == .delete {
+            model.telecoms.remove(at: indexPath.row)
+            tableView.deleteRows(at: [indexPath], with: .fade)
+        }
+    }
+    
     func editContactPointCell(for indexPath: IndexPath) -> EditContactPointCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "EditContactPointCell",
                                                  for: indexPath) as! EditContactPointCell
