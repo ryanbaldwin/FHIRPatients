@@ -8,12 +8,12 @@
 
 import UIKit
 
-class EditPatientViewController: UIViewController {
-    enum State {
-        case readonly, edit
+class EditPatientViewController: UITableViewController {
+    enum Sections: Int {
+        case telecoms, count
     }
     
-    @IBOutlet weak var userImage: UIImageView!
+    @IBOutlet weak var userImage: PatientAvatarView!
     @IBOutlet weak var givenNameTextField: UnderlinedTextField!
     @IBOutlet weak var familyNameTextField: UnderlinedTextField!
     @IBOutlet weak var genderControl: UISegmentedControl!
@@ -39,9 +39,10 @@ class EditPatientViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        tableView.register(UINib.init(nibName: "AddCollectionItemCell", bundle: nil),
+                           forCellReuseIdentifier: "AddCollectionItemCell")
         setupNavigation()
         setupBirthdate()
-        setupUserImage()
         bindData()
     }
     
@@ -58,15 +59,6 @@ class EditPatientViewController: UIViewController {
         birthdateTextField.inputAccessoryView = datePickerToolbar
     }
     
-    private func setupUserImage() {
-        userImage.layer.borderWidth = 3
-        userImage.layer.masksToBounds = false
-        userImage.layer.borderColor = UIColor.lightGray.cgColor
-        userImage.layer.backgroundColor = UIColor.lightGray.cgColor
-        userImage.layer.cornerRadius = userImage.bounds.height / 2
-        userImage.clipsToBounds = true
-    }
-    
     private func bindData() {
         userImage.image = model.image
         givenNameTextField.text = model.givenName
@@ -75,7 +67,5 @@ class EditPatientViewController: UIViewController {
         if let gender = model.gender {
             genderControl.selectedSegmentIndex = gender.rawValue
         }
-        
-        
     }
 }

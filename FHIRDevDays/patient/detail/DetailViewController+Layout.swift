@@ -31,6 +31,22 @@ extension DetailViewController: UICollectionViewDelegateFlowLayout {
         }
     }
     
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, referenceSizeForHeaderInSection section: Int) -> CGSize {
+        guard let currentSection = DetailViewController.Sections(rawValue: section) else {
+            assert(false, "Unknown section for flow layout: \(section)")
+        }
+        
+        switch currentSection {
+        case .contactPoints:
+            let spacing: CGFloat = 4
+            let nameHeight: CGFloat = 41
+            let birthHeight: CGFloat = model?.dateOfBirth != nil || model?.gender != nil ? 18 : 0
+            return CGSize(width: collectionView.frame.width, height: spacing + nameHeight + birthHeight)
+        default:
+            assert(false, "unknown section for flor layout \(section)")
+        }
+    }
+    
     func collectionView(_ collectionView: UICollectionView,
                         layout collectionViewLayout: UICollectionViewLayout,
                         insetForSectionAt section: Int) -> UIEdgeInsets {

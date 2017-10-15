@@ -31,18 +31,14 @@ extension DetailViewController {
     override func collectionView(_ collectionView: UICollectionView,
                                  viewForSupplementaryElementOfKind kind: String,
                                  at indexPath: IndexPath) -> UICollectionReusableView {
-        //1
         switch kind {
-        //2
         case UICollectionElementKindSectionHeader:
-            //3
             let headerView = collectionView.dequeueReusableSupplementaryView(ofKind: kind,
                                                                              withReuseIdentifier: "PatientDetailHeaderView",
                                                                              for: indexPath) as! PatientDetailHeaderView
             headerView.model = model
             return headerView
         default:
-            //4
             assert(false, "Unexpected element kind")
         }
     }

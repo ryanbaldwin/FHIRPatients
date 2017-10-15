@@ -7,7 +7,7 @@
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13173"/>
         <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
-        <capability name="Stack View standard spacing" minToolsVersion="9.0"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -77,20 +77,21 @@
         <!--Detail View Controller-->
         <scene sceneID="lsT-3x-5Xz">
             <objects>
-                <collectionViewController extendedLayoutIncludesOpaqueBars="YES" automaticallyAdjustsScrollViewInsets="NO" id="mPP-qc-DVi" customClass="DetailViewController" customModule="FHIRDevDays" customModuleProvider="target" sceneMemberID="viewController">
-                    <collectionView key="view" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" contentInsetAdjustmentBehavior="never" dataMode="prototypes" id="S03-Xr-5uj">
+                <collectionViewController extendedLayoutIncludesOpaqueBars="YES" id="mPP-qc-DVi" customClass="DetailViewController" customModule="FHIRDevDays" customModuleProvider="target" sceneMemberID="viewController">
+                    <collectionView key="view" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" dataMode="prototypes" id="S03-Xr-5uj">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <viewLayoutGuide key="safeArea" id="RZe-uF-aWb"/>
                         <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="wNo-Qd-INF">
                             <size key="itemSize" width="221" height="93"/>
-                            <size key="headerReferenceSize" width="50" height="161"/>
+                            <size key="headerReferenceSize" width="50" height="53"/>
                             <size key="footerReferenceSize" width="0.0" height="0.0"/>
                             <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                         </collectionViewFlowLayout>
                         <cells>
                             <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="PatientTelecomCell" id="Zev-fU-QSv" customClass="PatientTelecomCell" customModule="FHIRDevDays" customModuleProvider="target">
-                                <rect key="frame" x="77" y="161" width="221" height="93"/>
+                                <rect key="frame" x="77" y="53" width="221" height="93"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO">
                                     <rect key="frame" x="0.0" y="0.0" width="221" height="93"/>
@@ -128,53 +129,40 @@
                                 </connections>
                             </collectionViewCell>
                         </cells>
-                        <collectionReusableView key="sectionHeaderView" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" reuseIdentifier="PatientDetailHeaderView" id="mM3-2j-LJn" customClass="PatientDetailHeaderView" customModule="FHIRDevDays" customModuleProvider="target">
-                            <rect key="frame" x="0.0" y="0.0" width="375" height="161"/>
+                        <collectionReusableView key="sectionHeaderView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" reuseIdentifier="PatientDetailHeaderView" id="O2h-nm-Vcu" customClass="PatientDetailHeaderView" customModule="FHIRDevDays" customModuleProvider="target">
+                            <rect key="frame" x="0.0" y="0.0" width="375" height="53"/>
                             <autoresizingMask key="autoresizingMask"/>
                             <subviews>
-                                <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" spacingType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="mwb-rR-6li">
-                                    <rect key="frame" x="0.0" y="20" width="375" height="141"/>
+                                <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="4" translatesAutoresizingMaskIntoConstraints="NO" id="Y8w-7X-IdE">
+                                    <rect key="frame" x="0.0" y="0.0" width="375" height="53"/>
                                     <subviews>
-                                        <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="249" verticalHuggingPriority="249" image="user" translatesAutoresizingMaskIntoConstraints="NO" id="2K5-AC-Rwl" customClass="PatientAvatarView" customModule="FHIRDevDays" customModuleProvider="target">
-                                            <rect key="frame" x="149" y="0.0" width="77.5" height="77.5"/>
-                                            <constraints>
-                                                <constraint firstAttribute="height" relation="lessThanOrEqual" constant="79" id="35G-Qm-VWP"/>
-                                                <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="22" id="NrG-xd-GZH"/>
-                                                <constraint firstAttribute="width" secondItem="2K5-AC-Rwl" secondAttribute="height" multiplier="1:1" id="sXb-7N-vHU"/>
-                                            </constraints>
-                                        </imageView>
-                                        <stackView opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="1000" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="BiP-ab-dTB">
-                                            <rect key="frame" x="107" y="85.5" width="161" height="55.5"/>
-                                            <subviews>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="999" text="Joey Balogna" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Q0b-0L-Ljb">
-                                                    <rect key="frame" x="0.0" y="0.0" width="161" height="31.5"/>
-                                                    <fontDescription key="fontDescription" style="UICTFontTextStyleTitle1"/>
-                                                    <nil key="textColor"/>
-                                                    <nil key="highlightedColor"/>
-                                                </label>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="1000" text="Male - 24/11/1978" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="RiU-PD-rj2">
-                                                    <rect key="frame" x="0.0" y="31.5" width="161" height="24"/>
-                                                    <fontDescription key="fontDescription" style="UICTFontTextStyleTitle3"/>
-                                                    <nil key="textColor"/>
-                                                    <nil key="highlightedColor"/>
-                                                </label>
-                                            </subviews>
-                                        </stackView>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="750" verticalHuggingPriority="749" text="Joey Balogna" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="637-eP-vxY">
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="31"/>
+                                            <fontDescription key="fontDescription" style="UICTFontTextStyleTitle1"/>
+                                            <nil key="textColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" verticalHuggingPriority="750" horizontalCompressionResistancePriority="751" verticalCompressionResistancePriority="751" text="Male - 11/24/1978" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="IOK-xY-mWK">
+                                            <rect key="frame" x="0.0" y="35" width="375" height="18"/>
+                                            <fontDescription key="fontDescription" style="UICTFontTextStyleSubhead"/>
+                                            <nil key="textColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
                                     </subviews>
                                 </stackView>
                             </subviews>
-                            <color key="backgroundColor" red="0.97637468576431274" green="0.97653776407241821" blue="0.9763532280921936" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
                             <constraints>
-                                <constraint firstItem="mwb-rR-6li" firstAttribute="top" secondItem="mM3-2j-LJn" secondAttribute="topMargin" constant="20" id="brO-oA-pg0"/>
-                                <constraint firstItem="mwb-rR-6li" firstAttribute="centerX" secondItem="mM3-2j-LJn" secondAttribute="centerX" id="f62-eU-Cwx"/>
-                                <constraint firstItem="mwb-rR-6li" firstAttribute="leading" secondItem="mM3-2j-LJn" secondAttribute="leading" id="fjM-vS-Yhw"/>
-                                <constraint firstAttribute="trailing" secondItem="mwb-rR-6li" secondAttribute="trailing" id="kOR-LS-qK6"/>
-                                <constraint firstAttribute="bottomMargin" secondItem="mwb-rR-6li" secondAttribute="bottom" id="zCM-QU-YRg"/>
+                                <constraint firstAttribute="bottomMargin" secondItem="Y8w-7X-IdE" secondAttribute="bottom" id="3mI-zP-qfQ"/>
+                                <constraint firstAttribute="trailingMargin" secondItem="Y8w-7X-IdE" secondAttribute="trailing" id="Swd-pY-cUh"/>
+                                <constraint firstItem="Y8w-7X-IdE" firstAttribute="leading" secondItem="O2h-nm-Vcu" secondAttribute="leadingMargin" id="bnj-Gz-VeG"/>
+                                <constraint firstItem="Y8w-7X-IdE" firstAttribute="top" secondItem="O2h-nm-Vcu" secondAttribute="topMargin" id="mhD-C1-Wsl"/>
                             </constraints>
+                            <viewLayoutGuide key="safeArea" id="5dW-Tc-y2a"/>
                             <connections>
-                                <outlet property="birthLabel" destination="RiU-PD-rj2" id="d44-fE-G78"/>
-                                <outlet property="imageView" destination="2K5-AC-Rwl" id="f05-FH-7JA"/>
-                                <outlet property="nameLabel" destination="Q0b-0L-Ljb" id="LGB-0o-fs5"/>
+                                <outlet property="birthLabel" destination="IOK-xY-mWK" id="164-ea-fnP"/>
+                                <outlet property="layout" destination="Y8w-7X-IdE" id="LYg-03-8hY"/>
+                                <outlet property="nameLabel" destination="637-eP-vxY" id="8Sf-74-GcS"/>
                             </connections>
                         </collectionReusableView>
                         <connections>
@@ -183,16 +171,38 @@
                         </connections>
                     </collectionView>
                     <navigationItem key="navigationItem" largeTitleDisplayMode="never" id="8qf-J1-9bo">
+                        <nil key="title"/>
+                        <view key="titleView" contentMode="scaleToFill" id="l3N-o2-zLg">
+                            <rect key="frame" x="187.5" y="22" width="0.0" height="0.0"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <subviews>
+                                <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="user" translatesAutoresizingMaskIntoConstraints="NO" id="0yZ-UV-xmn" customClass="PatientAvatarView" customModule="FHIRDevDays" customModuleProvider="target">
+                                    <rect key="frame" x="-20" y="-20" width="40" height="40"/>
+                                    <constraints>
+                                        <constraint firstAttribute="width" secondItem="0yZ-UV-xmn" secondAttribute="height" multiplier="1:1" id="49w-0c-SaY"/>
+                                        <constraint firstAttribute="height" constant="40" id="GKj-Ug-k2b"/>
+                                    </constraints>
+                                </imageView>
+                            </subviews>
+                            <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            <constraints>
+                                <constraint firstItem="0yZ-UV-xmn" firstAttribute="centerX" secondItem="l3N-o2-zLg" secondAttribute="centerX" id="Io4-Fa-FfX"/>
+                                <constraint firstItem="0yZ-UV-xmn" firstAttribute="centerY" secondItem="l3N-o2-zLg" secondAttribute="centerY" id="wso-Wp-oho"/>
+                            </constraints>
+                        </view>
                         <barButtonItem key="rightBarButtonItem" systemItem="edit" id="0Kc-lM-FSC">
                             <connections>
                                 <action selector="editButtonTapped:" destination="mPP-qc-DVi" id="RiM-WD-xUq"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
+                    <connections>
+                        <outlet property="avatar" destination="0yZ-UV-xmn" id="t8b-eH-wAn"/>
+                    </connections>
                 </collectionViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="B7C-3S-0SL" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1452" y="-630"/>
+            <point key="canvasLocation" x="1452" y="-630.13493253373315"/>
         </scene>
     </scenes>
     <resources>

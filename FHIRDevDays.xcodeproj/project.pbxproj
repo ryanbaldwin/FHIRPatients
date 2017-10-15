@@ -7,13 +7,13 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		7D12F67E1F92919B003BF070 /* EditPatientViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7D12F67C1F92919B003BF070 /* EditPatientViewController.xib */; };
 		7D17130F1F8FF62E008A1D14 /* PatientTelecomCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D17130E1F8FF62E008A1D14 /* PatientTelecomCell.swift */; };
 		7D2D9EF61F90064B001B4D61 /* DetailViewController+Layout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D2D9EF51F90064B001B4D61 /* DetailViewController+Layout.swift */; };
 		7D32E0581F8FD94100925EF3 /* PatientDetailHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D32E0571F8FD94100925EF3 /* PatientDetailHeaderView.swift */; };
 		7D32E05A1F8FDA0C00925EF3 /* DetailViewController+Datasource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D32E0591F8FDA0C00925EF3 /* DetailViewController+Datasource.swift */; };
 		7D3407EB1F8A80F200F4115E /* PatientListModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D3407EA1F8A80F200F4115E /* PatientListModel.swift */; };
 		7D3407F01F8A98F600F4115E /* EditPatientViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D3407EE1F8A98F600F4115E /* EditPatientViewController.swift */; };
-		7D3407F11F8A98F600F4115E /* EditPatientViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7D3407EF1F8A98F600F4115E /* EditPatientViewController.xib */; };
 		7D3407F31F8A9D5300F4115E /* UnderlinedTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D3407F21F8A9D5300F4115E /* UnderlinedTextField.swift */; };
 		7D3407F71F8A9F8800F4115E /* PatientModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D3407F61F8A9F8800F4115E /* PatientModel.swift */; };
 		7D3407FA1F8AB9FA00F4115E /* EditPatientViewController+Interaction.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D3407F91F8AB9FA00F4115E /* EditPatientViewController+Interaction.swift */; };
@@ -32,6 +32,10 @@
 		7D5E0EFB1F85A3B3009FD0BB /* HttpDefaults.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D5E0EFA1F85A3B3009FD0BB /* HttpDefaults.swift */; };
 		7D5E0EFD1F85A4F1009FD0BB /* PatientListViewController+DataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D5E0EFC1F85A4F1009FD0BB /* PatientListViewController+DataSource.swift */; };
 		7D609F111F90029100DD9D77 /* PatientAvatar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D609F101F90029100DD9D77 /* PatientAvatar.swift */; };
+		7DD78ACD1F9296F10055F5F8 /* EditPatientViewController+Datasource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7DD78ACC1F9296F10055F5F8 /* EditPatientViewController+Datasource.swift */; };
+		7DD78AF31F9395F20055F5F8 /* TelecomCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7DD78AF21F9395F20055F5F8 /* TelecomCell.swift */; };
+		7DD78AFC1F93A8CD0055F5F8 /* AddCollectionItemCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7DD78AFA1F93A8CD0055F5F8 /* AddCollectionItemCell.swift */; };
+		7DD78AFD1F93A8CD0055F5F8 /* AddCollectionItemCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7DD78AFB1F93A8CD0055F5F8 /* AddCollectionItemCell.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -45,13 +49,13 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		7D12F67C1F92919B003BF070 /* EditPatientViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = EditPatientViewController.xib; sourceTree = "<group>"; };
 		7D17130E1F8FF62E008A1D14 /* PatientTelecomCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PatientTelecomCell.swift; sourceTree = "<group>"; };
 		7D2D9EF51F90064B001B4D61 /* DetailViewController+Layout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "DetailViewController+Layout.swift"; sourceTree = "<group>"; };
 		7D32E0571F8FD94100925EF3 /* PatientDetailHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PatientDetailHeaderView.swift; sourceTree = "<group>"; };
 		7D32E0591F8FDA0C00925EF3 /* DetailViewController+Datasource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "DetailViewController+Datasource.swift"; sourceTree = "<group>"; };
 		7D3407EA1F8A80F200F4115E /* PatientListModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PatientListModel.swift; sourceTree = "<group>"; };
 		7D3407EE1F8A98F600F4115E /* EditPatientViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditPatientViewController.swift; sourceTree = "<group>"; };
-		7D3407EF1F8A98F600F4115E /* EditPatientViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = EditPatientViewController.xib; sourceTree = "<group>"; };
 		7D3407F21F8A9D5300F4115E /* UnderlinedTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UnderlinedTextField.swift; sourceTree = "<group>"; };
 		7D3407F61F8A9F8800F4115E /* PatientModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PatientModel.swift; sourceTree = "<group>"; };
 		7D3407F91F8AB9FA00F4115E /* EditPatientViewController+Interaction.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "EditPatientViewController+Interaction.swift"; sourceTree = "<group>"; };
@@ -74,6 +78,10 @@
 		7D5E0EFA1F85A3B3009FD0BB /* HttpDefaults.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HttpDefaults.swift; sourceTree = "<group>"; };
 		7D5E0EFC1F85A4F1009FD0BB /* PatientListViewController+DataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "PatientListViewController+DataSource.swift"; sourceTree = "<group>"; };
 		7D609F101F90029100DD9D77 /* PatientAvatar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PatientAvatar.swift; sourceTree = "<group>"; };
+		7DD78ACC1F9296F10055F5F8 /* EditPatientViewController+Datasource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "EditPatientViewController+Datasource.swift"; sourceTree = "<group>"; };
+		7DD78AF21F9395F20055F5F8 /* TelecomCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TelecomCell.swift; sourceTree = "<group>"; };
+		7DD78AFA1F93A8CD0055F5F8 /* AddCollectionItemCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddCollectionItemCell.swift; sourceTree = "<group>"; };
+		7DD78AFB1F93A8CD0055F5F8 /* AddCollectionItemCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AddCollectionItemCell.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -205,10 +213,14 @@
 		7DC43D801F8DA3A900AD6187 /* edit */ = {
 			isa = PBXGroup;
 			children = (
+				7DD78AFA1F93A8CD0055F5F8 /* AddCollectionItemCell.swift */,
+				7DD78AFB1F93A8CD0055F5F8 /* AddCollectionItemCell.xib */,
 				7D3407EE1F8A98F600F4115E /* EditPatientViewController.swift */,
-				7D3407EF1F8A98F600F4115E /* EditPatientViewController.xib */,
+				7D12F67C1F92919B003BF070 /* EditPatientViewController.xib */,
+				7DD78ACC1F9296F10055F5F8 /* EditPatientViewController+Datasource.swift */,
 				7D3407F91F8AB9FA00F4115E /* EditPatientViewController+Interaction.swift */,
 				7D3407F61F8A9F8800F4115E /* PatientModel.swift */,
+				7DD78AF21F9395F20055F5F8 /* TelecomCell.swift */,
 			);
 			path = edit;
 			sourceTree = "<group>";
@@ -297,9 +309,10 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				7D3407F11F8A98F600F4115E /* EditPatientViewController.xib in Resources */,
 				7D5E0ED21F857DA6009FD0BB /* LaunchScreen.storyboard in Resources */,
 				7D5E0ECF1F857DA6009FD0BB /* Assets.xcassets in Resources */,
+				7D12F67E1F92919B003BF070 /* EditPatientViewController.xib in Resources */,
+				7DD78AFD1F93A8CD0055F5F8 /* AddCollectionItemCell.xib in Resources */,
 				7D5E0ECD1F857DA6009FD0BB /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -339,6 +352,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				7DD78AF31F9395F20055F5F8 /* TelecomCell.swift in Sources */,
 				7D5E0ECA1F857DA6009FD0BB /* DetailViewController.swift in Sources */,
 				7D5E0EF51F85A346009FD0BB /* HttpPatients.swift in Sources */,
 				7D5E0EFB1F85A3B3009FD0BB /* HttpDefaults.swift in Sources */,
@@ -346,7 +360,9 @@
 				7D5E0EC81F857DA6009FD0BB /* PatientListViewController.swift in Sources */,
 				7D2D9EF61F90064B001B4D61 /* DetailViewController+Layout.swift in Sources */,
 				7D3407F31F8A9D5300F4115E /* UnderlinedTextField.swift in Sources */,
+				7DD78ACD1F9296F10055F5F8 /* EditPatientViewController+Datasource.swift in Sources */,
 				7D3407F01F8A98F600F4115E /* EditPatientViewController.swift in Sources */,
+				7DD78AFC1F93A8CD0055F5F8 /* AddCollectionItemCell.swift in Sources */,
 				7D5E0EFD1F85A4F1009FD0BB /* PatientListViewController+DataSource.swift in Sources */,
 				7D32E0581F8FD94100925EF3 /* PatientDetailHeaderView.swift in Sources */,
 				7D609F111F90029100DD9D77 /* PatientAvatar.swift in Sources */,

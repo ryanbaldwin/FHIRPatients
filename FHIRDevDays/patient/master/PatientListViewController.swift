@@ -21,17 +21,10 @@ class PatientListViewController: UITableViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        clearsSelectionOnViewWillAppear = false
         navigationItem.largeTitleDisplayMode = .automatic
         
-        let clearButton = UIBarButtonItem(title: "Clear", style: .plain, target: self,
-                                          action: #selector(clearPatients))
-        navigationItem.leftBarButtonItem = clearButton
-        
-        let addButton = UIBarButtonItem(barButtonSystemItem: .add, target: self, action: #selector(addPatient))
-        navigationItem.rightBarButtonItem = addButton
-        
-        refreshControl?.attributedTitle = NSAttributedString(string: "Grab 20 patients from the server")
-        refreshControl?.addTarget(self, action: #selector(loadRemotePatients), for: .valueChanged)
+        configureInteractions()
         
         // hook into a realm notification for loading our patients
         notificationToken = model.patients.addNotificationBlock() { [weak self] changes in
@@ -39,15 +32,36 @@ class PatientListViewController: UITableViewController {
         }
     }
 
+    private func configureInteractions() {
+        let clearButton = UIBarButtonItem(title: "Clear", style: .plain, target: self,
+                                          action: #selector(clearPatients))
+        clearButton.isEnabled = false
+        let addButton = UIBarButtonItem(barButtonSystemItem: .add, target: self, action: #selector(addPatient))
+        
+        navigationItem.leftBarButtonItem = clearButton
+        navigationItem.rightBarButtonItem = addButton
+        
+//        refreshControl?.attributedTitle = NSAttributedString(string: "Grab 20 patients from the server")
+//        refreshControl?.addTarget(self, action: #selector(loadRemotePatients), for: .valueChanged)
+    }
+    
     @objc func addPatient(_ sender: Any) {
         let vc = EditPatientViewController(nibName: String(describing: EditPatientViewController.self), bundle: nil)
         vc.model = PatientModel()
+        vc.title = "New Patient"
         let navController = UINavigationController(rootViewController: vc)
         navigationController?.present(navController, animated: true)
     }
 
     @objc func clearPatients() {
-        model.deleteAllLocalPatients()
+        let alertController = UIAlertController(title: "Clear All Patients",
+                                                message: "Are you sure you want to clear all local patients? This cannot be undone.",
+                                                preferredStyle: .actionSheet)
+        alertController.addAction(UIAlertAction(title: "Clear'em All!", style: .destructive,
+                                                handler: {[weak self] _ in self?.model.deleteAllLocalPatients()}))
+        alertController.addAction(UIAlertAction(title: "Cancel", style: .cancel,
+                                                handler: {_ in alertController.dismiss(animated: true)}))
+        present(alertController, animated: true)
     }
     
     deinit {

@@ -29,6 +29,8 @@ extension PatientListViewController {
         case let .error(error):
             print("Failed to relaod data from realm: \(error)")
         }
+        
+        navigationItem.leftBarButtonItem?.isEnabled = model.patients.count > 0
     }
     
     override func numberOfSections(in tableView: UITableView) -> Int {
