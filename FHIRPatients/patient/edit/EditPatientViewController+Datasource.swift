@@ -63,28 +63,41 @@ extension EditPatientViewController {
         
         if editingStyle == .delete {
             model.telecoms.remove(at: indexPath.row)
-            tableView.deleteRows(at: [indexPath], with: .fade)
+            tableView.reloadSections(IndexSet(integer: indexPath.section), with: .fade)
         }
     }
-    
+}
+
+// MARK: supporting actions and such
+
+extension EditPatientViewController {
     func editContactPointCell(for indexPath: IndexPath) -> EditContactPointCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "EditContactPointCell",
                                                  for: indexPath) as! EditContactPointCell
         cell.contactPoint = model.telecoms[indexPath.row]
-        cell.didTapSystemButton = { [weak self] _ in self?.showLabelPickerViewController(for: indexPath) }
+        cell.didTapSystemButton = { [weak self] _ in
+            self?.showLabelPickerViewController(for: cell.contactPoint!) }
         return cell
     }
     
-    func showLabelPickerViewController(for indexPath: IndexPath) {
+    func showLabelPickerViewController(for contactPoint: ContactPoint) {
         let controller = LabelPickerViewController(style: .grouped)
         controller.title = "Label"
         controller.model = LabelPickerModel(labels: "email", "fax", "pager", "phone", "other")
-        controller.model!.selectedLabel = model.telecoms[indexPath.row].system
+        controller.model!.selectedLabel = contactPoint.system
         
         controller.didSelectLabel = { [weak self] label in
-            self?.model.telecoms[indexPath.row].system = label
+            contactPoint.system = label
             controller.dismiss(animated: true) {
-                self?.tableView.reloadRows(at: [indexPath], with: .none)
+                guard let row = self?.model.telecoms.index(where: {$0.pk == contactPoint.pk}) else {
+                    print("Ambiguous row updated. Will reload entire section.")
+                    self?.tableView.reloadSections(IndexSet(integer: EditPatientViewController.Sections.telecoms.rawValue),
+                                                   with: .none)
+                    return
+                }
+                
+                let indexPath = IndexPath(item: row, section: EditPatientViewController.Sections.telecoms.rawValue)
+                self?.tableView.reloadRows(at: [indexPath], with: .right)
             }
         }
         

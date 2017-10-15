@@ -10,6 +10,12 @@ import UIKit
 
 class LabelPickerViewController: UITableViewController {
     
+    lazy var cancelButton: UIBarButtonItem = {
+        return UIBarButtonItem(barButtonSystemItem: .cancel,
+                               target: self,
+                               action: #selector(cancelEditButtonTapped))
+    }()
+    
     var model: LabelPickerModel? {
         didSet {
             tableView.reloadData()
@@ -17,6 +23,15 @@ class LabelPickerViewController: UITableViewController {
     }
     
     var didSelectLabel: ((String) -> ())?
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        navigationItem.leftBarButtonItem = cancelButton
+    }
+    
+    @objc func cancelEditButtonTapped() {
+        dismiss(animated: true)
+    }
     
     override func numberOfSections(in tableView: UITableView) -> Int {
         return 1
