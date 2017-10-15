@@ -62,7 +62,7 @@
 		7D3407F21F8A9D5300F4115E /* UnderlinedTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UnderlinedTextField.swift; sourceTree = "<group>"; };
 		7D3407F61F8A9F8800F4115E /* PatientModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PatientModel.swift; sourceTree = "<group>"; };
 		7D3407F91F8AB9FA00F4115E /* EditPatientViewController+Interaction.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "EditPatientViewController+Interaction.swift"; sourceTree = "<group>"; };
-		7D5E0EC21F857DA6009FD0BB /* FHIRDevDays.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FHIRDevDays.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		7D5E0EC21F857DA6009FD0BB /* FHIRPatients.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FHIRPatients.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		7D5E0EC51F857DA6009FD0BB /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		7D5E0EC71F857DA6009FD0BB /* PatientListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PatientListViewController.swift; sourceTree = "<group>"; };
 		7D5E0EC91F857DA6009FD0BB /* DetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailViewController.swift; sourceTree = "<group>"; };
@@ -70,7 +70,7 @@
 		7D5E0ECE1F857DA6009FD0BB /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		7D5E0ED11F857DA6009FD0BB /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		7D5E0ED31F857DA6009FD0BB /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		7D5E0ED81F857DA6009FD0BB /* FHIRDevDaysTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = FHIRDevDaysTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		7D5E0ED81F857DA6009FD0BB /* FHIRPatientsTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = FHIRPatientsTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		7D5E0EDC1F857DA6009FD0BB /* FHIRDevDaysTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FHIRDevDaysTests.swift; sourceTree = "<group>"; };
 		7D5E0EDE1F857DA6009FD0BB /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		7D5E0EEF1F858480009FD0BB /* RealmSwift.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = RealmSwift.framework; path = Carthage/Build/iOS/RealmSwift.framework; sourceTree = "<group>"; };
@@ -134,8 +134,8 @@
 		7D5E0EB91F857DA6009FD0BB = {
 			isa = PBXGroup;
 			children = (
-				7D5E0EC41F857DA6009FD0BB /* FHIRDevDays */,
-				7D5E0EDB1F857DA6009FD0BB /* FHIRDevDaysTests */,
+				7D5E0EC41F857DA6009FD0BB /* FHIRPatients */,
+				7D5E0EDB1F857DA6009FD0BB /* FHIRPatientsTests */,
 				7D5E0EC31F857DA6009FD0BB /* Products */,
 				7D5E0EE71F85812E009FD0BB /* Frameworks */,
 			);
@@ -144,13 +144,13 @@
 		7D5E0EC31F857DA6009FD0BB /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				7D5E0EC21F857DA6009FD0BB /* FHIRDevDays.app */,
-				7D5E0ED81F857DA6009FD0BB /* FHIRDevDaysTests.xctest */,
+				7D5E0EC21F857DA6009FD0BB /* FHIRPatients.app */,
+				7D5E0ED81F857DA6009FD0BB /* FHIRPatientsTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
 		};
-		7D5E0EC41F857DA6009FD0BB /* FHIRDevDays */ = {
+		7D5E0EC41F857DA6009FD0BB /* FHIRPatients */ = {
 			isa = PBXGroup;
 			children = (
 				7D3407F81F8AA4BE00F4115E /* uikit */,
@@ -162,16 +162,16 @@
 				7D5E0ED01F857DA6009FD0BB /* LaunchScreen.storyboard */,
 				7D5E0ED31F857DA6009FD0BB /* Info.plist */,
 			);
-			path = FHIRDevDays;
+			path = FHIRPatients;
 			sourceTree = "<group>";
 		};
-		7D5E0EDB1F857DA6009FD0BB /* FHIRDevDaysTests */ = {
+		7D5E0EDB1F857DA6009FD0BB /* FHIRPatientsTests */ = {
 			isa = PBXGroup;
 			children = (
 				7D5E0EDC1F857DA6009FD0BB /* FHIRDevDaysTests.swift */,
 				7D5E0EDE1F857DA6009FD0BB /* Info.plist */,
 			);
-			path = FHIRDevDaysTests;
+			path = FHIRPatientsTests;
 			sourceTree = "<group>";
 		};
 		7D5E0EE71F85812E009FD0BB /* Frameworks */ = {
@@ -245,9 +245,9 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		7D5E0EC11F857DA6009FD0BB /* FHIRDevDays */ = {
+		7D5E0EC11F857DA6009FD0BB /* FHIRPatients */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 7D5E0EE11F857DA6009FD0BB /* Build configuration list for PBXNativeTarget "FHIRDevDays" */;
+			buildConfigurationList = 7D5E0EE11F857DA6009FD0BB /* Build configuration list for PBXNativeTarget "FHIRPatients" */;
 			buildPhases = (
 				7D5E0EBE1F857DA6009FD0BB /* Sources */,
 				7D5E0EBF1F857DA6009FD0BB /* Frameworks */,
@@ -258,14 +258,14 @@
 			);
 			dependencies = (
 			);
-			name = FHIRDevDays;
+			name = FHIRPatients;
 			productName = FHIRDevDays;
-			productReference = 7D5E0EC21F857DA6009FD0BB /* FHIRDevDays.app */;
+			productReference = 7D5E0EC21F857DA6009FD0BB /* FHIRPatients.app */;
 			productType = "com.apple.product-type.application";
 		};
-		7D5E0ED71F857DA6009FD0BB /* FHIRDevDaysTests */ = {
+		7D5E0ED71F857DA6009FD0BB /* FHIRPatientsTests */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 7D5E0EE41F857DA6009FD0BB /* Build configuration list for PBXNativeTarget "FHIRDevDaysTests" */;
+			buildConfigurationList = 7D5E0EE41F857DA6009FD0BB /* Build configuration list for PBXNativeTarget "FHIRPatientsTests" */;
 			buildPhases = (
 				7D5E0ED41F857DA6009FD0BB /* Sources */,
 				7D5E0ED51F857DA6009FD0BB /* Frameworks */,
@@ -276,9 +276,9 @@
 			dependencies = (
 				7D5E0EDA1F857DA6009FD0BB /* PBXTargetDependency */,
 			);
-			name = FHIRDevDaysTests;
+			name = FHIRPatientsTests;
 			productName = FHIRDevDaysTests;
-			productReference = 7D5E0ED81F857DA6009FD0BB /* FHIRDevDaysTests.xctest */;
+			productReference = 7D5E0ED81F857DA6009FD0BB /* FHIRPatientsTests.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
 		};
 /* End PBXNativeTarget section */
@@ -302,7 +302,7 @@
 					};
 				};
 			};
-			buildConfigurationList = 7D5E0EBD1F857DA6009FD0BB /* Build configuration list for PBXProject "FHIRDevDays" */;
+			buildConfigurationList = 7D5E0EBD1F857DA6009FD0BB /* Build configuration list for PBXProject "FHIRPatients" */;
 			compatibilityVersion = "Xcode 8.0";
 			developmentRegion = en;
 			hasScannedForEncodings = 0;
@@ -315,8 +315,8 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				7D5E0EC11F857DA6009FD0BB /* FHIRDevDays */,
-				7D5E0ED71F857DA6009FD0BB /* FHIRDevDaysTests */,
+				7D5E0EC11F857DA6009FD0BB /* FHIRPatients */,
+				7D5E0ED71F857DA6009FD0BB /* FHIRPatientsTests */,
 			);
 		};
 /* End PBXProject section */
@@ -407,7 +407,7 @@
 /* Begin PBXTargetDependency section */
 		7D5E0EDA1F857DA6009FD0BB /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			target = 7D5E0EC11F857DA6009FD0BB /* FHIRDevDays */;
+			target = 7D5E0EC11F857DA6009FD0BB /* FHIRPatients */;
 			targetProxy = 7D5E0ED91F857DA6009FD0BB /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
@@ -550,9 +550,9 @@
 					"$(PROJECT_DIR)/FHIRDevDays/Carthage/Build/iOS",
 					"$(PROJECT_DIR)/Carthage/Build/iOS",
 				);
-				INFOPLIST_FILE = FHIRDevDays/Info.plist;
+				INFOPLIST_FILE = "$(SRCROOT)/FHIRPatients/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = me.bunnyhug.FHIRDevDays;
+				PRODUCT_BUNDLE_IDENTIFIER = me.bunnyhug.FHIRPatients;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -570,9 +570,9 @@
 					"$(PROJECT_DIR)/FHIRDevDays/Carthage/Build/iOS",
 					"$(PROJECT_DIR)/Carthage/Build/iOS",
 				);
-				INFOPLIST_FILE = FHIRDevDays/Info.plist;
+				INFOPLIST_FILE = "$(SRCROOT)/FHIRPatients/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = me.bunnyhug.FHIRDevDays;
+				PRODUCT_BUNDLE_IDENTIFIER = me.bunnyhug.FHIRPatients;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -592,7 +592,7 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/FHIRDevDays.app/FHIRDevDays";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/FHIRPatients.app/FHIRPatients";
 			};
 			name = Debug;
 		};
@@ -609,14 +609,14 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/FHIRDevDays.app/FHIRDevDays";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/FHIRPatients.app/FHIRPatients";
 			};
 			name = Release;
 		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		7D5E0EBD1F857DA6009FD0BB /* Build configuration list for PBXProject "FHIRDevDays" */ = {
+		7D5E0EBD1F857DA6009FD0BB /* Build configuration list for PBXProject "FHIRPatients" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				7D5E0EDF1F857DA6009FD0BB /* Debug */,
@@ -625,7 +625,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		7D5E0EE11F857DA6009FD0BB /* Build configuration list for PBXNativeTarget "FHIRDevDays" */ = {
+		7D5E0EE11F857DA6009FD0BB /* Build configuration list for PBXNativeTarget "FHIRPatients" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				7D5E0EE21F857DA6009FD0BB /* Debug */,
@@ -634,7 +634,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		7D5E0EE41F857DA6009FD0BB /* Build configuration list for PBXNativeTarget "FHIRDevDaysTests" */ = {
+		7D5E0EE41F857DA6009FD0BB /* Build configuration list for PBXNativeTarget "FHIRPatientsTests" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				7D5E0EE51F857DA6009FD0BB /* Debug */,
