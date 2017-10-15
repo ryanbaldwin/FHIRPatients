@@ -11,7 +11,7 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
-        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="EditPatientViewController" customModule="FHIRDevDays" customModuleProvider="target">
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="EditPatientViewController" customModule="FHIRPatients" customModuleProvider="target">
             <connections>
                 <outlet property="birthdateTextField" destination="yIS-QP-0Gn" id="mdB-gt-vZG"/>
                 <outlet property="datePicker" destination="bqu-2a-0cf" id="587-2c-brS"/>
@@ -36,18 +36,18 @@
                     <stackView opaque="NO" contentMode="scaleToFill" alignment="top" spacingType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="i3V-dZ-i8k">
                         <rect key="frame" x="8" y="8" width="359" height="147"/>
                         <subviews>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="cWD-ME-4fO" customClass="PatientAvatarView" customModule="FHIRDevDays" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="0.0" width="75" height="75"/>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="cWD-ME-4fO" customClass="PatientAvatarView" customModule="FHIRPatients" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="0.0" width="40" height="40"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="75" id="1X3-oX-ILF"/>
+                                    <constraint firstAttribute="height" constant="40" id="1X3-oX-ILF"/>
                                     <constraint firstAttribute="width" secondItem="cWD-ME-4fO" secondAttribute="height" multiplier="1:1" id="f46-tw-5qv"/>
                                 </constraints>
                             </imageView>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="top" spacingType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="gPT-me-RYX">
-                                <rect key="frame" x="83" y="0.0" width="276" height="144"/>
+                                <rect key="frame" x="48" y="0.0" width="311" height="144"/>
                                 <subviews>
                                     <segmentedControl opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="249" verticalCompressionResistancePriority="1000" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" translatesAutoresizingMaskIntoConstraints="NO" id="J2e-sh-INu">
-                                        <rect key="frame" x="0.0" y="0.0" width="276" height="31"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="311" height="31"/>
                                         <segments>
                                             <segment title="Male"/>
                                             <segment title="Female"/>
@@ -58,8 +58,8 @@
                                             <action selector="genderValueChanged:" destination="-1" eventType="valueChanged" id="h1y-WG-hXO"/>
                                         </connections>
                                     </segmentedControl>
-                                    <textField opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="249" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="First name" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="cPr-Uy-Gfg" customClass="UnderlinedTextField" customModule="FHIRDevDays" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="38" width="276" height="30"/>
+                                    <textField opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="249" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="First name" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="cPr-Uy-Gfg" customClass="UnderlinedTextField" customModule="FHIRPatients" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="38" width="311" height="30"/>
                                         <nil key="textColor"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                         <textInputTraits key="textInputTraits" autocapitalizationType="words" autocorrectionType="no" spellCheckingType="no" returnKeyType="done"/>
@@ -67,8 +67,8 @@
                                             <action selector="givenNameEditingChanged:" destination="-1" eventType="editingChanged" id="9Jc-Ld-jhs"/>
                                         </connections>
                                     </textField>
-                                    <textField opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="249" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Last name" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="rUo-2B-5Ch" customClass="UnderlinedTextField" customModule="FHIRDevDays" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="76" width="276" height="30"/>
+                                    <textField opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="249" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Last name" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="rUo-2B-5Ch" customClass="UnderlinedTextField" customModule="FHIRPatients" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="76" width="311" height="30"/>
                                         <nil key="textColor"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                         <textInputTraits key="textInputTraits" autocapitalizationType="words" autocorrectionType="no" spellCheckingType="no" returnKeyType="done"/>
@@ -77,7 +77,7 @@
                                         </connections>
                                     </textField>
                                     <stackView opaque="NO" contentMode="scaleToFill" spacingType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="E1T-1X-WFM">
-                                        <rect key="frame" x="0.0" y="114" width="276" height="30"/>
+                                        <rect key="frame" x="0.0" y="114" width="311" height="30"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" text="birthdate:" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tyo-uT-Rm9">
                                                 <rect key="frame" x="0.0" y="0.0" width="75" height="30"/>
@@ -85,8 +85,8 @@
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
-                                            <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="48" horizontalCompressionResistancePriority="749" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="yIS-QP-0Gn" customClass="UnderlinedTextField" customModule="FHIRDevDays" customModuleProvider="target">
-                                                <rect key="frame" x="83" y="0.0" width="193" height="30"/>
+                                            <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="48" horizontalCompressionResistancePriority="749" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="yIS-QP-0Gn" customClass="UnderlinedTextField" customModule="FHIRPatients" customModuleProvider="target">
+                                                <rect key="frame" x="83" y="0.0" width="228" height="30"/>
                                                 <nil key="textColor"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                 <textInputTraits key="textInputTraits"/>

@@ -19,7 +19,23 @@ class EditContactPointCell: UITableViewCell {
         didSet {
             systemButton.setTitle(contactPoint?.system ?? "other", for: .normal)
             valueField.text = contactPoint?.value
+            
+            if let system = contactPoint?.system,
+                let contactPointSystem = ContactPointSystem(rawValue: system) {
+                switch contactPointSystem {
+                case .email:
+                    valueField.keyboardType = .emailAddress
+                case .fax, .pager, .phone:
+                    valueField.keyboardType = .phonePad
+                default:
+                    break
+                }
+            }
         }
+    }
+    
+    @IBAction func editingChanged(_ sender: Any) {
+        contactPoint!.value = valueField.text
     }
     
     @IBAction func systemButtonTapped(_ sender: Any) {

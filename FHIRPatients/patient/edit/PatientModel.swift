@@ -20,6 +20,7 @@ struct PatientModel {
     
     private var realm = try! Realm()
     private var patient: Patient
+    private var originalPatient: Patient?
     
     func canSave() -> Bool {
         return self.givenName != nil
@@ -67,12 +68,12 @@ struct PatientModel {
     }()
     
     init(patient: Patient? = nil) {
-        guard let patient = patient else {
-            self.patient = Patient()
-            return
-        }
+        self.patient = Patient()
+        guard let patient = patient else { return }
         
-        self.patient = patient
+        originalPatient = patient
+        self.patient.populate(from: patient)
+        
         givenName = patient.name.first?.given.first?.value
         familyName = patient.name.first?.family.first?.value
         dateOfBirth = patient.birthDate?.nsDate
@@ -89,29 +90,36 @@ struct PatientModel {
     
     mutating func save() {
         do {
+            let name = patient.name.first ?? HumanName()
+            if patient.name.count == 0 { patient.name.append(name) }
+            
+            if let given = givenName {
+                if name.given.first == nil { name.given.append(RealmString()) }
+                name.given.first!.value = given
+            }
+            
+            if let family = familyName {
+                if name.family.first == nil { name.family.append(RealmString()) }
+                name.family.first!.value = family
+            }
+            
+            if let gender = gender {
+                patient.gender = String(describing: gender)
+            }
+            
+            if let dob = dateOfBirth {
+                patient.birthDate = dob.fhir_asDate()
+            }
+            
+            patient.telecom.removeAll()
+            patient.telecom.append(objectsIn: telecoms)
+            
             try realm.write {
-                let name = patient.name.first ?? HumanName()
-                if patient.name.count == 0 { patient.name.append(name) }
-                
-                if let given = givenName {
-                    if name.given.first == nil { name.given.append(RealmString()) }
-                    name.given.first!.value = given
+                if let originalPatient = self.originalPatient, originalPatient.realm != nil {
+                    originalPatient.populate(from: patient)
+                } else {
+                    realm.add(patient, update: true)
                 }
-                
-                if let family = familyName {
-                    if name.family.first == nil { name.family.append(RealmString()) }
-                    name.family.first!.value = family
-                }
-                
-                if let gender = gender {
-                    patient.gender = String(describing: gender)
-                }
-                
-                if let dob = dateOfBirth {
-                    patient.birthDate = dob.fhir_asDate()
-                }
-                
-                realm.add(patient, update: true)
             }
         } catch let error {
             print("Failed to commit transaction when creating/updating patient: \(error)")

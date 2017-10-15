@@ -11,10 +11,11 @@ import UIKit
 class PatientAvatarView: UIImageView {
     override func layoutSubviews() {
         super.layoutSubviews()
-        layer.borderWidth = 2
+        layer.borderWidth = 1.5
         layer.masksToBounds = false
-        layer.borderColor = tintColor.cgColor
-        layer.backgroundColor = UIColor.white.cgColor
+        tintColor = .white
+        layer.borderColor = UIColor.lightGray.cgColor
+        layer.backgroundColor = UIColor.lightGray.cgColor
         layer.cornerRadius = bounds.height / 2
         clipsToBounds = true
     }

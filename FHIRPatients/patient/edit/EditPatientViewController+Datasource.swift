@@ -64,6 +64,7 @@ extension EditPatientViewController {
         let controller = LabelPickerViewController(style: .grouped)
         controller.title = "Label"
         controller.model = LabelPickerModel(labels: "email", "fax", "pager", "phone", "other")
+        controller.model!.selectedLabel = model.telecoms[indexPath.row].system
         
         controller.didSelectLabel = { [weak self] label in
             self?.model.telecoms[indexPath.row].system = label
