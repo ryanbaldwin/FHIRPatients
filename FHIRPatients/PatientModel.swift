@@ -29,11 +29,11 @@ class PatientModel {
             && self.gender != nil
     }
     
-    lazy var image: UIImage = {
+    lazy var image: UIImage? = {
         guard let base64String = patient.photo.first?.data?.value,
             let data = Data(base64Encoded: base64String),
             let image = UIImage(data: data) else {
-            return #imageLiteral(resourceName: "user")
+            return nil
         }
         
         return image

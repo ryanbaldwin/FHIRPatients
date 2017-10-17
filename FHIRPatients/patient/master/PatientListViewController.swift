@@ -59,8 +59,7 @@ class PatientListViewController: UITableViewController {
                                                 preferredStyle: .actionSheet)
         alertController.addAction(UIAlertAction(title: "Clear'em All!", style: .destructive,
                                                 handler: {[weak self] _ in self?.model.deleteAllLocalPatients()}))
-        alertController.addAction(UIAlertAction(title: "Cancel", style: .cancel,
-                                                handler: {_ in alertController.dismiss(animated: true)}))
+        alertController.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: nil))
         present(alertController, animated: true)
     }
     

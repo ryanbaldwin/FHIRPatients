@@ -26,7 +26,7 @@ extension EditPatientViewController {
     }
     
     /// MARK: DatePicker
-    private func updateBirthdateTextField(_ date: Date) {
+    func updateBirthdateTextField(_ date: Date) {
         let formatter = DateFormatter()
         formatter.dateStyle = .long
         birthdateTextField.text = formatter.string(from: date)
@@ -58,6 +58,61 @@ extension EditPatientViewController {
     
     @IBAction func familyNameEditingChanged(_ sender: UnderlinedTextField) {
         model.familyName = sender.text
+    }
+    
+    @IBAction func addPhotoTapped(_ sender: UIButton) {
+        let alertController = UIAlertController(title: nil, message: nil, preferredStyle: .actionSheet)
+        alertController.addAction(makeTakePhotoAction())
+        alertController.addAction(makeChoosePhotoAction())
+        alertController.addAction(makeCancelPhotoAction())
+        present(alertController, animated: true)
+    }
+    
+    @IBAction func editPhotoTapped(_ sender: UIButton) {
+        let alertController = UIAlertController(title: nil, message: nil, preferredStyle: .actionSheet)
+        alertController.addAction(makeTakePhotoAction())
+        alertController.addAction(makeChoosePhotoAction())
+        alertController.addAction(makeDeletePhotoAction())
+        alertController.addAction(makeCancelPhotoAction())
+        present(alertController, animated: true)
+    }
+    
+    private func makeTakePhotoAction() -> UIAlertAction {
+        return UIAlertAction(title: "Take Photo", style: .default, handler: nil)
+    }
+    
+    
+    
+    private func makeCancelPhotoAction() -> UIAlertAction {
+        return UIAlertAction(title: "Cancel", style: .cancel, handler: nil)
+    }
+}
+
+extension EditPatientViewController: UIImagePickerControllerDelegate, UINavigationControllerDelegate {
+    private func makeChoosePhotoAction() -> UIAlertAction {
+        return UIAlertAction(title: "Choose Photo", style: .default) { [unowned self] _ in
+            self.present(self.imagePicker, animated: true)
+        }
+    }
+    
+    private func makeDeletePhotoAction() -> UIAlertAction {
+        return UIAlertAction(title: "Delete Photo", style: .destructive) { [unowned self] _ in
+            self.model.image = nil
+            self.bindImage(animated: true)
+        }
+    }
+    
+    func imagePickerControllerDidCancel(_ picker: UIImagePickerController) {
+        imagePicker.dismiss(animated: true)
+    }
+    
+    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : Any]) {
+        if let image = info[UIImagePickerControllerOriginalImage] as? UIImage {
+            model.image = image
+            dismiss(animated: true) { [unowned self] in
+                self.bindImage(animated: true)
+            }
+        }
     }
 }
 

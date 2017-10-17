@@ -9,6 +9,30 @@
 import UIKit
 
 class PatientAvatarView: UIImageView {
+    
+    override init(frame: CGRect) {
+        super.init(frame: frame)
+        setup()
+    }
+    
+    required init?(coder aDecoder: NSCoder) {
+        super.init(coder: aDecoder)
+        setup()
+    }
+    
+    override var image: UIImage? {
+        didSet {
+            if image == nil {
+                image = #imageLiteral(resourceName: "user")
+            }
+        }
+    }
+    
+    private func setup() {
+        contentMode = .scaleAspectFill
+        image = #imageLiteral(resourceName: "user")
+    }
+    
     override func layoutSubviews() {
         super.layoutSubviews()
         layer.borderWidth = 1.5

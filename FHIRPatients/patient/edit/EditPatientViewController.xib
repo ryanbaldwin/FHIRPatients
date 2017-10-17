@@ -13,9 +13,11 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="EditPatientViewController" customModule="FHIRPatients" customModuleProvider="target">
             <connections>
+                <outlet property="addPhotoButton" destination="tjQ-lu-6ko" id="N51-l8-ZAW"/>
                 <outlet property="birthdateTextField" destination="yIS-QP-0Gn" id="mdB-gt-vZG"/>
                 <outlet property="datePicker" destination="bqu-2a-0cf" id="587-2c-brS"/>
                 <outlet property="datePickerToolbar" destination="HEv-vW-mhg" id="R39-oL-JLK"/>
+                <outlet property="editPhotoButton" destination="E4Z-BQ-iZS" id="fYk-Lt-Rxf"/>
                 <outlet property="familyNameTextField" destination="rUo-2B-5Ch" id="vIg-pJ-hS1"/>
                 <outlet property="genderControl" destination="J2e-sh-INu" id="UgQ-yJ-Ieq"/>
                 <outlet property="givenNameTextField" destination="cPr-Uy-Gfg" id="QWm-Kk-R28"/>
@@ -36,18 +38,53 @@
                     <stackView opaque="NO" contentMode="scaleToFill" alignment="top" spacingType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="i3V-dZ-i8k">
                         <rect key="frame" x="8" y="8" width="359" height="147"/>
                         <subviews>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="cWD-ME-4fO" customClass="PatientAvatarView" customModule="FHIRPatients" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="0.0" width="40" height="40"/>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" spacing="4" translatesAutoresizingMaskIntoConstraints="NO" id="4EP-n1-7HB">
+                                <rect key="frame" x="0.0" y="0.0" width="50" height="80"/>
+                                <subviews>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="yhB-O1-dpX">
+                                        <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
+                                        <subviews>
+                                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="cWD-ME-4fO" customClass="PatientAvatarView" customModule="FHIRPatients" customModuleProvider="target">
+                                                <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
+                                            </imageView>
+                                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="wordWrap" translatesAutoresizingMaskIntoConstraints="NO" id="tjQ-lu-6ko">
+                                                <rect key="frame" x="2" y="10" width="46" height="30"/>
+                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                <fontDescription key="fontDescription" style="UICTFontTextStyleCaption2"/>
+                                                <state key="normal" title="add photo"/>
+                                                <connections>
+                                                    <action selector="addPhotoTapped:" destination="-1" eventType="touchUpInside" id="t2I-dq-gpT"/>
+                                                </connections>
+                                            </button>
+                                        </subviews>
+                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <constraints>
+                                            <constraint firstItem="cWD-ME-4fO" firstAttribute="leading" secondItem="yhB-O1-dpX" secondAttribute="leading" id="FCv-yu-x7t"/>
+                                            <constraint firstAttribute="bottom" secondItem="cWD-ME-4fO" secondAttribute="bottom" id="R0Z-N4-ElY"/>
+                                            <constraint firstItem="cWD-ME-4fO" firstAttribute="top" secondItem="yhB-O1-dpX" secondAttribute="top" id="WS7-cv-mdB"/>
+                                            <constraint firstAttribute="trailing" secondItem="cWD-ME-4fO" secondAttribute="trailing" id="aKI-9e-in5"/>
+                                            <constraint firstAttribute="width" secondItem="yhB-O1-dpX" secondAttribute="height" multiplier="1:1" id="ris-Jt-Yxw"/>
+                                            <constraint firstAttribute="height" constant="50" id="vcZ-62-HzJ"/>
+                                        </constraints>
+                                    </view>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="E4Z-BQ-iZS">
+                                        <rect key="frame" x="10" y="54" width="30" height="26"/>
+                                        <fontDescription key="fontDescription" style="UICTFontTextStyleCaption2"/>
+                                        <state key="normal" title="edit"/>
+                                        <connections>
+                                            <action selector="editPhotoTapped:" destination="-1" eventType="touchUpInside" id="015-ft-fvc"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="40" id="1X3-oX-ILF"/>
-                                    <constraint firstAttribute="width" secondItem="cWD-ME-4fO" secondAttribute="height" multiplier="1:1" id="f46-tw-5qv"/>
+                                    <constraint firstAttribute="width" constant="50" id="czR-xu-EA6"/>
                                 </constraints>
-                            </imageView>
+                            </stackView>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="top" spacingType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="gPT-me-RYX">
-                                <rect key="frame" x="48" y="0.0" width="311" height="144"/>
+                                <rect key="frame" x="58" y="0.0" width="301" height="144"/>
                                 <subviews>
                                     <segmentedControl opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="249" verticalCompressionResistancePriority="1000" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" translatesAutoresizingMaskIntoConstraints="NO" id="J2e-sh-INu">
-                                        <rect key="frame" x="0.0" y="0.0" width="311" height="31"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="301" height="31"/>
                                         <segments>
                                             <segment title="Male"/>
                                             <segment title="Female"/>
@@ -59,7 +96,7 @@
                                         </connections>
                                     </segmentedControl>
                                     <textField opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="249" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="First name" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="cPr-Uy-Gfg" customClass="UnderlinedTextField" customModule="FHIRPatients" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="38" width="311" height="30"/>
+                                        <rect key="frame" x="0.0" y="38" width="301" height="30"/>
                                         <nil key="textColor"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                         <textInputTraits key="textInputTraits" autocapitalizationType="words" autocorrectionType="no" spellCheckingType="no" returnKeyType="done"/>
@@ -69,7 +106,7 @@
                                         </connections>
                                     </textField>
                                     <textField opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="249" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Last name" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="rUo-2B-5Ch" customClass="UnderlinedTextField" customModule="FHIRPatients" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="76" width="311" height="30"/>
+                                        <rect key="frame" x="0.0" y="76" width="301" height="30"/>
                                         <nil key="textColor"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                         <textInputTraits key="textInputTraits" autocapitalizationType="words" autocorrectionType="no" spellCheckingType="no" returnKeyType="done"/>
@@ -79,7 +116,7 @@
                                         </connections>
                                     </textField>
                                     <stackView opaque="NO" contentMode="scaleToFill" spacingType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="E1T-1X-WFM">
-                                        <rect key="frame" x="0.0" y="114" width="311" height="30"/>
+                                        <rect key="frame" x="0.0" y="114" width="301" height="30"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" text="birthdate:" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tyo-uT-Rm9">
                                                 <rect key="frame" x="0.0" y="0.0" width="75" height="30"/>
@@ -88,7 +125,7 @@
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="48" horizontalCompressionResistancePriority="749" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="yIS-QP-0Gn" customClass="UnderlinedTextField" customModule="FHIRPatients" customModuleProvider="target">
-                                                <rect key="frame" x="83" y="0.0" width="228" height="30"/>
+                                                <rect key="frame" x="83" y="0.0" width="218" height="30"/>
                                                 <nil key="textColor"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                 <textInputTraits key="textInputTraits"/>

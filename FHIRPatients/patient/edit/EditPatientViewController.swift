@@ -13,6 +13,9 @@ class EditPatientViewController: UITableViewController {
         case telecoms, count
     }
     
+    @IBOutlet weak var addPhotoButton: UIButton!
+    @IBOutlet weak var editPhotoButton: UIButton!
+    
     @IBOutlet weak var userImage: PatientAvatarView!
     @IBOutlet weak var givenNameTextField: UnderlinedTextField!
     @IBOutlet weak var familyNameTextField: UnderlinedTextField!
@@ -20,6 +23,15 @@ class EditPatientViewController: UITableViewController {
     @IBOutlet weak var birthdateTextField: UnderlinedTextField!
     @IBOutlet weak var datePicker: UIDatePicker!
     @IBOutlet var datePickerToolbar: UIToolbar!
+    
+    lazy var imagePicker: UIImagePickerController = {
+        let controller = UIImagePickerController()
+        controller.delegate = self
+        controller.allowsEditing = false
+        controller.sourceType = .photoLibrary
+        controller.mediaTypes = UIImagePickerController.availableMediaTypes(for: .photoLibrary)!
+        return controller
+    }()
     
     lazy var cancelButton: UIBarButtonItem = {
         return UIBarButtonItem(barButtonSystemItem: .cancel,
@@ -39,15 +51,20 @@ class EditPatientViewController: UITableViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        _  = imagePicker
+        addPhotoButton.titleLabel?.textAlignment = .center
+        registerTableViewCells()
+        setupNavigation()
+        setupBirthdateInputs()
+        bindData()
+    }
+    
+    private func registerTableViewCells() {
         tableView.register(UINib.init(nibName: "AddCollectionItemCell", bundle: nil),
                            forCellReuseIdentifier: "AddCollectionItemCell")
         
         tableView.register(UINib.init(nibName: "EditContactPointCell", bundle: nil),
                            forCellReuseIdentifier: "EditContactPointCell")
-        
-        setupNavigation()
-        setupBirthdate()
-        bindData()
     }
     
     private func setupNavigation() {
@@ -58,18 +75,37 @@ class EditPatientViewController: UITableViewController {
         }
     }
     
-    private func setupBirthdate() {
+    private func setupBirthdateInputs() {
         birthdateTextField.inputView = datePicker
         birthdateTextField.inputAccessoryView = datePickerToolbar
     }
     
     private func bindData() {
-        userImage.image = model.image
+        if let image = model.image {
+            userImage.image = image
+            addPhotoButton.isHidden = true
+        } else {
+            editPhotoButton.isHidden = true
+        }
+        
         givenNameTextField.text = model.givenName
         familyNameTextField.text = model.familyName
         
         if let gender = model.gender {
             genderControl.selectedSegmentIndex = gender.rawValue
+        }
+        
+        if let bday = model.dateOfBirth {
+            updateBirthdateTextField(bday)
+        }
+    }
+    
+    func bindImage(animated: Bool = false) {
+        let duration = animated ? 0.3 : 0.0
+        UIView.animate(withDuration: duration) { [unowned self] in
+            self.userImage.image = self.model.image
+            self.addPhotoButton.isHidden = self.model.image != nil
+            self.editPhotoButton.isHidden = self.model.image == nil
         }
     }
 }
