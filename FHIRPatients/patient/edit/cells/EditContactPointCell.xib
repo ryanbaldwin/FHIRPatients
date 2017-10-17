@@ -37,9 +37,10 @@
                                 <rect key="frame" x="58" y="0.0" width="246" height="30"/>
                                 <nil key="textColor"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits"/>
+                                <textInputTraits key="textInputTraits" autocorrectionType="no" returnKeyType="done"/>
                                 <connections>
                                     <action selector="editingChanged:" destination="KGk-i7-Jjw" eventType="editingChanged" id="7BZ-LW-90m"/>
+                                    <outlet property="delegate" destination="-1" id="FmC-94-1Ai"/>
                                 </connections>
                             </textField>
                         </subviews>

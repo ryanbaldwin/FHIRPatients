@@ -8,10 +8,10 @@
 
 import UIKit
 
-class PatientDetailHeaderView: UICollectionReusableView {
+class PatientDetailHeaderView: UIView {
     @IBOutlet weak var nameLabel: UILabel!
     @IBOutlet weak var birthLabel: UILabel!
-    @IBOutlet weak var layout: UIStackView!
+    @IBOutlet weak var avatar: PatientAvatarView!
     
     var model: PatientModel? {
         didSet {
@@ -32,6 +32,7 @@ class PatientDetailHeaderView: UICollectionReusableView {
             return
         }
         
+        avatar.image = model.image
         nameLabel.text = "\(model.givenName ?? "J.") \(model.familyName ?? "Doe")"
         
         let birthDetails: [String?] = [model.gender != nil ? "\(model.gender!)" : nil,
@@ -46,11 +47,11 @@ class PatientDetailHeaderView: UICollectionReusableView {
         
         birthLabel.text = details
     }
-    
-    override var intrinsicContentSize: CGSize {
-        nameLabel.sizeToFit()
-        birthLabel.sizeToFit()
-        return CGSize(width: UIViewNoIntrinsicMetric,
-                      height: nameLabel.bounds.height + birthLabel.bounds.height + layout.spacing)
-    }
+//
+//    override var intrinsicContentSize: CGSize {
+//        nameLabel.sizeToFit()
+//        birthLabel.sizeToFit()
+//        return CGSize(width: UIViewNoIntrinsicMetric,
+//                      height: nameLabel.bounds.height + birthLabel.bounds.height + layout.spacing)
+//    }
 }

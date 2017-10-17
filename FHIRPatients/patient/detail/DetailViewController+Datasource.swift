@@ -35,20 +35,7 @@ extension DetailViewController {
             assert(false, "Well, this was an unexpected section.")
         }
     }
-    
-//    override func collectionView(_ collectionView: UICollectionView,
-//                                 viewForSupplementaryElementOfKind kind: String,
-//                                 at indexPath: IndexPath) -> UICollectionReusableView {
-//        switch kind {
-//        case UICollectionElementKindSectionHeader:
-//            let headerView = collectionView.dequeueReusableSupplementaryView(ofKind: kind,
-//                                                                             withReuseIdentifier: "PatientDetailHeaderView",
-//                                                                             for: indexPath) as! PatientDetailHeaderView
-//            headerView.model = model
-//            return headerView
-//        default:
-//            assert(false, "Unexpected element kind")//        }
-//    }
+
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         guard let currentSection = DetailViewController.Sections(rawValue: indexPath.section) else {
             assert(false, "Unknown section: \(indexPath.section)")
@@ -56,7 +43,7 @@ extension DetailViewController {
         
         switch currentSection {
         case .telecoms:
-            let cell = UITableViewCell(style: .value2, reuseIdentifier: "ContactPointCell")
+            let cell = UITableViewCell(style: .subtitle, reuseIdentifier: "ContactPointCell")
             let contactPoint = model?.telecoms[indexPath.row]
             cell.textLabel?.text = contactPoint?.system
             cell.detailTextLabel?.text = contactPoint?.value

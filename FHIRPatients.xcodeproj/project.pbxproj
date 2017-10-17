@@ -31,14 +31,13 @@
 		7D5E0EFD1F85A4F1009FD0BB /* PatientListViewController+DataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D5E0EFC1F85A4F1009FD0BB /* PatientListViewController+DataSource.swift */; };
 		7D609F111F90029100DD9D77 /* PatientAvatar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D609F101F90029100DD9D77 /* PatientAvatar.swift */; };
 		7D971F4A1F93EADE00276E15 /* ContactPointSystem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D971F491F93EADE00276E15 /* ContactPointSystem.swift */; };
-		7D971F4C1F93F05800276E15 /* FooTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D971F4B1F93F05800276E15 /* FooTableViewController.swift */; };
+		7D971F521F95851400276E15 /* AddCollectionItemView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7D971F511F95851400276E15 /* AddCollectionItemView.xib */; };
 		7DC995531F93D5D100EF9154 /* EditContactPointCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7DC995511F93D5D100EF9154 /* EditContactPointCell.swift */; };
 		7DC995541F93D5D100EF9154 /* EditContactPointCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7DC995521F93D5D100EF9154 /* EditContactPointCell.xib */; };
 		7DC995581F93D79B00EF9154 /* LabelPickerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7DC995561F93D79B00EF9154 /* LabelPickerViewController.swift */; };
 		7DC9955B1F93D7D300EF9154 /* LabelPickerModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7DC9955A1F93D7D300EF9154 /* LabelPickerModel.swift */; };
 		7DD78ACD1F9296F10055F5F8 /* EditPatientViewController+Datasource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7DD78ACC1F9296F10055F5F8 /* EditPatientViewController+Datasource.swift */; };
-		7DD78AFC1F93A8CD0055F5F8 /* AddCollectionItemCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7DD78AFA1F93A8CD0055F5F8 /* AddCollectionItemCell.swift */; };
-		7DD78AFD1F93A8CD0055F5F8 /* AddCollectionItemCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7DD78AFB1F93A8CD0055F5F8 /* AddCollectionItemCell.xib */; };
+		7DD78AFC1F93A8CD0055F5F8 /* AddCollectionItemView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7DD78AFA1F93A8CD0055F5F8 /* AddCollectionItemView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -80,14 +79,13 @@
 		7D5E0EFC1F85A4F1009FD0BB /* PatientListViewController+DataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "PatientListViewController+DataSource.swift"; sourceTree = "<group>"; };
 		7D609F101F90029100DD9D77 /* PatientAvatar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PatientAvatar.swift; sourceTree = "<group>"; };
 		7D971F491F93EADE00276E15 /* ContactPointSystem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContactPointSystem.swift; sourceTree = "<group>"; };
-		7D971F4B1F93F05800276E15 /* FooTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FooTableViewController.swift; sourceTree = "<group>"; };
+		7D971F511F95851400276E15 /* AddCollectionItemView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AddCollectionItemView.xib; sourceTree = "<group>"; };
 		7DC995511F93D5D100EF9154 /* EditContactPointCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditContactPointCell.swift; sourceTree = "<group>"; };
 		7DC995521F93D5D100EF9154 /* EditContactPointCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = EditContactPointCell.xib; sourceTree = "<group>"; };
 		7DC995561F93D79B00EF9154 /* LabelPickerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LabelPickerViewController.swift; sourceTree = "<group>"; };
 		7DC9955A1F93D7D300EF9154 /* LabelPickerModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LabelPickerModel.swift; sourceTree = "<group>"; };
 		7DD78ACC1F9296F10055F5F8 /* EditPatientViewController+Datasource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "EditPatientViewController+Datasource.swift"; sourceTree = "<group>"; };
-		7DD78AFA1F93A8CD0055F5F8 /* AddCollectionItemCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddCollectionItemCell.swift; sourceTree = "<group>"; };
-		7DD78AFB1F93A8CD0055F5F8 /* AddCollectionItemCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AddCollectionItemCell.xib; sourceTree = "<group>"; };
+		7DD78AFA1F93A8CD0055F5F8 /* AddCollectionItemView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddCollectionItemView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -203,6 +201,15 @@
 			path = firekit;
 			sourceTree = "<group>";
 		};
+		7D971F531F9590D200276E15 /* label picker */ = {
+			isa = PBXGroup;
+			children = (
+				7DC995561F93D79B00EF9154 /* LabelPickerViewController.swift */,
+				7DC9955A1F93D7D300EF9154 /* LabelPickerModel.swift */,
+			);
+			path = "label picker";
+			sourceTree = "<group>";
+		};
 		7DC43D7E1F8DA38B00AD6187 /* master */ = {
 			isa = PBXGroup;
 			children = (
@@ -227,14 +234,12 @@
 			isa = PBXGroup;
 			children = (
 				7DC995551F93D73500EF9154 /* cells */,
-				7D3407EE1F8A98F600F4115E /* EditPatientViewController.swift */,
+				7D971F531F9590D200276E15 /* label picker */,
 				7D12F67C1F92919B003BF070 /* EditPatientViewController.xib */,
+				7D3407EE1F8A98F600F4115E /* EditPatientViewController.swift */,
 				7DD78ACC1F9296F10055F5F8 /* EditPatientViewController+Datasource.swift */,
 				7D3407F91F8AB9FA00F4115E /* EditPatientViewController+Interaction.swift */,
 				7D3407F61F8A9F8800F4115E /* PatientModel.swift */,
-				7DC995561F93D79B00EF9154 /* LabelPickerViewController.swift */,
-				7DC9955A1F93D7D300EF9154 /* LabelPickerModel.swift */,
-				7D971F4B1F93F05800276E15 /* FooTableViewController.swift */,
 			);
 			path = edit;
 			sourceTree = "<group>";
@@ -242,8 +247,8 @@
 		7DC995551F93D73500EF9154 /* cells */ = {
 			isa = PBXGroup;
 			children = (
-				7DD78AFA1F93A8CD0055F5F8 /* AddCollectionItemCell.swift */,
-				7DD78AFB1F93A8CD0055F5F8 /* AddCollectionItemCell.xib */,
+				7DD78AFA1F93A8CD0055F5F8 /* AddCollectionItemView.swift */,
+				7D971F511F95851400276E15 /* AddCollectionItemView.xib */,
 				7DC995511F93D5D100EF9154 /* EditContactPointCell.swift */,
 				7DC995521F93D5D100EF9154 /* EditContactPointCell.xib */,
 			);
@@ -337,9 +342,9 @@
 				7D5E0ED21F857DA6009FD0BB /* LaunchScreen.storyboard in Resources */,
 				7D5E0ECF1F857DA6009FD0BB /* Assets.xcassets in Resources */,
 				7D12F67E1F92919B003BF070 /* EditPatientViewController.xib in Resources */,
-				7DD78AFD1F93A8CD0055F5F8 /* AddCollectionItemCell.xib in Resources */,
 				7D5E0ECD1F857DA6009FD0BB /* Main.storyboard in Resources */,
 				7DC995541F93D5D100EF9154 /* EditContactPointCell.xib in Resources */,
+				7D971F521F95851400276E15 /* AddCollectionItemView.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -388,8 +393,7 @@
 				7D3407F31F8A9D5300F4115E /* UnderlinedTextField.swift in Sources */,
 				7DD78ACD1F9296F10055F5F8 /* EditPatientViewController+Datasource.swift in Sources */,
 				7D3407F01F8A98F600F4115E /* EditPatientViewController.swift in Sources */,
-				7D971F4C1F93F05800276E15 /* FooTableViewController.swift in Sources */,
-				7DD78AFC1F93A8CD0055F5F8 /* AddCollectionItemCell.swift in Sources */,
+				7DD78AFC1F93A8CD0055F5F8 /* AddCollectionItemView.swift in Sources */,
 				7D5E0EFD1F85A4F1009FD0BB /* PatientListViewController+DataSource.swift in Sources */,
 				7D32E0581F8FD94100925EF3 /* PatientDetailHeaderView.swift in Sources */,
 				7D609F111F90029100DD9D77 /* PatientAvatar.swift in Sources */,

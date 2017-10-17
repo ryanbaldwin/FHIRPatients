@@ -17,7 +17,7 @@ extension EditPatientViewController {
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         switch EditPatientViewController.Sections(rawValue: section) {
         case .some(.telecoms):
-            return model.telecoms.count + 1 // plus 1 for the "add telecom" cell
+            return model.telecoms.count
         default:
             assert(false, "Unknown section for EditPatientViewController: \(section)")
         }
@@ -27,13 +27,6 @@ extension EditPatientViewController {
         switch EditPatientViewController.Sections(rawValue: indexPath.section) {
             
         case .some(.telecoms):
-            guard indexPath.row < model.telecoms.count else {
-                let cell = tableView.dequeueReusableCell(withIdentifier: "AddCollectionItemCell",
-                                                         for: indexPath) as! AddCollectionItemCell
-                cell.label.text = "add telecom"
-                return cell
-            }
-
             return editContactPointCell(for: indexPath)
 
         default:
@@ -52,6 +45,33 @@ extension EditPatientViewController {
         }
     }
     
+    override func tableView(_ tableView: UITableView, viewForFooterInSection section: Int) -> UIView? {
+        switch EditPatientViewController.Sections(rawValue: section) {
+            
+        case .some(.telecoms):
+            let view = AddCollectionItemView.loadFromNib()
+            view.label.text = "add telecom"
+            view.didTouchUpInside = { [unowned self] in
+                self.model.telecoms.append(ContactPoint())
+                tableView.reloadSections(IndexSet(integer: EditPatientViewController.Sections.telecoms.rawValue),
+                                         with: .automatic)
+            }
+            
+            return view
+        default:
+            assert(false, "Unknown section for EditPatientViewController: \(section)")
+        }
+    }
+    
+    override func tableView(_ tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat {
+        switch EditPatientViewController.Sections(rawValue: section) {
+            
+        case .some(.telecoms):
+            return 30
+        default:
+            assert(false, "Unknown section for EditPatientViewController: \(section)")
+        }
+    }
     // MARK: Editing the row
     
     override func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
@@ -63,7 +83,7 @@ extension EditPatientViewController {
         
         if editingStyle == .delete {
             model.telecoms.remove(at: indexPath.row)
-            tableView.reloadSections(IndexSet(integer: indexPath.section), with: .fade)
+            tableView.deleteRows(at: [indexPath], with: .fade)
         }
     }
 }

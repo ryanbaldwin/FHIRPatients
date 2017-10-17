@@ -42,3 +42,10 @@ class EditContactPointCell: UITableViewCell {
         didTapSystemButton?(sender)
     }
 }
+
+extension EditContactPointCell: UITextFieldDelegate {
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        textField.resignFirstResponder()
+        return false
+    }
+}

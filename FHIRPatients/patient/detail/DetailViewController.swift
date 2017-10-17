@@ -14,16 +14,25 @@ class DetailViewController: UITableViewController {
         case telecoms, count
     }
     
-    @IBOutlet weak var avatar: PatientAvatarView!
+    @IBOutlet weak var headerView: PatientDetailHeaderView!
+    
+    lazy var editButton: UIBarButtonItem = {
+        let button = UIBarButtonItem(barButtonSystemItem: .edit, target: self, action: #selector(editButtonTapped(_:)))
+        return button
+    }()
+    
     var model: PatientModel!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         navigationItem.largeTitleDisplayMode = .never
+        navigationItem.rightBarButtonItem = editButton
+        
+        headerView.model = model
         tableView.reloadData()
     }
     
-    @IBAction func editButtonTapped(_ sender: UIBarButtonItem) {
+    @objc func editButtonTapped(_ sender: UIBarButtonItem) {
         print("Foo")
     }
 }

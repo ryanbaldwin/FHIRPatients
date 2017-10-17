@@ -5,6 +5,8 @@
     </device>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13173"/>
+        <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
+        <capability name="Stack View standard spacing" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -75,13 +77,59 @@
         <scene sceneID="cOE-de-K3r">
             <objects>
                 <tableViewController id="aDN-K0-LlM" customClass="DetailViewController" customModule="FHIRPatients" customModuleProvider="target" sceneMemberID="viewController">
-                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="grouped" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="18" sectionFooterHeight="18" id="DyU-Mx-EAm">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="grouped" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="135" sectionFooterHeight="18" id="DyU-Mx-EAm">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" red="0.99999600649999998" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <view key="tableHeaderView" contentMode="scaleToFill" id="BaR-Sy-mMd" customClass="PatientDetailHeaderView" customModule="FHIRPatients" customModuleProvider="target">
+                            <rect key="frame" x="0.0" y="0.0" width="375" height="151"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <subviews>
+                                <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" spacingType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="Iab-Yf-G4G">
+                                    <rect key="frame" x="107.5" y="8" width="160.5" height="135"/>
+                                    <subviews>
+                                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" verticalCompressionResistancePriority="1000" image="user" translatesAutoresizingMaskIntoConstraints="NO" id="jxy-co-c8u" customClass="PatientAvatarView" customModule="FHIRPatients" customModuleProvider="target">
+                                            <rect key="frame" x="43" y="0.0" width="75" height="75"/>
+                                            <constraints>
+                                                <constraint firstAttribute="width" secondItem="jxy-co-c8u" secondAttribute="height" multiplier="1:1" id="C0x-zd-qam"/>
+                                                <constraint firstAttribute="width" constant="75" id="ogx-o3-hxg"/>
+                                            </constraints>
+                                        </imageView>
+                                        <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" spacing="4" translatesAutoresizingMaskIntoConstraints="NO" id="4xR-kp-d0o">
+                                            <rect key="frame" x="0.0" y="83" width="160.5" height="52"/>
+                                            <subviews>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" verticalCompressionResistancePriority="1000" text="Joey Balogna" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gfH-pP-MZo">
+                                                    <rect key="frame" x="4.5" y="0.0" width="151.5" height="31.5"/>
+                                                    <fontDescription key="fontDescription" style="UICTFontTextStyleTitle1"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalCompressionResistancePriority="999" text="male - 24/11/1978" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="t3L-Rg-zLQ">
+                                                    <rect key="frame" x="0.0" y="35.5" width="160.5" height="16.5"/>
+                                                    <fontDescription key="fontDescription" style="UICTFontTextStyleTitle3"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
+                                        </stackView>
+                                    </subviews>
+                                </stackView>
+                            </subviews>
+                            <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            <constraints>
+                                <constraint firstAttribute="bottom" secondItem="Iab-Yf-G4G" secondAttribute="bottom" constant="8" id="3zE-25-wjg"/>
+                                <constraint firstItem="Iab-Yf-G4G" firstAttribute="centerX" secondItem="BaR-Sy-mMd" secondAttribute="centerX" id="DRd-sp-OFp"/>
+                                <constraint firstItem="Iab-Yf-G4G" firstAttribute="top" secondItem="BaR-Sy-mMd" secondAttribute="top" constant="8" id="hZl-0x-pX3"/>
+                            </constraints>
+                            <connections>
+                                <outlet property="avatar" destination="jxy-co-c8u" id="R78-ae-YET"/>
+                                <outlet property="birthLabel" destination="t3L-Rg-zLQ" id="YI3-gP-j81"/>
+                                <outlet property="nameLabel" destination="gfH-pP-MZo" id="8xK-hD-qTE"/>
+                            </connections>
+                        </view>
                         <prototypes>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="d8W-Jw-NML">
-                                <rect key="frame" x="0.0" y="55.5" width="375" height="44"/>
+                                <rect key="frame" x="0.0" y="206.5" width="375" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="d8W-Jw-NML" id="s9H-yJ-FT5">
                                     <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
@@ -94,10 +142,16 @@
                             <outlet property="delegate" destination="aDN-K0-LlM" id="jVD-Bk-nG8"/>
                         </connections>
                     </tableView>
+                    <connections>
+                        <outlet property="headerView" destination="BaR-Sy-mMd" id="ZyR-ws-cMg"/>
+                    </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="g3V-cx-SA0" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3135" y="-1554"/>
+            <point key="canvasLocation" x="3133.5999999999999" y="-1554.872563718141"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="user" width="23" height="22"/>
+    </resources>
 </document>
