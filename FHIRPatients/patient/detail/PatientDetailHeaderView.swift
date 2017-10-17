@@ -47,11 +47,4 @@ class PatientDetailHeaderView: UIView {
         
         birthLabel.text = details
     }
-//
-//    override var intrinsicContentSize: CGSize {
-//        nameLabel.sizeToFit()
-//        birthLabel.sizeToFit()
-//        return CGSize(width: UIViewNoIntrinsicMetric,
-//                      height: nameLabel.bounds.height + birthLabel.bounds.height + layout.spacing)
-//    }
 }

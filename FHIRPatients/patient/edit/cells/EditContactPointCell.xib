@@ -40,7 +40,6 @@
                                 <textInputTraits key="textInputTraits" autocorrectionType="no" returnKeyType="done"/>
                                 <connections>
                                     <action selector="editingChanged:" destination="KGk-i7-Jjw" eventType="editingChanged" id="7BZ-LW-90m"/>
-                                    <outlet property="delegate" destination="-1" id="FmC-94-1Ai"/>
                                 </connections>
                             </textField>
                         </subviews>

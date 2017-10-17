@@ -27,13 +27,21 @@ class DetailViewController: UITableViewController {
         super.viewDidLoad()
         navigationItem.largeTitleDisplayMode = .never
         navigationItem.rightBarButtonItem = editButton
-        
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
         headerView.model = model
         tableView.reloadData()
     }
     
     @objc func editButtonTapped(_ sender: UIBarButtonItem) {
-        print("Foo")
+        let vc = EditPatientViewController(nibName: String(describing: EditPatientViewController.self), bundle: nil)
+        vc.modalTransitionStyle = .crossDissolve
+        vc.model = model
+        vc.title = "Edit Patient"
+        let navController = UINavigationController(rootViewController: vc)
+        navigationController?.present(navController, animated: true)
     }
 }
 

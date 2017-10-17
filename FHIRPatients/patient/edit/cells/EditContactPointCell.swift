@@ -15,6 +15,11 @@ class EditContactPointCell: UITableViewCell {
     
     var didTapSystemButton: ((Any) -> ())?
     
+    override func awakeFromNib() {
+        super.awakeFromNib()
+        valueField.delegate = self
+    }
+    
     var contactPoint: ContactPoint? {
         didSet {
             systemButton.setTitle(contactPoint?.system ?? "other", for: .normal)

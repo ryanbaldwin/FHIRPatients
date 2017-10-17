@@ -154,6 +154,7 @@
 				7D971F481F93EACF00276E15 /* firekit */,
 				7D3407F81F8AA4BE00F4115E /* uikit */,
 				7D3407F51F8A9F7200F4115E /* patient */,
+				7D3407F61F8A9F8800F4115E /* PatientModel.swift */,
 				7D5E0EF31F85A32C009FD0BB /* http */,
 				7D5E0EC51F857DA6009FD0BB /* AppDelegate.swift */,
 				7D5E0ECB1F857DA6009FD0BB /* Main.storyboard */,
@@ -239,7 +240,6 @@
 				7D3407EE1F8A98F600F4115E /* EditPatientViewController.swift */,
 				7DD78ACC1F9296F10055F5F8 /* EditPatientViewController+Datasource.swift */,
 				7D3407F91F8AB9FA00F4115E /* EditPatientViewController+Interaction.swift */,
-				7D3407F61F8A9F8800F4115E /* PatientModel.swift */,
 			);
 			path = edit;
 			sourceTree = "<group>";

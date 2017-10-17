@@ -11,7 +11,7 @@ import UIKit
 import FireKit
 import RealmSwift
 
-struct PatientModel {
+class PatientModel {
     enum Gender: Int {
         case male, female, other, unknown
     }
@@ -68,17 +68,14 @@ struct PatientModel {
     }()
     
     init(patient: Patient? = nil) {
-        self.patient = Patient()
-        guard let patient = patient else { return }
+        self.patient = patient?.copy() as? Patient ?? Patient()
+        self.originalPatient = patient
         
-        originalPatient = patient
-        self.patient.populate(from: patient)
+        givenName = self.patient.name.first?.given.first?.value
+        familyName = self.patient.name.first?.family.first?.value
+        dateOfBirth = self.patient.birthDate?.nsDate
         
-        givenName = patient.name.first?.given.first?.value
-        familyName = patient.name.first?.family.first?.value
-        dateOfBirth = patient.birthDate?.nsDate
-        
-        if let patientGender = patient.gender {
+        if let patientGender = self.patient.gender {
             switch patientGender {
             case "male": gender = .male
             case "female": gender = .female
@@ -88,7 +85,7 @@ struct PatientModel {
         }
     }
     
-    mutating func save() {
+    func save() {
         do {
             let name = patient.name.first ?? HumanName()
             if patient.name.count == 0 { patient.name.append(name) }

@@ -65,6 +65,7 @@
                                         <textInputTraits key="textInputTraits" autocapitalizationType="words" autocorrectionType="no" spellCheckingType="no" returnKeyType="done"/>
                                         <connections>
                                             <action selector="givenNameEditingChanged:" destination="-1" eventType="editingChanged" id="9Jc-Ld-jhs"/>
+                                            <outlet property="delegate" destination="-1" id="eA0-eQ-DQe"/>
                                         </connections>
                                     </textField>
                                     <textField opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="249" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Last name" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="rUo-2B-5Ch" customClass="UnderlinedTextField" customModule="FHIRPatients" customModuleProvider="target">
@@ -74,6 +75,7 @@
                                         <textInputTraits key="textInputTraits" autocapitalizationType="words" autocorrectionType="no" spellCheckingType="no" returnKeyType="done"/>
                                         <connections>
                                             <action selector="familyNameEditingChanged:" destination="-1" eventType="editingChanged" id="rjE-GQ-XHr"/>
+                                            <outlet property="delegate" destination="-1" id="EYG-4b-bl6"/>
                                         </connections>
                                     </textField>
                                     <stackView opaque="NO" contentMode="scaleToFill" spacingType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="E1T-1X-WFM">
