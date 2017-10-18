@@ -19,8 +19,7 @@ class PatientModel {
     var patientCanSaveChanged: ((Bool) -> ())? = nil
     
     private var realm = try! Realm()
-    private var patient: Patient
-    private var originalPatient: Patient?
+    private var editingPatientPK: String?
     
     func canSave() -> Bool {
         return self.givenName != nil
@@ -29,15 +28,7 @@ class PatientModel {
             && self.gender != nil
     }
     
-    lazy var image: UIImage? = {
-        guard let base64String = patient.photo.first?.data?.value,
-            let data = Data(base64Encoded: base64String, options: .ignoreUnknownCharacters),
-            let image = UIImage(data: data) else {
-            return nil
-        }
-        
-        return image
-    }()
+    var image: UIImage?
 
     var givenName: String? {
         didSet {
@@ -63,19 +54,18 @@ class PatientModel {
         }
     }
     
-    lazy var telecoms: [ContactPoint] = {
-        return Array(self.patient.telecom)
-    }()
+    var telecoms: [ContactPoint] = []
     
     init(patient: Patient? = nil) {
-        self.patient = patient?.copy() as? Patient ?? Patient()
-        self.originalPatient = patient
+        guard let patient = patient else { return }
+        self.editingPatientPK = patient.pk
         
-        givenName = self.patient.name.first?.given.first?.value
-        familyName = self.patient.name.first?.family.first?.value
-        dateOfBirth = self.patient.birthDate?.nsDate
-        
-        if let patientGender = self.patient.gender {
+        givenName = patient.name.first?.given.first?.value
+        familyName = patient.name.first?.family.first?.value
+        dateOfBirth = patient.birthDate?.nsDate
+        telecoms = patient.telecom.flatMap { $0.copy() as? ContactPoint }
+
+        if let patientGender = patient.gender {
             switch patientGender {
             case "male": gender = .male
             case "female": gender = .female
@@ -83,21 +73,26 @@ class PatientModel {
             default: gender = .unknown
             }
         }
+        
+        if let base64String = patient.photo.first?.data?.value,
+            let data = Data(base64Encoded: base64String, options: .ignoreUnknownCharacters),
+            let image = UIImage(data: data) {
+                self.image = image
+        }
     }
     
     func save() {
         do {
-            let name = patient.name.first ?? HumanName()
-            if patient.name.count == 0 { patient.name.append(name) }
+            let patient = Patient()
+            let name = HumanName()
+            patient.name.append(name)
             
             if let given = givenName {
-                if name.given.first == nil { name.given.append(RealmString()) }
-                name.given.first!.value = given
+                name.given.append(RealmString(val: given))
             }
             
             if let family = familyName {
-                if name.family.first == nil { name.family.append(RealmString()) }
-                name.family.first!.value = family
+                name.family.append(RealmString(val: family))
             }
             
             if let gender = gender {
@@ -108,7 +103,6 @@ class PatientModel {
                 patient.birthDate = dob.fhir_asDate()
             }
             
-            patient.telecom.removeAll()
             patient.telecom.append(objectsIn: telecoms)
             
             if let userImage = image {
@@ -117,15 +111,15 @@ class PatientModel {
                     attachment.data = Base64Binary(string: jpeg.base64EncodedString(options: .lineLength64Characters))
                     patient.photo.append(attachment)
                 }
-            } else if patient.photo.count > 0 {
-                 patient.photo.remove(objectAtIndex: 0)
             }
             
-            try realm.write {
-                if let originalPatient = self.originalPatient, originalPatient.realm != nil {
-                    originalPatient.populate(from: patient)
-                } else {
-                    realm.add(patient, update: true)
+            if let primaryKey = editingPatientPK, let patientToUpdate = realm.object(ofType: Patient.self,
+                                                                                     forPrimaryKey: primaryKey) {
+                try realm.write { patientToUpdate.populate(from: patient) }
+            } else {
+                try realm.write {
+                    realm.add(patient)
+                    editingPatientPK = patient.pk
                 }
             }
         } catch let error {

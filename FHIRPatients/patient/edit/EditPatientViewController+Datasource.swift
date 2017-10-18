@@ -118,6 +118,7 @@ extension EditPatientViewController {
                 
                 let indexPath = IndexPath(item: row, section: EditPatientViewController.Sections.telecoms.rawValue)
                 self?.tableView.reloadRows(at: [indexPath], with: .right)
+                (self?.tableView.cellForRow(at: indexPath) as? EditContactPointCell)?.valueField?.becomeFirstResponder()
             }
         }
         
