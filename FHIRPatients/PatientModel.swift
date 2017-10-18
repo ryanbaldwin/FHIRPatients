@@ -31,7 +31,7 @@ class PatientModel {
     
     lazy var image: UIImage? = {
         guard let base64String = patient.photo.first?.data?.value,
-            let data = Data(base64Encoded: base64String),
+            let data = Data(base64Encoded: base64String, options: .ignoreUnknownCharacters),
             let image = UIImage(data: data) else {
             return nil
         }
@@ -110,6 +110,16 @@ class PatientModel {
             
             patient.telecom.removeAll()
             patient.telecom.append(objectsIn: telecoms)
+            
+            if let userImage = image {
+                if let jpeg = UIImageJPEGRepresentation(userImage, 0.8) {
+                    let attachment = patient.photo.first ?? Attachment()
+                    attachment.data = Base64Binary(string: jpeg.base64EncodedString(options: .lineLength64Characters))
+                    patient.photo.append(attachment)
+                }
+            } else if patient.photo.count > 0 {
+                 patient.photo.remove(objectAtIndex: 0)
+            }
             
             try realm.write {
                 if let originalPatient = self.originalPatient, originalPatient.realm != nil {

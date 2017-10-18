@@ -76,30 +76,34 @@ extension EditPatientViewController {
         alertController.addAction(makeCancelPhotoAction())
         present(alertController, animated: true)
     }
-    
-    private func makeTakePhotoAction() -> UIAlertAction {
-        return UIAlertAction(title: "Take Photo", style: .default, handler: nil)
-    }
-    
-    
-    
-    private func makeCancelPhotoAction() -> UIAlertAction {
-        return UIAlertAction(title: "Cancel", style: .cancel, handler: nil)
-    }
 }
 
 extension EditPatientViewController: UIImagePickerControllerDelegate, UINavigationControllerDelegate {
-    private func makeChoosePhotoAction() -> UIAlertAction {
+    fileprivate func makeTakePhotoAction() -> UIAlertAction {
+        return UIAlertAction(title: "Take Photo", style: .default) { [unowned self] _ in
+            guard UIImagePickerController.isSourceTypeAvailable(.camera) else {
+                return
+            }
+            
+            self.present(self.camera, animated: true)
+        }
+    }
+    
+    fileprivate func makeChoosePhotoAction() -> UIAlertAction {
         return UIAlertAction(title: "Choose Photo", style: .default) { [unowned self] _ in
             self.present(self.imagePicker, animated: true)
         }
     }
     
-    private func makeDeletePhotoAction() -> UIAlertAction {
+    fileprivate func makeDeletePhotoAction() -> UIAlertAction {
         return UIAlertAction(title: "Delete Photo", style: .destructive) { [unowned self] _ in
             self.model.image = nil
             self.bindImage(animated: true)
         }
+    }
+    
+    fileprivate func makeCancelPhotoAction() -> UIAlertAction {
+        return UIAlertAction(title: "Cancel", style: .cancel, handler: nil)
     }
     
     func imagePickerControllerDidCancel(_ picker: UIImagePickerController) {

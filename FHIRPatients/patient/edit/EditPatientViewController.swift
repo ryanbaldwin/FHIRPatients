@@ -33,6 +33,16 @@ class EditPatientViewController: UITableViewController {
         return controller
     }()
     
+    lazy var camera: UIImagePickerController = {
+        let controller = UIImagePickerController()
+        controller.delegate = self
+        controller.allowsEditing = false
+        controller.sourceType = .camera
+        controller.cameraCaptureMode = .photo
+        controller.mediaTypes = UIImagePickerController.availableMediaTypes(for: .camera)!
+        return controller
+    }()
+    
     lazy var cancelButton: UIBarButtonItem = {
         return UIBarButtonItem(barButtonSystemItem: .cancel,
                                target: self,
@@ -51,12 +61,13 @@ class EditPatientViewController: UITableViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        _  = imagePicker
+        
         addPhotoButton.titleLabel?.textAlignment = .center
         registerTableViewCells()
         setupNavigation()
         setupBirthdateInputs()
         bindData()
+        bindImage()
     }
     
     private func registerTableViewCells() {
