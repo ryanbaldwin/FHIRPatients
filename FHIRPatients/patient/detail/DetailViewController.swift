@@ -15,6 +15,7 @@ class DetailViewController: UITableViewController {
     }
     
     @IBOutlet weak var headerView: PatientDetailHeaderView!
+    @IBOutlet weak var uploadButton: UIButton!
     
     lazy var editButton: UIBarButtonItem = {
         let button = UIBarButtonItem(barButtonSystemItem: .edit, target: self, action: #selector(editButtonTapped(_:)))
@@ -27,6 +28,11 @@ class DetailViewController: UITableViewController {
         super.viewDidLoad()
         navigationItem.largeTitleDisplayMode = .never
         navigationItem.rightBarButtonItem = editButton
+        
+        uploadButton.imageView?.tintColor = .white
+        uploadButton.layer.cornerRadius = uploadButton.bounds.height/2
+        uploadButton.layer.borderColor = UIColor.blue.cgColor
+        uploadButton.backgroundColor = .blue
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -42,6 +48,10 @@ class DetailViewController: UITableViewController {
         vc.title = "Edit Patient"
         let navController = UINavigationController(rootViewController: vc)
         navigationController?.present(navController, animated: true)
+    }
+    
+    @IBAction func uploadButtonTapped(_ sender: UIButton) {
+        model.uploadPatient()
     }
 }
 

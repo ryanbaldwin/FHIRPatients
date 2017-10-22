@@ -15,10 +15,6 @@ class PatientListViewController: UITableViewController {
     var detailViewController: DetailViewController? = nil
     var notificationToken: NotificationToken? = nil
     
-    @objc func loadRemotePatients() {
-        self.model.loadRemotePatients()
-    }
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         clearsSelectionOnViewWillAppear = true
@@ -40,9 +36,6 @@ class PatientListViewController: UITableViewController {
         
         navigationItem.leftBarButtonItem = clearButton
         navigationItem.rightBarButtonItem = addButton
-        
-//        refreshControl?.attributedTitle = NSAttributedString(string: "Grab 20 patients from the server")
-//        refreshControl?.addTarget(self, action: #selector(loadRemotePatients), for: .valueChanged)
     }
     
     @objc func addPatient(_ sender: Any) {

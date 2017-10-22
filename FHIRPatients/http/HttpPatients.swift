@@ -10,8 +10,32 @@ import Foundation
 import FireKit
 import Restivus
 
-struct Random20PatientsRequest: Gettable {
-    typealias ResponseType = FireKit.Bundle
-    var url: URL?
-    var path: String { return "/Patient?_count=20" }
+class UploadPatientRequest: Encodable {
+    var patient: Patient
+    
+    init(_ patient: Patient) {
+        self.patient = patient
+    }
+    
+    func encode(to encoder: Encoder) {
+        var container = encoder.singleValueContainer()
+        try! container.encode(patient)
+    }
+}
+
+class PostPatientRequest: UploadPatientRequest, Authenticating, Postable {
+    typealias ResponseType = Patient
+    let path = "/Patient"
+}
+
+class UpdatePatientRequest: UploadPatientRequest, Authenticating, Puttable {
+    typealias ResponseType = Patient
+    var path: String { return "/Patient/\(patient.id!)" }
+}
+
+struct RefreshPatientRequest: Gettable {
+    typealias ResponseType = Patient
+    
+    var patientId: String
+    var path: String { return "/Patient/\(patientId)" }
 }

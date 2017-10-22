@@ -29,19 +29,6 @@ class PatientListModel {
         return self.realm!.objects(Patient.self)
     }()
     
-    func loadRemotePatients() {
-        let request = Random20PatientsRequest(url: continuationURL)
-        
-        _ = try? request.submit(callbackOnMain: false) { [weak self] result in
-            switch result {
-            case let .success(bundle):
-                self?.process(bundle: bundle)
-            case let .failure(error):
-                print("Failed to fetch 20 random patients from \(request.fullPath): \(error)")
-            }
-        }
-    }
-    
     func process(bundle: FireKit.Bundle) {
         self.save(patients: bundle.entry.flatMap { $0.resource?.resource as? Patient })
         if let continueUrl = bundle.link.first(where: { $0.relation == "next" })?.url {

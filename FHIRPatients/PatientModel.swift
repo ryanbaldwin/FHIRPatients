@@ -10,6 +10,7 @@ import Foundation
 import UIKit
 import FireKit
 import RealmSwift
+import Restivus
 
 class PatientModel {
     enum Gender: Int {
@@ -124,6 +125,28 @@ class PatientModel {
             }
         } catch let error {
             print("Failed to commit transaction when creating/updating patient: \(error)")
+        }
+    }
+    
+    func uploadPatient(completion: (() -> ())? = nil) {
+        guard let patientPK = editingPatientPK,
+            let patientToUpload = realm.object(ofType: Patient.self, forPrimaryKey: patientPK) else {
+                return
+        }
+        
+        var uploadRequest: AnyRestable<Patient>
+        if patientToUpload.id != nil {
+            uploadRequest = AnyRestable<Patient>(UpdatePatientRequest(patientToUpload))
+        }  else {
+            uploadRequest = AnyRestable<Patient>(PostPatientRequest(patientToUpload))
+        }
+        
+        _ = try! uploadRequest.submit() { [weak self] result in
+            if case let Result.success(uploadedPatient) = result {
+                try! self?.realm.write { patientToUpload.populate(from: uploadedPatient) }
+            }
+            
+            completion?()
         }
     }
 }

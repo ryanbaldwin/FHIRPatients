@@ -12,3 +12,11 @@ import Restivus
 extension Restable {
     var baseURL: String { return "https://fhirtest.uhn.ca/baseDstu2" }
 }
+
+extension Authenticating {
+    func sign(request: URLRequest) -> URLRequest {
+        var req = request
+        req.setValue("return=representation", forHTTPHeaderField: "Prefer")
+        return req
+    }
+}
