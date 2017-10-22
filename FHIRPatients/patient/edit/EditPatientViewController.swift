@@ -108,6 +108,8 @@ class EditPatientViewController: UITableViewController {
         
         if let bday = model.dateOfBirth {
             updateBirthdateTextField(bday)
+            datePicker.timeZone = TimeZone(abbreviation: "UTC")
+            datePicker.date = bday
         }
     }
     

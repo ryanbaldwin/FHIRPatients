@@ -21,12 +21,13 @@ class PatientDetailHeaderView: UIView {
     
     let formatter: DateFormatter = {
         let f = DateFormatter()
+        f.timeZone = TimeZone(abbreviation: "UTC")
         f.dateStyle = .short
         return f
     }()
     
     private func configureHeaderView() {
-        guard var model = self.model else {
+        guard let model = self.model else {
             nameLabel.text = nil
             birthLabel.text = nil
             return

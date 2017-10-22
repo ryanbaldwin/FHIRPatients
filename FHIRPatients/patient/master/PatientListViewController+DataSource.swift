@@ -21,6 +21,7 @@ extension PatientListViewController {
         case .initial:
             tableView.reloadData()
         case let .update(_, deletions, insertions, modifications):
+            print("RealmCollectionChange: \(deletions.count) deletions, \(insertions.count) insertions, \(modifications.count) modification")
             tableView.beginUpdates()
             tableView.insertRows(at: insertions.map({ IndexPath(row: $0, section: 0) }), with: .automatic)
             tableView.deleteRows(at: deletions.map({ IndexPath(row: $0, section: 0) }), with: .automatic)

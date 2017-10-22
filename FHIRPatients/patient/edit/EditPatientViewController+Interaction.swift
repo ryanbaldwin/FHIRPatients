@@ -28,6 +28,7 @@ extension EditPatientViewController {
     /// MARK: DatePicker
     func updateBirthdateTextField(_ date: Date) {
         let formatter = DateFormatter()
+        formatter.timeZone = TimeZone(abbreviation: "UTC")
         formatter.dateStyle = .long
         birthdateTextField.text = formatter.string(from: date)
     }
