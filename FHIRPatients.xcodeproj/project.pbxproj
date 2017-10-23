@@ -152,10 +152,10 @@
 			isa = PBXGroup;
 			children = (
 				7D971F481F93EACF00276E15 /* firekit */,
+				7D5E0EF31F85A32C009FD0BB /* http */,
 				7D3407F81F8AA4BE00F4115E /* uikit */,
 				7D3407F51F8A9F7200F4115E /* patient */,
 				7D3407F61F8A9F8800F4115E /* PatientModel.swift */,
-				7D5E0EF31F85A32C009FD0BB /* http */,
 				7D5E0EC51F857DA6009FD0BB /* AppDelegate.swift */,
 				7D5E0ECB1F857DA6009FD0BB /* Main.storyboard */,
 				7D5E0ECE1F857DA6009FD0BB /* Assets.xcassets */,

@@ -53,7 +53,7 @@ class EditPatientViewController: UITableViewController {
         let doneButton = UIBarButtonItem(barButtonSystemItem: .done,
                                          target: self,
                                          action: #selector(doneEditButtonTapped))
-        doneButton.isEnabled = model.canSave()
+        doneButton.isEnabled = model.canSave
         return doneButton
     }()
     

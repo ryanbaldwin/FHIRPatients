@@ -133,9 +133,7 @@ class PatientModel {
                 }
                 
                 // if this is a new patient, we must add it to the realm.
-                if editingPatientPK == nil {
-                    realm.add(patient)
-                }
+                if editingPatientPK == nil { realm.add(patient) }
                 editingPatientPK = patient.pk
             }
         } catch let error {
