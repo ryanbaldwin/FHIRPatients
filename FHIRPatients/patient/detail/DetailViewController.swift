@@ -48,5 +48,8 @@ class DetailViewController: UITableViewController {
     @IBAction func uploadButtonTapped(_ sender: SequenceStateButton) {
         sender.sequenceState = .processing
     }
+    
+    @IBAction func viewUploadedResourceTapped(_ sender: Any) {
+    }
 }
 

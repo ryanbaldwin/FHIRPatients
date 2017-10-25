@@ -6,6 +6,7 @@
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13174"/>
         <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="Stack View standard spacing" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -73,7 +74,7 @@
         <scene sceneID="cOE-de-K3r">
             <objects>
                 <tableViewController id="aDN-K0-LlM" customClass="DetailViewController" customModule="FHIRPatients" customModuleProvider="target" sceneMemberID="viewController">
-                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="grouped" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" id="DyU-Mx-EAm">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="grouped" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="18" id="DyU-Mx-EAm">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" red="0.99999600649999998" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -124,41 +125,56 @@
                             </connections>
                         </view>
                         <view key="tableFooterView" contentMode="scaleToFill" id="skB-Yb-aoX">
-                            <rect key="frame" x="0.0" y="268" width="375" height="68"/>
+                            <rect key="frame" x="0.0" y="268.5" width="375" height="151"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             <subviews>
-                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="epe-uC-HwB" customClass="SequenceStateButton" customModule="FHIRPatients" customModuleProvider="target">
-                                    <rect key="frame" x="162.5" y="9.5" width="50" height="50"/>
-                                    <color key="backgroundColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="calibratedRGB"/>
-                                    <constraints>
-                                        <constraint firstAttribute="width" secondItem="epe-uC-HwB" secondAttribute="height" multiplier="1:1" id="gbm-bK-0mU"/>
-                                        <constraint firstAttribute="width" constant="50" id="yvj-JN-GOt"/>
-                                    </constraints>
-                                    <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                    <state key="normal" image="upload-cloud"/>
-                                    <userDefinedRuntimeAttributes>
-                                        <userDefinedRuntimeAttribute type="image" keyPath="initialImage" value="upload-cloud"/>
-                                        <userDefinedRuntimeAttribute type="image" keyPath="successImage" value="check-cloud"/>
-                                        <userDefinedRuntimeAttribute type="color" keyPath="successColor">
-                                            <color key="value" red="0.013244903585532415" green="0.70643638959390864" blue="0.028914778901227262" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                        </userDefinedRuntimeAttribute>
-                                        <userDefinedRuntimeAttribute type="image" keyPath="failureImage" value="sad-cloud"/>
-                                        <userDefinedRuntimeAttribute type="color" keyPath="failureColor">
-                                            <color key="value" red="0.93654822335025378" green="0.095457733331612254" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                        </userDefinedRuntimeAttribute>
-                                        <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
-                                            <real key="value" value="25"/>
-                                        </userDefinedRuntimeAttribute>
-                                    </userDefinedRuntimeAttributes>
-                                    <connections>
-                                        <action selector="uploadButtonTapped:" destination="aDN-K0-LlM" eventType="touchUpInside" id="D3I-Zs-ZKD"/>
-                                    </connections>
-                                </button>
+                                <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" spacingType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="wah-dR-NMU">
+                                    <rect key="frame" x="16" y="50.5" width="343" height="50"/>
+                                    <subviews>
+                                        <button opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="1000" verticalCompressionResistancePriority="1000" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="epe-uC-HwB" customClass="SequenceStateButton" customModule="FHIRPatients" customModuleProvider="target">
+                                            <rect key="frame" x="146.5" y="0.0" width="50" height="50"/>
+                                            <color key="backgroundColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                            <constraints>
+                                                <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="50" id="6kz-3c-ZDR"/>
+                                                <constraint firstAttribute="width" secondItem="epe-uC-HwB" secondAttribute="height" multiplier="1:1" id="gbm-bK-0mU"/>
+                                                <constraint firstAttribute="width" secondItem="epe-uC-HwB" secondAttribute="height" multiplier="1:1" id="h11-uW-MRq"/>
+                                                <constraint firstAttribute="width" constant="50" id="yvj-JN-GOt"/>
+                                            </constraints>
+                                            <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                            <state key="normal" image="upload-cloud"/>
+                                            <userDefinedRuntimeAttributes>
+                                                <userDefinedRuntimeAttribute type="image" keyPath="initialImage" value="upload-cloud"/>
+                                                <userDefinedRuntimeAttribute type="image" keyPath="successImage" value="check-cloud"/>
+                                                <userDefinedRuntimeAttribute type="color" keyPath="successColor">
+                                                    <color key="value" red="0.013244903585532415" green="0.70643638959390864" blue="0.028914778901227262" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                </userDefinedRuntimeAttribute>
+                                                <userDefinedRuntimeAttribute type="image" keyPath="failureImage" value="sad-cloud"/>
+                                                <userDefinedRuntimeAttribute type="color" keyPath="failureColor">
+                                                    <color key="value" red="0.93654822335025378" green="0.095457733331612254" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                </userDefinedRuntimeAttribute>
+                                                <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                                    <real key="value" value="25"/>
+                                                </userDefinedRuntimeAttribute>
+                                            </userDefinedRuntimeAttributes>
+                                            <connections>
+                                                <action selector="uploadButtonTapped:" destination="aDN-K0-LlM" eventType="touchUpInside" id="D3I-Zs-ZKD"/>
+                                            </connections>
+                                        </button>
+                                        <button hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="249" verticalHuggingPriority="249" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="8OD-9I-bNW">
+                                            <rect key="frame" x="7.5" y="-50.5" width="328" height="0.0"/>
+                                            <state key="normal" title="Patient successfully uploaded. Tap here to view."/>
+                                            <connections>
+                                                <action selector="viewUploadedResourceTapped:" destination="aDN-K0-LlM" eventType="touchUpInside" id="6L2-Ft-I8M"/>
+                                            </connections>
+                                        </button>
+                                    </subviews>
+                                </stackView>
                             </subviews>
                             <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                             <constraints>
-                                <constraint firstItem="epe-uC-HwB" firstAttribute="centerY" secondItem="skB-Yb-aoX" secondAttribute="centerY" id="JkM-i9-Ciq"/>
-                                <constraint firstItem="epe-uC-HwB" firstAttribute="centerX" secondItem="skB-Yb-aoX" secondAttribute="centerX" id="fwF-Dr-LrT"/>
+                                <constraint firstItem="wah-dR-NMU" firstAttribute="leading" secondItem="skB-Yb-aoX" secondAttribute="leadingMargin" id="7eI-CJ-1Z9"/>
+                                <constraint firstAttribute="trailingMargin" secondItem="wah-dR-NMU" secondAttribute="trailing" id="nfK-8b-9zY"/>
+                                <constraint firstItem="wah-dR-NMU" firstAttribute="centerY" secondItem="skB-Yb-aoX" secondAttribute="centerY" id="oHZ-uz-Zw9"/>
                             </constraints>
                         </view>
                         <prototypes>
