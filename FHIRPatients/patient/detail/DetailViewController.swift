@@ -15,7 +15,8 @@ class DetailViewController: UITableViewController {
     }
     
     @IBOutlet weak var headerView: PatientDetailHeaderView!
-    @IBOutlet weak var uploadButton: UIButton!
+    @IBOutlet weak var uploadButton: SequenceStateButton!
+    @IBOutlet weak var viewPatientButton: UIButton!
     
     lazy var editButton: UIBarButtonItem = {
         let button = UIBarButtonItem(barButtonSystemItem: .edit, target: self, action: #selector(editButtonTapped(_:)))
@@ -50,8 +51,26 @@ class DetailViewController: UITableViewController {
         navigationController?.present(navController, animated: true)
     }
     
-    @IBAction func uploadButtonTapped(_ sender: UIButton) {
-        model.uploadPatient()
+    @IBAction func uploadButtonTapped(_ sender: SequenceStateButton) {
+        sender.sequenceState = .processing
+        model.uploadPatient { [weak self] error in
+            guard error == nil else {
+                self?.uploadButton.sequenceState = .failure
+                return
+            }
+            
+            self?.uploadButton.sequenceState = .success
+            self?.viewPatientButton.isHidden = false
+        }
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "loadRemoteResourceSegue" {
+            guard let reference = model.reference else { return }
+            
+            let controller = (segue.destination as! UINavigationController).topViewController as! OnlineFHIRResourceViewController
+            controller.url = URL(string: "\(FHIR_SERVER_BASE_URL)/\(reference.parts!.fhirType)/\(reference.parts!.id)")
+        }
     }
 }
 

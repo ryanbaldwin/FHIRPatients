@@ -20,7 +20,15 @@ class PatientModel {
     var patientCanSaveChanged: ((Bool) -> ())? = nil
     
     private var realm = try! Realm()
-    private var editingPatientPK: String?
+    private(set) var editingPatientPK: String?
+    
+    var reference: Reference? {
+        guard let patientPk = editingPatientPK,
+        let patient = realm.object(ofType: Patient.self, forPrimaryKey: patientPk),
+        let patientId = patient.id else { return nil }
+        
+        return Reference(withReferenceId: "\(Patient.resourceType)/\(patientId)")
+    }
     
     var image: UIImage?
 

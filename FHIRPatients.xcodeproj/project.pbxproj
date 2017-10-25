@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		7D12F67E1F92919B003BF070 /* EditPatientViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7D12F67C1F92919B003BF070 /* EditPatientViewController.xib */; };
+		7D2F80B21FA130AA00FFD383 /* OnlineFHIRResourceViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D2F80B11FA130AA00FFD383 /* OnlineFHIRResourceViewController.swift */; };
 		7D32E0581F8FD94100925EF3 /* PatientDetailHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D32E0571F8FD94100925EF3 /* PatientDetailHeaderView.swift */; };
 		7D32E05A1F8FDA0C00925EF3 /* DetailViewController+Datasource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D32E0591F8FDA0C00925EF3 /* DetailViewController+Datasource.swift */; };
 		7D3407EB1F8A80F200F4115E /* PatientListModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D3407EA1F8A80F200F4115E /* PatientListModel.swift */; };
@@ -38,6 +39,7 @@
 		7DC9955B1F93D7D300EF9154 /* LabelPickerModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7DC9955A1F93D7D300EF9154 /* LabelPickerModel.swift */; };
 		7DD78ACD1F9296F10055F5F8 /* EditPatientViewController+Datasource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7DD78ACC1F9296F10055F5F8 /* EditPatientViewController+Datasource.swift */; };
 		7DD78AFC1F93A8CD0055F5F8 /* AddCollectionItemView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7DD78AFA1F93A8CD0055F5F8 /* AddCollectionItemView.swift */; };
+		C286C2A71FA0E83300941215 /* SequenceStateButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = C286C2A61FA0E83300941215 /* SequenceStateButton.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -52,6 +54,7 @@
 
 /* Begin PBXFileReference section */
 		7D12F67C1F92919B003BF070 /* EditPatientViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = EditPatientViewController.xib; sourceTree = "<group>"; };
+		7D2F80B11FA130AA00FFD383 /* OnlineFHIRResourceViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnlineFHIRResourceViewController.swift; sourceTree = "<group>"; };
 		7D32E0571F8FD94100925EF3 /* PatientDetailHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PatientDetailHeaderView.swift; sourceTree = "<group>"; };
 		7D32E0591F8FDA0C00925EF3 /* DetailViewController+Datasource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "DetailViewController+Datasource.swift"; sourceTree = "<group>"; };
 		7D3407EA1F8A80F200F4115E /* PatientListModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PatientListModel.swift; sourceTree = "<group>"; };
@@ -86,6 +89,7 @@
 		7DC9955A1F93D7D300EF9154 /* LabelPickerModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LabelPickerModel.swift; sourceTree = "<group>"; };
 		7DD78ACC1F9296F10055F5F8 /* EditPatientViewController+Datasource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "EditPatientViewController+Datasource.swift"; sourceTree = "<group>"; };
 		7DD78AFA1F93A8CD0055F5F8 /* AddCollectionItemView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddCollectionItemView.swift; sourceTree = "<group>"; };
+		C286C2A61FA0E83300941215 /* SequenceStateButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SequenceStateButton.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -125,6 +129,7 @@
 			children = (
 				7D3407F21F8A9D5300F4115E /* UnderlinedTextField.swift */,
 				7D609F101F90029100DD9D77 /* PatientAvatarView.swift */,
+				C286C2A61FA0E83300941215 /* SequenceStateButton.swift */,
 			);
 			path = uikit;
 			sourceTree = "<group>";
@@ -155,8 +160,8 @@
 				7D5E0EF31F85A32C009FD0BB /* http */,
 				7D3407F81F8AA4BE00F4115E /* uikit */,
 				7D3407F51F8A9F7200F4115E /* patient */,
-				7D3407F61F8A9F8800F4115E /* PatientModel.swift */,
 				7D5E0EC51F857DA6009FD0BB /* AppDelegate.swift */,
+				7D3407F61F8A9F8800F4115E /* PatientModel.swift */,
 				7D5E0ECB1F857DA6009FD0BB /* Main.storyboard */,
 				7D5E0ECE1F857DA6009FD0BB /* Assets.xcassets */,
 				7D5E0ED01F857DA6009FD0BB /* LaunchScreen.storyboard */,
@@ -226,6 +231,7 @@
 			children = (
 				7D5E0EC91F857DA6009FD0BB /* DetailViewController.swift */,
 				7D32E0591F8FDA0C00925EF3 /* DetailViewController+Datasource.swift */,
+				7D2F80B11FA130AA00FFD383 /* OnlineFHIRResourceViewController.swift */,
 				7D32E0571F8FD94100925EF3 /* PatientDetailHeaderView.swift */,
 			);
 			path = detail;
@@ -386,6 +392,7 @@
 				7D5E0ECA1F857DA6009FD0BB /* DetailViewController.swift in Sources */,
 				7D5E0EF51F85A346009FD0BB /* HttpPatients.swift in Sources */,
 				7D5E0EFB1F85A3B3009FD0BB /* HttpDefaults.swift in Sources */,
+				C286C2A71FA0E83300941215 /* SequenceStateButton.swift in Sources */,
 				7DC9955B1F93D7D300EF9154 /* LabelPickerModel.swift in Sources */,
 				7D3407FA1F8AB9FA00F4115E /* EditPatientViewController+Interaction.swift in Sources */,
 				7D5E0EC81F857DA6009FD0BB /* PatientListViewController.swift in Sources */,
@@ -394,6 +401,7 @@
 				7DD78ACD1F9296F10055F5F8 /* EditPatientViewController+Datasource.swift in Sources */,
 				7D3407F01F8A98F600F4115E /* EditPatientViewController.swift in Sources */,
 				7DD78AFC1F93A8CD0055F5F8 /* AddCollectionItemView.swift in Sources */,
+				7D2F80B21FA130AA00FFD383 /* OnlineFHIRResourceViewController.swift in Sources */,
 				7D5E0EFD1F85A4F1009FD0BB /* PatientListViewController+DataSource.swift in Sources */,
 				7D32E0581F8FD94100925EF3 /* PatientDetailHeaderView.swift in Sources */,
 				7D609F111F90029100DD9D77 /* PatientAvatarView.swift in Sources */,

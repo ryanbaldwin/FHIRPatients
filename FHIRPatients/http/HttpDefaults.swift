@@ -9,8 +9,10 @@
 import Foundation
 import Restivus
 
+let FHIR_SERVER_BASE_URL = "https://fhirtest.uhn.ca/baseDstu2"
+
 extension Restable {
-    var baseURL: String { return "https://fhirtest.uhn.ca/baseDstu2" }
+    var baseURL: String { return FHIR_SERVER_BASE_URL }
 }
 
 extension Authenticating {
