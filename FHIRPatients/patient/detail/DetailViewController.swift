@@ -15,6 +15,7 @@ class DetailViewController: UITableViewController {
     }
     
     @IBOutlet weak var headerView: PatientDetailHeaderView!
+    @IBOutlet weak var uploadButton: SequenceStateButton!
     
     lazy var editButton: UIBarButtonItem = {
         let button = UIBarButtonItem(barButtonSystemItem: .edit, target: self, action: #selector(editButtonTapped(_:)))
@@ -42,6 +43,10 @@ class DetailViewController: UITableViewController {
         vc.title = "Edit Patient"
         let navController = UINavigationController(rootViewController: vc)
         navigationController?.present(navController, animated: true)
+    }
+    
+    @IBAction func uploadButtonTapped(_ sender: SequenceStateButton) {
+        sender.sequenceState = .processing
     }
 }
 
