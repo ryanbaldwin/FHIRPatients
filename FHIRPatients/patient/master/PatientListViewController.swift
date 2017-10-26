@@ -10,9 +10,15 @@ import UIKit
 import RealmSwift
 import FireKit
 
+/// A UITableViewController which displays a list of Patients stored locally on the device.
 class PatientListViewController: UITableViewController {
+    /// A PatientListModel used to manage the underlying list of Patients for this viewcontroller.
     var model = PatientListModel()
+    
+    /// A detailed view of a single patient
     var detailViewController: DetailViewController? = nil
+    
+    /// Used to subscribe to underlying data-update notifications from Realm.
     var notificationToken: NotificationToken? = nil
     
     override func viewDidLoad() {
@@ -28,6 +34,8 @@ class PatientListViewController: UITableViewController {
         }
     }
 
+    /// Configures some UI elements with which the user can interact,
+    /// such as the `Clear` and `+` UIBarButtonItems.
     private func configureInteractions() {
         let clearButton = UIBarButtonItem(title: "Clear", style: .plain, target: self,
                                           action: #selector(clearPatients))
@@ -38,6 +46,9 @@ class PatientListViewController: UITableViewController {
         navigationItem.rightBarButtonItem = addButton
     }
     
+    /// Presents a ViewController to the user, from which the user may create a new Patient
+    ///
+    /// - Parameter sender: The target of the touchUpInside which ultimately triggered this function.
     @objc func addPatient(_ sender: Any) {
         let vc = EditPatientViewController(nibName: String(describing: EditPatientViewController.self), bundle: nil)
         vc.model = PatientModel()
@@ -46,6 +57,8 @@ class PatientListViewController: UITableViewController {
         navigationController?.present(navController, animated: true)
     }
 
+    /// Presents an alert confirmation to the User which, when confirmed,
+    /// clears all the patients from the local realm.
     @objc func clearPatients() {
         let alertController = UIAlertController(title: "Clear All Patients",
                                                 message: "Are you sure you want to clear all local patients? This cannot be undone.",
@@ -57,6 +70,7 @@ class PatientListViewController: UITableViewController {
     }
     
     deinit {
+        // Make sure we unsubscribe from the Realm notifications when this UIViewController is unloaded.
         notificationToken?.stop()
     }
     // MARK: - Segues

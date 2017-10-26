@@ -11,8 +11,12 @@ import FireKit
 import RealmSwift
 
 extension PatientListViewController {
-    // MARK: - Table View
-    
+    /// Responds to a RealmCollectionChange event wherein the underlying patients this view is presenting
+    /// is modified. Will insert, delete, and reload the appropriate rows to match the underlying changes.
+    ///
+    /// - Parameters:
+    ///   - changes: The patients which were deleted, inserted, or updated
+    ///   - tableView: The tableview presenting these Patients
     func load(_ changes: RealmCollectionChange<Results<Patient>>, into tableView: UITableView?) {
         guard let tableView = tableView else { return }
         refreshControl?.endRefreshing()

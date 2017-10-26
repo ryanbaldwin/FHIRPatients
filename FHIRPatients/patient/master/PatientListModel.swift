@@ -10,9 +10,11 @@ import Foundation
 import FireKit
 import RealmSwift
 
+/// Provides a simple model from which a view controller can display a list of patients,
+/// as well as clear all or individual patients from the local Realm.
 class PatientListModel {
-    private var continuationURL: URL?
     
+    /// The Realm used by this instance.
     private lazy var realm: Realm? = {
         do {
             let r =  try Realm()
@@ -25,17 +27,12 @@ class PatientListModel {
         return nil
     }()
     
+    /// A list of all patients in the local Realm
     lazy var patients: Results<Patient> = {
         return self.realm!.objects(Patient.self)
     }()
     
-    func process(bundle: FireKit.Bundle) {
-        self.save(patients: bundle.entry.flatMap { $0.resource?.resource as? Patient })
-        if let continueUrl = bundle.link.first(where: { $0.relation == "next" })?.url {
-            self.continuationURL = URL(string: continueUrl)
-        }
-    }
-    
+    /// Deletes all patients from the device.
     func deleteAllLocalPatients() {
         do {
             try realm?.write {
@@ -46,35 +43,9 @@ class PatientListModel {
         }
     }
     
-    private func normalizeNames(forPatients patients: [Patient]) {
-        patients.forEach { patient in
-            let name = patient.name.first ?? HumanName()
-            if name.family.count == 0 {
-                name.family.append(RealmString(val: "Doe"))
-            }
-            
-            if name.given.count == 0 {
-                name.given.append(RealmString(val: "J."))
-            }
-            
-            if patient.name.count == 0 {
-                patient.name.append(name)
-            }
-        }
-    }
-    
-    private func save(patients: [Patient]) {
-        normalizeNames(forPatients: patients)
-        do {
-            let realm = try Realm()
-            try realm.write {
-                realm.upsert(patients)
-            }
-        } catch let error {
-            print("Failed to save patients: \(error)")
-        }
-    }
-    
+    /// Deletes a single patient from the device.
+    ///
+    /// - Parameter patient: The patient to delete.
     func deleteLocalPatient(_ patient: Patient) {
         try? realm?.write {
             patient.cascadeDelete()
