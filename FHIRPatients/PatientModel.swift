@@ -165,11 +165,13 @@ class PatientModel {
         
         do {
             _ = try uploadRequest.submit() { [weak self] result in
-                if case let Result.success(uploadedPatient) = result {
-                    try! self?.realm.write { patientToUpload.populate(from: uploadedPatient) }
+                switch result {
+                case let .success(uploadPatient):
+                    try! self?.realm.write { patientToUpload.populate(from: uploadPatient)}
+                    completion?(nil)
+                case let .failure(error):
+                    completion?(error)
                 }
-                
-                completion?(nil)
             }
         } catch let error {
             completion?(error)
