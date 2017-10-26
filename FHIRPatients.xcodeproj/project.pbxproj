@@ -40,6 +40,7 @@
 		7DD78ACD1F9296F10055F5F8 /* EditPatientViewController+Datasource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7DD78ACC1F9296F10055F5F8 /* EditPatientViewController+Datasource.swift */; };
 		7DD78AFC1F93A8CD0055F5F8 /* AddCollectionItemView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7DD78AFA1F93A8CD0055F5F8 /* AddCollectionItemView.swift */; };
 		C286C2A71FA0E83300941215 /* SequenceStateButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = C286C2A61FA0E83300941215 /* SequenceStateButton.swift */; };
+		C2D564721FA26AD100089467 /* PatientSearchController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2D564711FA26AD100089467 /* PatientSearchController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -90,6 +91,7 @@
 		7DD78ACC1F9296F10055F5F8 /* EditPatientViewController+Datasource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "EditPatientViewController+Datasource.swift"; sourceTree = "<group>"; };
 		7DD78AFA1F93A8CD0055F5F8 /* AddCollectionItemView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddCollectionItemView.swift; sourceTree = "<group>"; };
 		C286C2A61FA0E83300941215 /* SequenceStateButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SequenceStateButton.swift; sourceTree = "<group>"; };
+		C2D564711FA26AD100089467 /* PatientSearchController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PatientSearchController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -120,6 +122,7 @@
 				7DC43D7F1F8DA3A000AD6187 /* detail */,
 				7DC43D801F8DA3A900AD6187 /* edit */,
 				7DC43D7E1F8DA38B00AD6187 /* master */,
+				C2D564711FA26AD100089467 /* PatientSearchController.swift */,
 			);
 			path = patient;
 			sourceTree = "<group>";
@@ -193,8 +196,8 @@
 		7D5E0EF31F85A32C009FD0BB /* http */ = {
 			isa = PBXGroup;
 			children = (
-				7D5E0EF41F85A346009FD0BB /* HttpPatients.swift */,
 				7D5E0EFA1F85A3B3009FD0BB /* HttpDefaults.swift */,
+				7D5E0EF41F85A346009FD0BB /* HttpPatients.swift */,
 			);
 			path = http;
 			sourceTree = "<group>";
@@ -398,6 +401,7 @@
 				7D5E0EC81F857DA6009FD0BB /* PatientListViewController.swift in Sources */,
 				7D971F4A1F93EADE00276E15 /* ContactPointSystem.swift in Sources */,
 				7D3407F31F8A9D5300F4115E /* UnderlinedTextField.swift in Sources */,
+				C2D564721FA26AD100089467 /* PatientSearchController.swift in Sources */,
 				7DD78ACD1F9296F10055F5F8 /* EditPatientViewController+Datasource.swift in Sources */,
 				7D3407F01F8A98F600F4115E /* EditPatientViewController.swift in Sources */,
 				7DD78AFC1F93A8CD0055F5F8 /* AddCollectionItemView.swift in Sources */,

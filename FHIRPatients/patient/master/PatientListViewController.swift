@@ -21,10 +21,33 @@ class PatientListViewController: UITableViewController {
     /// Used to subscribe to underlying data-update notifications from Realm.
     var notificationToken: NotificationToken? = nil
     
+    /// The UISearchController used for searching patients by Family Name on the FHIR server
+    lazy var searchController: UISearchController = {
+        let resultsController = PatientSearchController(style: .plain)
+        resultsController.didSelectPatientResult = { [weak self] patient in
+            resultsController.dismiss(animated: true) {
+                let controller = UIStoryboard(name: "Main", bundle: nil)
+                                .instantiateViewController(withIdentifier: "DetailViewController") as! DetailViewController
+                self?.showDetail(ofPatient: patient, in: controller)
+                self?.navigationController?.pushViewController(controller, animated: true)
+            }
+        }
+        
+        let searchController = UISearchController(searchResultsController: resultsController)
+        searchController.searchResultsUpdater = resultsController
+        searchController.obscuresBackgroundDuringPresentation = true
+        searchController.searchBar.placeholder = "Find Remote Patients by Family Name"
+        searchController.searchBar.autocapitalizationType = .words
+        
+        return searchController
+    }()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+        definesPresentationContext = true
         clearsSelectionOnViewWillAppear = true
         navigationItem.largeTitleDisplayMode = .automatic
+        navigationItem.searchController = searchController
         
         configureInteractions()
         
@@ -78,13 +101,17 @@ class PatientListViewController: UITableViewController {
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "showDetail" {
             if let indexPath = tableView.indexPathForSelectedRow {
-                let object = model.patients[indexPath.row]
+                let patient = model.patients[indexPath.row]
                 let controller = segue.destination as! DetailViewController
-                controller.model = PatientModel(patient: object)
-                controller.navigationItem.leftBarButtonItem = splitViewController?.displayModeButtonItem
-                controller.navigationItem.leftItemsSupplementBackButton = true
+                showDetail(ofPatient: patient, in: controller)
             }
         }
+    }
+    
+    private func showDetail(ofPatient patient: Patient, in controller: DetailViewController) {
+        controller.model = PatientModel(patient: patient)
+        controller.navigationItem.leftBarButtonItem = splitViewController?.displayModeButtonItem
+        controller.navigationItem.leftItemsSupplementBackButton = true
     }
 }
 

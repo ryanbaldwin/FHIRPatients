@@ -4,7 +4,7 @@
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13173"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13174"/>
         <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="Stack View standard spacing" minToolsVersion="9.0"/>
@@ -32,11 +32,11 @@
             <color key="backgroundColor" red="0.99999600649999998" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
             <viewLayoutGuide key="safeArea" id="vLr-E1-eTs"/>
             <view key="tableHeaderView" contentMode="scaleToFill" id="zj1-YX-xH0">
-                <rect key="frame" x="0.0" y="0.0" width="375" height="163"/>
+                <rect key="frame" x="0.0" y="0.0" width="375" height="188"/>
                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                 <subviews>
                     <stackView opaque="NO" contentMode="scaleToFill" alignment="top" spacingType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="i3V-dZ-i8k">
-                        <rect key="frame" x="8" y="8" width="359" height="147"/>
+                        <rect key="frame" x="8" y="8" width="359" height="172"/>
                         <subviews>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" spacing="4" translatesAutoresizingMaskIntoConstraints="NO" id="4EP-n1-7HB">
                                 <rect key="frame" x="0.0" y="0.0" width="50" height="80"/>
@@ -81,10 +81,10 @@
                                 </constraints>
                             </stackView>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="top" spacingType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="gPT-me-RYX">
-                                <rect key="frame" x="58" y="0.0" width="301" height="144"/>
+                                <rect key="frame" x="58" y="0.0" width="301" height="172"/>
                                 <subviews>
                                     <segmentedControl opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="249" verticalCompressionResistancePriority="1000" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" translatesAutoresizingMaskIntoConstraints="NO" id="J2e-sh-INu">
-                                        <rect key="frame" x="0.0" y="0.0" width="301" height="31"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="301" height="29"/>
                                         <segments>
                                             <segment title="Male"/>
                                             <segment title="Female"/>
@@ -96,7 +96,10 @@
                                         </connections>
                                     </segmentedControl>
                                     <textField opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="249" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="First name" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="cPr-Uy-Gfg" customClass="UnderlinedTextField" customModule="FHIRPatients" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="38" width="301" height="30"/>
+                                        <rect key="frame" x="0.0" y="36" width="301" height="40"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="40" id="NaG-6N-mIw"/>
+                                        </constraints>
                                         <nil key="textColor"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                         <textInputTraits key="textInputTraits" autocapitalizationType="words" autocorrectionType="no" spellCheckingType="no" returnKeyType="done"/>
@@ -106,7 +109,7 @@
                                         </connections>
                                     </textField>
                                     <textField opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="249" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Last name" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="rUo-2B-5Ch" customClass="UnderlinedTextField" customModule="FHIRPatients" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="76" width="301" height="30"/>
+                                        <rect key="frame" x="0.0" y="84" width="301" height="40"/>
                                         <nil key="textColor"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                         <textInputTraits key="textInputTraits" autocapitalizationType="words" autocorrectionType="no" spellCheckingType="no" returnKeyType="done"/>
@@ -116,16 +119,16 @@
                                         </connections>
                                     </textField>
                                     <stackView opaque="NO" contentMode="scaleToFill" spacingType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="E1T-1X-WFM">
-                                        <rect key="frame" x="0.0" y="114" width="301" height="30"/>
+                                        <rect key="frame" x="0.0" y="132" width="301" height="40"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" text="birthdate:" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tyo-uT-Rm9">
-                                                <rect key="frame" x="0.0" y="0.0" width="75" height="30"/>
+                                                <rect key="frame" x="0.0" y="0.0" width="75" height="40"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="48" horizontalCompressionResistancePriority="749" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="yIS-QP-0Gn" customClass="UnderlinedTextField" customModule="FHIRPatients" customModuleProvider="target">
-                                                <rect key="frame" x="83" y="0.0" width="218" height="30"/>
+                                                <rect key="frame" x="83" y="0.0" width="218" height="40"/>
                                                 <nil key="textColor"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                 <textInputTraits key="textInputTraits"/>
@@ -136,12 +139,11 @@
                                 <constraints>
                                     <constraint firstItem="E1T-1X-WFM" firstAttribute="leading" secondItem="gPT-me-RYX" secondAttribute="leading" id="10U-8j-3bj"/>
                                     <constraint firstItem="rUo-2B-5Ch" firstAttribute="width" secondItem="J2e-sh-INu" secondAttribute="width" id="5dm-9z-GSf"/>
+                                    <constraint firstItem="yIS-QP-0Gn" firstAttribute="height" secondItem="cPr-Uy-Gfg" secondAttribute="height" id="Gwz-Gr-oq4"/>
                                     <constraint firstItem="cPr-Uy-Gfg" firstAttribute="width" secondItem="J2e-sh-INu" secondAttribute="width" id="Kv3-Ud-akj"/>
-                                    <constraint firstItem="E1T-1X-WFM" firstAttribute="height" secondItem="J2e-sh-INu" secondAttribute="height" id="R6d-5S-sCX"/>
+                                    <constraint firstItem="rUo-2B-5Ch" firstAttribute="height" secondItem="cPr-Uy-Gfg" secondAttribute="height" id="UpL-hX-bQd"/>
                                     <constraint firstAttribute="trailing" secondItem="E1T-1X-WFM" secondAttribute="trailing" id="aJY-h5-u9v"/>
-                                    <constraint firstItem="cPr-Uy-Gfg" firstAttribute="height" secondItem="J2e-sh-INu" secondAttribute="height" id="jo4-3V-K6D"/>
                                     <constraint firstItem="J2e-sh-INu" firstAttribute="leading" secondItem="gPT-me-RYX" secondAttribute="leading" id="vMx-9j-227"/>
-                                    <constraint firstItem="rUo-2B-5Ch" firstAttribute="height" secondItem="J2e-sh-INu" secondAttribute="height" id="xyY-uD-BGI"/>
                                     <constraint firstAttribute="trailing" secondItem="J2e-sh-INu" secondAttribute="trailing" id="yal-Mb-ufH"/>
                                 </constraints>
                             </stackView>

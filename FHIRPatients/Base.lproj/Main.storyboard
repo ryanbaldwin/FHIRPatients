@@ -74,7 +74,7 @@
         <!--Detail View Controller-->
         <scene sceneID="cOE-de-K3r">
             <objects>
-                <tableViewController id="aDN-K0-LlM" customClass="DetailViewController" customModule="FHIRPatients" customModuleProvider="target" sceneMemberID="viewController">
+                <tableViewController storyboardIdentifier="DetailViewController" id="aDN-K0-LlM" customClass="DetailViewController" customModule="FHIRPatients" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="grouped" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="18" id="DyU-Mx-EAm">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>

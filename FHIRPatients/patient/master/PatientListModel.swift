@@ -45,10 +45,19 @@ class PatientListModel {
     
     /// Deletes a single patient from the device.
     ///
-    /// - Parameter patient: The patient to delete.
-    func deleteLocalPatient(_ patient: Patient) {
-        try? realm?.write {
-            patient.cascadeDelete()
+    /// - Parameters:
+    ///   - patient: The patient to delete.
+    ///   - token: When provided, `deleteLocalPatient` will perform the transaction without sending
+    ///            notifications back to the NotificationToken. Used if the view wants to manage its own
+    ///            UI driven writes. Defaults to nil.
+    func deleteLocalPatient(_ patient: Patient, ignoreNotificationsFrom token: NotificationToken? = nil) {
+        guard let token = token else {
+            try? realm?.write { patient.cascadeDelete() }
+            return
         }
+        
+        realm?.beginWrite()
+        patient.cascadeDelete()
+        try? realm?.commitWrite(withoutNotifying: [token])
     }
 }

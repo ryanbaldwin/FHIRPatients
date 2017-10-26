@@ -46,6 +46,7 @@ extension PatientListViewController {
         return model.patients.count
     }
     
+    /// Gets the cell for the patient at the appropriate index. Defaults the patient's name to "J. Doe"
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath)
         
@@ -54,5 +55,25 @@ extension PatientListViewController {
         let givenName = patient.name.first?.given.first?.value ?? "J."
         cell.textLabel!.text = "\(familyName), \(givenName)"
         return cell
+    }
+    
+    /// Determines if the user can edit the selected patient
+    ///
+    /// - Parameters:
+    ///   - tableView: The tableview containing the patient
+    ///   - indexPath: the IndexPath for the cell
+    /// - Returns: Always returns true.
+    override func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
+        return true
+    }
+    
+    override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
+        if editingStyle == .delete {
+            // Here, because we are doing a UI driven 'write' to the underlying Realm,
+            // we want to handle the update to the tableview ourself. Therefore, we will ignore any notification
+            // for this transaction.
+            model.deleteLocalPatient(model.patients[indexPath.row], ignoreNotificationsFrom: notificationToken)
+            tableView.deleteRows(at: [indexPath], with: .fade)
+        }
     }
 }

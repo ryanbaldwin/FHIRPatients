@@ -39,3 +39,10 @@ struct RefreshPatientRequest: Gettable {
     var patientId: String
     var path: String { return "/Patient/\(patientId)" }
 }
+
+struct FindPatientsRequest: Authenticating, Gettable {
+    typealias ResponseType = FireKit.Bundle
+    
+    var familyName: String
+    var path: String { return "/Patient?family=\(familyName)" }
+}
