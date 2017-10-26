@@ -113,11 +113,24 @@ extension EditPatientViewController: UIImagePickerControllerDelegate, UINavigati
     
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : Any]) {
         if let image = info[UIImagePickerControllerOriginalImage] as? UIImage {
-            model.image = image
+            model.image = scale(image, toWidth: UIScreen.main.bounds.width)
             dismiss(animated: true) { [unowned self] in
                 self.bindImage(animated: true)
             }
         }
+    }
+    
+    private func scale(_ image: UIImage, toWidth newWidth: CGFloat) -> UIImage {
+        let scale = newWidth / image.size.width
+        let scaledWidth = newWidth
+        let scaledHeight = image.size.height * scale
+        
+        UIGraphicsBeginImageContext(CGSize(width: scaledWidth, height: scaledHeight))
+        image.draw(in: CGRect(x: 0, y: 0, width: scaledWidth, height: scaledHeight))
+        let newImage = UIGraphicsGetImageFromCurrentImageContext()!
+        UIGraphicsEndImageContext()
+        
+        return newImage
     }
 }
 
