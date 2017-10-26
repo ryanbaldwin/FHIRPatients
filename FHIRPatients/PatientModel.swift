@@ -138,6 +138,9 @@ class PatientModel {
                         }
                         patient.photo.first!.data = Base64Binary(string: jpeg.base64EncodedString(options: .lineLength64Characters))
                     }
+                } else if let existingPhoto = patient.photo.first {
+                    patient.photo.remove(objectAtIndex: 0)
+                    realm.delete(existingPhoto)
                 }
                 
                 // if this is a new patient, we must add it to the realm.
