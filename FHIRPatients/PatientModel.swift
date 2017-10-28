@@ -31,10 +31,6 @@ class PatientModel {
     /// The Realm used by this instance
     private var realm = try! Realm()
     
-    /// An optional editingPatientPK, used to keep track of the primary key for the patient
-    /// we are editing.
-    private(set) var editingPatientPK: String?
-    
     /// The patient to edit. If this instance is creating a new Patient, then `patient` will be nil.
     private var patientToEdit: Patient?
     
