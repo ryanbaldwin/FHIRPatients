@@ -63,6 +63,7 @@ class EditPatientViewController: UITableViewController {
         super.viewDidLoad()
         
         addPhotoButton.titleLabel?.textAlignment = .center
+        
         registerTableViewCells()
         setupNavigation()
         setupBirthdateInputs()

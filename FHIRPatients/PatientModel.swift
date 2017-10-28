@@ -13,20 +13,48 @@ import RealmSwift
 import Restivus
 
 class PatientModel {
+    /// The gender of the Patient, as defined by FHIR DSTU2's `AdministrativeGender`
+    ///
+    /// - male: The patient's gender is male
+    /// - female: The patient's gender is female
+    /// - other: The patient's gender is other
+    /// - unknown: The patient's gender is unknown
     enum Gender: Int {
         case male, female, other, unknown
     }
     
+    /// An optional call back to notify a listener if the
+    /// patient contained in this model is in a saveable state.
+    /// When `true`, the patient can be saved; otherwise false.
     var patientCanSaveChanged: ((Bool) -> ())? = nil
     
+    /// The Realm used by this instance
     private var realm = try! Realm()
+    
+    /// An optional editingPatientPK, used to keep track of the primary key for the patient
+    /// we are editing.
     private(set) var editingPatientPK: String?
     
+    /// The patient to edit. If this instance is creating a new Patient, then `patient` will be nil.
+    private var patientToEdit: Patient?
+    
+    /// Returns true if this patient can be downloaded from the remote FHIR server; otherwise false.
+    var canDownloadPatient: Bool {
+        return patientToEdit?.id != nil
+    }
+    
+    /// Returns `true` if the patient can be uploaded to the remote FHIR server; otherwise `false`
+    var canUploadPatient: Bool {
+        guard let patient = self.patientToEdit else { return false }
+        return realm.object(ofType: Patient.self, forPrimaryKey: patient.pk) != nil
+    }
+    
+    /// Returns the `Reference` for the patient under edit.
+    /// If this instance is being used to create a new patient,
+    /// or edit a patient which has not been uploaded to the remote FHIR server,
+    /// then `reference` returns nil.
     var reference: Reference? {
-        guard let patientPk = editingPatientPK,
-        let patient = realm.object(ofType: Patient.self, forPrimaryKey: patientPk),
-        let patientId = patient.id else { return nil }
-        
+        guard let patientId = patientToEdit?.id else { return nil }
         return Reference(withReferenceId: "\(Patient.resourceType)/\(patientId)")
     }
     
@@ -58,11 +86,7 @@ class PatientModel {
     
     var telecoms: [ContactPoint] = []
     
-    var canUploadPatient: Bool {
-        guard let patientPk = editingPatientPK else { return false }
-        return realm.object(ofType: Patient.self, forPrimaryKey: patientPk) != nil
-    }
-    
+    /// Returns `true` if the patient can be saved; otherwise `false`.
     var canSave: Bool {
         return self.givenName?.trimmingCharacters(in: .whitespacesAndNewlines).count ?? 0 > 0
             && self.familyName?.trimmingCharacters(in: .whitespacesAndNewlines).count ?? 0 > 0
@@ -70,13 +94,17 @@ class PatientModel {
             && self.gender != nil
     }
     
+    /// Initializes this instance of the PatientModel
+    ///
+    /// - Parameter patient: When provided, this instance will operate in "edit mode" for the givne patient;
+    ///                      otherwise this instance will create a new patient.
     init(patient: Patient? = nil) {
         guard let patient = patient else { return }
         setup(withPatient: patient)
     }
     
     private func setup(withPatient patient: Patient) {
-        self.editingPatientPK = patient.pk
+        self.patientToEdit = patient
         
         givenName = patient.name.first?.given.first?.value
         familyName = patient.name.first?.family.first?.value
@@ -106,9 +134,9 @@ class PatientModel {
         }
         
         do {
-            let  patient = editingPatientPK == nil
+            let  patient = patientToEdit == nil
                 ? Patient()
-                : realm.object(ofType: Patient.self, forPrimaryKey: editingPatientPK!) ?? Patient()
+                : realm.object(ofType: Patient.self, forPrimaryKey: patientToEdit!.pk) ?? Patient()
             
             try realm.write {
                 if patient.name.first == nil {
@@ -144,8 +172,8 @@ class PatientModel {
                 }
                 
                 // if this is a new patient, we must add it to the realm.
-                if editingPatientPK == nil { realm.add(patient) }
-                editingPatientPK = patient.pk
+                if patientToEdit == nil { realm.add(patient) }
+                patientToEdit = patient
             }
         } catch let error {
             print("Failed to commit transaction when creating/updating patient: \(error)")
@@ -158,7 +186,7 @@ class PatientModel {
             return
         }
         
-        let patientToUpload = realm.object(ofType: Patient.self, forPrimaryKey: editingPatientPK!)!
+        let patientToUpload = realm.object(ofType: Patient.self, forPrimaryKey: patientToEdit!.pk)!
         var uploadRequest: AnyRestable<Patient>
         if patientToUpload.id == nil {
             uploadRequest = AnyRestable<Patient>(PostPatientRequest(patientToUpload))
@@ -177,6 +205,33 @@ class PatientModel {
                 }
             }
         } catch let error {
+            completion?(error)
+        }
+    }
+    
+    func downloadPatient(completion: ((Error?) -> ())? = nil) {
+        guard canDownloadPatient, let patient = patientToEdit else {
+            print("Cannot download the patient at this time. Does the patient have a proper `Reference`?")
+            return
+        }
+        
+        do {
+            _ = try DownloadPatientRequest(resourceId: patient.id!).submit() { [weak self] result in
+                switch result {
+                case let .success(downloadedPatient):
+                    do {
+                        try self?.realm.write { self?.patientToEdit = self?.realm.upsert(downloadedPatient) }
+                        completion?(nil)
+                    } catch let error {
+                        completion?(error)
+                    }
+                    
+                case let .failure(error):
+                    completion?(error)
+                }
+            }
+        } catch let error {
+            print("failed to download patient: \(error)")
             completion?(error)
         }
     }

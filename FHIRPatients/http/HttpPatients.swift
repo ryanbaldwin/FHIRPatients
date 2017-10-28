@@ -46,3 +46,9 @@ struct FindPatientsRequest: Authenticating, Gettable {
     var familyName: String
     var path: String { return "/Patient?family=\(familyName)" }
 }
+
+struct DownloadPatientRequest: Authenticating, Gettable {
+    typealias ResponseType = Patient
+    var resourceId: String
+    var path: String { return "/Patient/\(resourceId)" }
+}

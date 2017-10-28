@@ -132,35 +132,67 @@
                                 <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" spacingType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="wah-dR-NMU">
                                     <rect key="frame" x="16" y="27" width="343" height="50"/>
                                     <subviews>
-                                        <button opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="1000" verticalCompressionResistancePriority="1000" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="epe-uC-HwB" customClass="SequenceStateButton" customModule="FHIRPatients" customModuleProvider="target">
+                                        <stackView opaque="NO" contentMode="scaleToFill" spacingType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="GFa-Xg-66E">
                                             <rect key="frame" x="146.5" y="0.0" width="50" height="50"/>
-                                            <color key="backgroundColor" red="0.14039817452430725" green="0.48784685134887695" blue="0.89482790231704712" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                            <constraints>
-                                                <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="50" id="6kz-3c-ZDR"/>
-                                                <constraint firstAttribute="width" secondItem="epe-uC-HwB" secondAttribute="height" multiplier="1:1" id="gbm-bK-0mU"/>
-                                                <constraint firstAttribute="width" secondItem="epe-uC-HwB" secondAttribute="height" multiplier="1:1" id="h11-uW-MRq"/>
-                                                <constraint firstAttribute="width" constant="50" id="yvj-JN-GOt"/>
-                                            </constraints>
-                                            <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                            <state key="normal" image="upload-cloud"/>
-                                            <userDefinedRuntimeAttributes>
-                                                <userDefinedRuntimeAttribute type="image" keyPath="initialImage" value="upload-cloud"/>
-                                                <userDefinedRuntimeAttribute type="image" keyPath="successImage" value="check-cloud"/>
-                                                <userDefinedRuntimeAttribute type="color" keyPath="successColor">
-                                                    <color key="value" red="0.013244903585532415" green="0.70643638959390864" blue="0.028914778901227262" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                                </userDefinedRuntimeAttribute>
-                                                <userDefinedRuntimeAttribute type="image" keyPath="failureImage" value="sad-cloud"/>
-                                                <userDefinedRuntimeAttribute type="color" keyPath="failureColor">
-                                                    <color key="value" red="0.93654822335025378" green="0.095457733331612254" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                                </userDefinedRuntimeAttribute>
-                                                <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
-                                                    <real key="value" value="25"/>
-                                                </userDefinedRuntimeAttribute>
-                                            </userDefinedRuntimeAttributes>
-                                            <connections>
-                                                <action selector="uploadButtonTapped:" destination="aDN-K0-LlM" eventType="touchUpInside" id="D3I-Zs-ZKD"/>
-                                            </connections>
-                                        </button>
+                                            <subviews>
+                                                <button opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="1000" verticalCompressionResistancePriority="1000" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="epe-uC-HwB" customClass="SequenceStateButton" customModule="FHIRPatients" customModuleProvider="target">
+                                                    <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
+                                                    <color key="backgroundColor" red="0.14039817452430725" green="0.48784685134887695" blue="0.89482790231704712" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="50" id="6kz-3c-ZDR"/>
+                                                        <constraint firstAttribute="width" secondItem="epe-uC-HwB" secondAttribute="height" multiplier="1:1" id="gbm-bK-0mU"/>
+                                                        <constraint firstAttribute="width" secondItem="epe-uC-HwB" secondAttribute="height" multiplier="1:1" id="h11-uW-MRq"/>
+                                                        <constraint firstAttribute="width" constant="50" id="yvj-JN-GOt"/>
+                                                    </constraints>
+                                                    <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                    <state key="normal" image="upload-cloud"/>
+                                                    <userDefinedRuntimeAttributes>
+                                                        <userDefinedRuntimeAttribute type="image" keyPath="initialImage" value="upload-cloud"/>
+                                                        <userDefinedRuntimeAttribute type="image" keyPath="successImage" value="check-cloud"/>
+                                                        <userDefinedRuntimeAttribute type="color" keyPath="successColor">
+                                                            <color key="value" red="0.013244903585532415" green="0.70643638959390864" blue="0.028914778901227262" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                        </userDefinedRuntimeAttribute>
+                                                        <userDefinedRuntimeAttribute type="image" keyPath="failureImage" value="sad-cloud"/>
+                                                        <userDefinedRuntimeAttribute type="color" keyPath="failureColor">
+                                                            <color key="value" red="0.93725490196078431" green="0.094117647058823528" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                        </userDefinedRuntimeAttribute>
+                                                        <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                                            <real key="value" value="25"/>
+                                                        </userDefinedRuntimeAttribute>
+                                                    </userDefinedRuntimeAttributes>
+                                                    <connections>
+                                                        <action selector="uploadButtonTapped:" destination="aDN-K0-LlM" eventType="touchUpInside" id="D3I-Zs-ZKD"/>
+                                                    </connections>
+                                                </button>
+                                                <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Zaz-5p-lN0" userLabel="Download Button" customClass="SequenceStateButton" customModule="FHIRPatients" customModuleProvider="target">
+                                                    <rect key="frame" x="-162.5" y="0.0" width="50" height="50"/>
+                                                    <color key="backgroundColor" red="0.14039817452430725" green="0.48784685134887695" blue="0.89482790231704712" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="width" secondItem="Zaz-5p-lN0" secondAttribute="height" multiplier="1:1" id="jF4-Ke-Acr"/>
+                                                        <constraint firstAttribute="height" constant="50" id="yX6-Sr-0EE"/>
+                                                    </constraints>
+                                                    <color key="tintColor" red="0.99999600649999998" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                    <state key="normal" image="download-cloud"/>
+                                                    <userDefinedRuntimeAttributes>
+                                                        <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                                            <real key="value" value="25"/>
+                                                        </userDefinedRuntimeAttribute>
+                                                        <userDefinedRuntimeAttribute type="color" keyPath="successColor">
+                                                            <color key="value" red="0.013244903590000001" green="0.70643638959999999" blue="0.0289147789" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                        </userDefinedRuntimeAttribute>
+                                                        <userDefinedRuntimeAttribute type="color" keyPath="failureColor">
+                                                            <color key="value" red="0.93725490196078431" green="0.094117647058823528" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                                        </userDefinedRuntimeAttribute>
+                                                        <userDefinedRuntimeAttribute type="image" keyPath="successImage" value="database-check"/>
+                                                        <userDefinedRuntimeAttribute type="image" keyPath="initialImage" value="download-cloud"/>
+                                                        <userDefinedRuntimeAttribute type="image" keyPath="failureImage" value="sad-cloud"/>
+                                                    </userDefinedRuntimeAttributes>
+                                                    <connections>
+                                                        <action selector="downloadButtonTapped:" destination="aDN-K0-LlM" eventType="touchUpInside" id="Frm-Cp-Jyl"/>
+                                                    </connections>
+                                                </button>
+                                            </subviews>
+                                        </stackView>
                                         <button hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="249" verticalHuggingPriority="249" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="8OD-9I-bNW">
                                             <rect key="frame" x="7.5" y="-27" width="328" height="0.0"/>
                                             <state key="normal" title="Patient successfully uploaded. Tap here to view."/>
@@ -194,6 +226,7 @@
                         </connections>
                     </tableView>
                     <connections>
+                        <outlet property="downloadButton" destination="Zaz-5p-lN0" id="UMg-f2-tWN"/>
                         <outlet property="headerView" destination="BaR-Sy-mMd" id="ZyR-ws-cMg"/>
                         <outlet property="uploadButton" destination="epe-uC-HwB" id="L3J-A8-3kA"/>
                         <outlet property="viewPatientButton" destination="8OD-9I-bNW" id="5QT-Lh-fyu"/>
@@ -265,6 +298,8 @@
     </scenes>
     <resources>
         <image name="check-cloud" width="33" height="33"/>
+        <image name="database-check" width="33" height="33"/>
+        <image name="download-cloud" width="33" height="33"/>
         <image name="sad-cloud" width="33" height="33"/>
         <image name="upload-cloud" width="33" height="33"/>
         <image name="user" width="23" height="22"/>

@@ -16,6 +16,7 @@ class DetailViewController: UITableViewController {
     
     @IBOutlet weak var headerView: PatientDetailHeaderView!
     @IBOutlet weak var uploadButton: SequenceStateButton!
+    @IBOutlet weak var downloadButton: SequenceStateButton!
     @IBOutlet weak var viewPatientButton: UIButton!
     
     lazy var editButton: UIBarButtonItem = {
@@ -28,12 +29,15 @@ class DetailViewController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         navigationItem.largeTitleDisplayMode = .never
-        navigationItem.rightBarButtonItem = editButton
         
-        uploadButton.imageView?.tintColor = .white
-        uploadButton.layer.cornerRadius = uploadButton.bounds.height/2
-        uploadButton.layer.borderColor = UIColor.blue.cgColor
-        uploadButton.backgroundColor = .blue
+        setupButtons()
+    }
+    
+    private func setupButtons() {
+        let canUpload = model.canUploadPatient
+        navigationItem.rightBarButtonItem = canUpload ? editButton : nil
+        uploadButton.isHidden = !canUpload
+        downloadButton.isHidden = !model.canDownloadPatient
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -52,6 +56,8 @@ class DetailViewController: UITableViewController {
     }
     
     @IBAction func uploadButtonTapped(_ sender: SequenceStateButton) {
+        guard model.canUploadPatient else { return }
+        
         sender.sequenceState = .processing
         model.uploadPatient { [weak self] error in
             guard error == nil else {
@@ -61,6 +67,21 @@ class DetailViewController: UITableViewController {
             
             self?.uploadButton.sequenceState = .success
             self?.viewPatientButton.isHidden = false
+        }
+    }
+    
+    @IBAction func downloadButtonTapped(_ sender: SequenceStateButton) {
+        guard model.canDownloadPatient else { return }
+        
+        sender.sequenceState = .processing
+        model.downloadPatient { [weak self] error in
+            guard error == nil else {
+                self?.downloadButton.sequenceState = .failure
+                return
+            }
+            
+            self?.downloadButton.sequenceState = .success
+            self?.setupButtons()
         }
     }
     
