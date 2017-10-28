@@ -1,4 +1,4 @@
-# FHIRDevDays Example Project
+# FHIRPatients - A FireKit Example Project
 This is a simple example project which illustrates some of the functionality of [FireKit](https://github.com/ryanbaldwin/FireKit), [Restivus](https://ryanbaldwin.github.io/Restivus), and [Realm](https://github.com/realm/realm-cocoa)
 
 ## Requirements
