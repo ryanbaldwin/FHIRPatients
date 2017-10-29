@@ -54,32 +54,38 @@ class PatientModel {
         return Reference(withReferenceId: "\(Patient.resourceType)/\(patientId)")
     }
     
+    /// The image for this instance's patient's avatar
     var image: UIImage?
 
+    /// The given name for this instance's patient
     var givenName: String? {
         didSet {
             patientCanSaveChanged?(canSave)
         }
     }
     
+    /// The family name for this instance's patient
     var familyName: String? {
         didSet {
             patientCanSaveChanged?(canSave)
         }
     }
     
+    /// The date of birth of this instance's patient
     var dateOfBirth: Date? {
         didSet {
             patientCanSaveChanged?(canSave)
         }
     }
     
+    /// The gender (defined by FHIR's `AdministrativeGender`) of this isntance's patient
     var gender: Gender? {
         didSet {
             patientCanSaveChanged?(canSave)
         }
     }
     
+    /// An array of FHIR `ContactPoint`s for this isntance's patient. Defaults to empty.
     var telecoms: [ContactPoint] = []
     
     /// Returns `true` if the patient can be saved; otherwise `false`.
@@ -99,6 +105,9 @@ class PatientModel {
         setup(withPatient: patient)
     }
     
+    /// Setup this instance to operate over the provided `Patient`
+    ///
+    /// - Parameter patient: The `Patient` to edit for this instance.
     private func setup(withPatient patient: Patient) {
         self.patientToEdit = patient
         
@@ -117,8 +126,7 @@ class PatientModel {
         }
         
         if let base64String = patient.photo.first?.data?.value,
-            let data = Data(base64Encoded: base64String, options: .ignoreUnknownCharacters),
-            let image = UIImage(data: data) {
+            let image = UIImage(base64EncodedString: base64String) {
             self.image = image
         }
     }
