@@ -11,8 +11,10 @@ import FireKit
 import RealmSwift
 
 extension PatientListViewController {
-    /// Responds to a RealmCollectionChange event wherein the underlying patients this view is presenting
+    /// Responds to a RealmCollectionChange event wherein the underlying patient list this view is presenting
     /// is modified. Will insert, delete, and reload the appropriate rows to match the underlying changes.
+    ///
+    /// For more information, check out [Mastering Realm Notifications](https://academy.realm.io/posts/meetup-jp-simard-mastering-realm-notifications/)
     ///
     /// - Parameters:
     ///   - changes: The patients which were deleted, inserted, or updated

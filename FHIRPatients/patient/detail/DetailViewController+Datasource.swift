@@ -15,12 +15,8 @@ extension DetailViewController {
     }
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        guard let currentSection = DetailViewController.Sections(rawValue: section) else {
-            assert(false, "Unknown section: \(section)")
-        }
-        
-        switch currentSection {
-        case .telecoms:
+        switch DetailViewController.Sections(rawValue: section) {
+        case .some(.telecoms):
             return model?.telecoms.count ?? 0
         default:
             assert(false, "UICollectionView is asking for more sections than we know about: \(section)")
@@ -37,12 +33,8 @@ extension DetailViewController {
     }
 
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        guard let currentSection = DetailViewController.Sections(rawValue: indexPath.section) else {
-            assert(false, "Unknown section: \(indexPath.section)")
-        }
-        
-        switch currentSection {
-        case .telecoms:
+        switch DetailViewController.Sections(rawValue: indexPath.section) {
+        case .some(.telecoms):
             let cell = UITableViewCell(style: .subtitle, reuseIdentifier: "ContactPointCell")
             let contactPoint = model?.telecoms[indexPath.row]
             cell.textLabel?.text = contactPoint?.system

@@ -28,7 +28,7 @@ class PatientListViewController: UITableViewController {
             resultsController.dismiss(animated: true) {
                 let controller = UIStoryboard(name: "Main", bundle: nil)
                                 .instantiateViewController(withIdentifier: "DetailViewController") as! DetailViewController
-                self?.showDetail(ofPatient: patient, in: controller)
+                self?.setupDetailController(controller, forPatient: patient)
                 self?.navigationController?.pushViewController(controller, animated: true)
             }
         }
@@ -103,12 +103,17 @@ class PatientListViewController: UITableViewController {
             if let indexPath = tableView.indexPathForSelectedRow {
                 let patient = model.patients[indexPath.row]
                 let controller = segue.destination as! DetailViewController
-                showDetail(ofPatient: patient, in: controller)
+                setupDetailController(controller, forPatient: patient)
             }
         }
     }
     
-    private func showDetail(ofPatient patient: Patient, in controller: DetailViewController) {
+    /// Prepares a DetailViewController to display a given patient.
+    ///
+    /// - Parameters:
+    ///   - controller: The DetailViewController to be prepared
+    ///   - patient: The patient the DetailViewController is to display.
+    private func setupDetailController(_ controller: DetailViewController, forPatient patient: Patient) {
         controller.model = PatientModel(patient: patient)
         controller.navigationItem.leftBarButtonItem = splitViewController?.displayModeButtonItem
         controller.navigationItem.leftItemsSupplementBackButton = true

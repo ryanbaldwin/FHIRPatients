@@ -9,28 +9,28 @@
 import UIKit
 import FireKit
 
+/// Provides a means of searching and displaying patients on a remote FHIR Server.
 class PatientSearchController: UITableViewController {
-    var searchTask: URLSessionDataTask?
-    var searchTimer = Timer()
     
+    /// The URLSessionDataTask for the currently active server query.
+    private var searchTask: URLSessionDataTask?
+    
+    /// A timer used to delay searches until after the user is done typing.
+    private var searchTimer = Timer()
+    
+    /// An optional callback sent to a target whenever a patient is selected from the search results.
     var didSelectPatientResult: ((Patient) -> ())?
     
-    lazy var dateFormatter: DateFormatter = {
-        let formatter = DateFormatter()
-        
-        formatter.timeZone = TimeZone(abbreviation: "UTC")
-        formatter.dateStyle = .short
-        formatter.timeStyle = .none
-        
-        return formatter
-    }()
-    
+    /// Gets/Sets the family name, as entered so far by the patient.
+    /// On setting, any previous timer that's been set, or search that is already in progress, will be
+    /// invalidated/cancelled, and a new timer will be scheduled to be fired in 500ms which will send
+    /// the query with the updated family name.
     var familyName: String? = nil {
         didSet {
             searchTimer.invalidate()
             searchTask?.cancel()
             
-            searchTimer = Timer.scheduledTimer(withTimeInterval: 0.3, repeats: false) { [weak self] _ in
+            searchTimer = Timer.scheduledTimer(withTimeInterval: 0.5, repeats: false) { [weak self] _ in
                 guard let familyName = self?.familyName, familyName.count > 0 else { return }
                 
                 self?.searchTask = try? FindPatientsRequest(familyName: familyName).submit() { result in
@@ -45,7 +45,8 @@ class PatientSearchController: UITableViewController {
         }
     }
     
-    var remotePatients: [Patient] = [] {
+    /// Gets the list of remote patients who have a similar family name to that entered by the user.
+    private(set) var remotePatients: [Patient] = [] {
         didSet {
             tableView.reloadData()
         }
@@ -74,7 +75,7 @@ class PatientSearchController: UITableViewController {
         
         var dobString: String? = nil
         if let dob = patient.birthDate {
-            dobString = dateFormatter.string(from: dob.nsDate)
+            dobString = DateFormatter.dateOfBirthFormatter.string(from: dob.nsDate)
         }
         
         let details: [String?] = [patient.gender, dobString]

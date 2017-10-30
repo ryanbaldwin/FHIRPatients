@@ -8,6 +8,7 @@
 
 import UIKit
 
+/// A circular UIImageView which displays a picture of the patient.
 class PatientAvatarView: UIImageView {
     
     override init(frame: CGRect) {

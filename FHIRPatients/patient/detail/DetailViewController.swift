@@ -9,9 +9,19 @@
 import UIKit
 import FireKit
 
+/// Provides a detailed view of a Patient.
 class DetailViewController: UITableViewController {
+    /// Defines the sections for this ViewController's TableView
+    ///
+    /// - telecoms: A section which lists all the `FireKit.ContactPoint`s for the patient
+    /// - count: The total number of sections in the TableView.
     enum Sections: Int {
-        case telecoms, count
+        
+        /// lists all the `FireKit.ContactPoint`s for the patient
+        case telecoms,
+        
+        /// The total number of sections in the TableView.
+        count
     }
     
     @IBOutlet weak var headerView: PatientDetailHeaderView!
@@ -19,33 +29,46 @@ class DetailViewController: UITableViewController {
     @IBOutlet weak var downloadButton: SequenceStateButton!
     @IBOutlet weak var viewPatientButton: UIButton!
     
+    /// A button which, when tapped, will put this view into Edit mode.
     lazy var editButton: UIBarButtonItem = {
         let button = UIBarButtonItem(barButtonSystemItem: .edit, target: self, action: #selector(editButtonTapped(_:)))
         return button
     }()
     
+    /// Gets/sets the model containing the PatientData and functionality for this ViewController
     var model: PatientModel!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         navigationItem.largeTitleDisplayMode = .never
-        
         setupButtons()
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        bind(model: model)
+    }
+    
+    /// Sets the appropriate visibility of the various buttons on the Detail view.
     private func setupButtons() {
         let canUpload = model.canUploadPatient
         navigationItem.rightBarButtonItem = canUpload ? editButton : nil
         uploadButton.isHidden = !canUpload
         downloadButton.isHidden = !model.canDownloadPatient
+        viewPatientButton.isHidden = !model.canDownloadPatient
     }
     
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
+    /// Binds a PatientModel to this ViewController and to it's subcomponents
+    ///
+    /// - Parameter model: The PatientModel
+    private func bind(model: PatientModel) {
         headerView.model = model
         tableView.reloadData()
     }
     
+    /// Handles the edit button's touchUpInside event
+    ///
+    /// - Parameter sender: The UIBarButtonItem whose touchUpInside event is being responded to.
     @objc func editButtonTapped(_ sender: UIBarButtonItem) {
         let vc = EditPatientViewController(nibName: String(describing: EditPatientViewController.self), bundle: nil)
         vc.modalTransitionStyle = .crossDissolve
@@ -55,36 +78,55 @@ class DetailViewController: UITableViewController {
         navigationController?.present(navController, animated: true)
     }
     
+    /// Handles the uploadButton.touchUpInside event
+    ///
+    /// - Parameter sender: The SequenceStateButton whose touchUpInside event is being responded to.
     @IBAction func uploadButtonTapped(_ sender: SequenceStateButton) {
         guard model.canUploadPatient else { return }
         
         sender.sequenceState = .processing
-        model.uploadPatient { [weak self] error in
-            guard error == nil else {
-                self?.uploadButton.sequenceState = .failure
-                return
+        do {
+            try model.uploadPatient { [weak self] error in
+                guard error == nil else {
+                    self?.uploadButton.sequenceState = .failure
+                    return
+                }
+                
+                self?.uploadButton.sequenceState = .success
             }
-            
-            self?.uploadButton.sequenceState = .success
-            self?.viewPatientButton.isHidden = false
+        } catch {
+            uploadButton.sequenceState = .failure
         }
     }
     
+    /// Handles the downloadButton.touchUpInside event
+    ///
+    /// - Parameter sender: The SequenceStateButton whose touchUpInside event is being responded to.
     @IBAction func downloadButtonTapped(_ sender: SequenceStateButton) {
         guard model.canDownloadPatient else { return }
         
         sender.sequenceState = .processing
-        model.downloadPatient { [weak self] error in
-            guard error == nil else {
-                self?.downloadButton.sequenceState = .failure
-                return
+        do {
+            try model.downloadPatient { [weak self] error in
+                guard error == nil else {
+                    self?.downloadButton.sequenceState = .failure
+                    return
+                }
+                
+                self?.downloadButton.sequenceState = .success
+                self?.setupButtons()
+                if let model = self?.model { self?.bind(model: model) }
             }
-            
-            self?.downloadButton.sequenceState = .success
-            self?.setupButtons()
+        } catch {
+            downloadButton.sequenceState = .failure
         }
     }
     
+    /// Prepares the OnlineFHIRResourceViewController to present the FHIR Resource JSON on the FHIR Server
+    ///
+    /// - Parameters:
+    ///   - segue: The segue being executed
+    ///   - sender: The sender which triggered the segue
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "loadRemoteResourceSegue" {
             guard let reference = model.reference else { return }

@@ -8,6 +8,7 @@
 
 import UIKit
 
+/// Creates a typical UITextField, but with a thin line along its bottom edge.
 class UnderlinedTextField: UITextField {
     override init(frame: CGRect) {
         super.init(frame: frame)

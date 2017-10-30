@@ -41,6 +41,7 @@
 		7DD78AFC1F93A8CD0055F5F8 /* AddCollectionItemView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7DD78AFA1F93A8CD0055F5F8 /* AddCollectionItemView.swift */; };
 		7DD794E81FA6522000861F0F /* UIImage+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7DD794E71FA6522000861F0F /* UIImage+Extensions.swift */; };
 		C286C2A71FA0E83300941215 /* SequenceStateButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = C286C2A61FA0E83300941215 /* SequenceStateButton.swift */; };
+		C2AD01B41FA7BC720073A500 /* DateFormatte+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2AD01B31FA7BC720073A500 /* DateFormatte+Extensions.swift */; };
 		C2D564721FA26AD100089467 /* PatientSearchController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2D564711FA26AD100089467 /* PatientSearchController.swift */; };
 /* End PBXBuildFile section */
 
@@ -93,6 +94,7 @@
 		7DD78AFA1F93A8CD0055F5F8 /* AddCollectionItemView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddCollectionItemView.swift; sourceTree = "<group>"; };
 		7DD794E71FA6522000861F0F /* UIImage+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImage+Extensions.swift"; sourceTree = "<group>"; };
 		C286C2A61FA0E83300941215 /* SequenceStateButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SequenceStateButton.swift; sourceTree = "<group>"; };
+		C2AD01B31FA7BC720073A500 /* DateFormatte+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "DateFormatte+Extensions.swift"; sourceTree = "<group>"; };
 		C2D564711FA26AD100089467 /* PatientSearchController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PatientSearchController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -132,10 +134,11 @@
 		7D3407F81F8AA4BE00F4115E /* uikit */ = {
 			isa = PBXGroup;
 			children = (
-				7D3407F21F8A9D5300F4115E /* UnderlinedTextField.swift */,
+				C2AD01B31FA7BC720073A500 /* DateFormatte+Extensions.swift */,
 				7D609F101F90029100DD9D77 /* PatientAvatarView.swift */,
 				C286C2A61FA0E83300941215 /* SequenceStateButton.swift */,
 				7DD794E71FA6522000861F0F /* UIImage+Extensions.swift */,
+				7D3407F21F8A9D5300F4115E /* UnderlinedTextField.swift */,
 			);
 			path = uikit;
 			sourceTree = "<group>";
@@ -416,6 +419,7 @@
 				7DC995531F93D5D100EF9154 /* EditContactPointCell.swift in Sources */,
 				7DC995581F93D79B00EF9154 /* LabelPickerViewController.swift in Sources */,
 				7D32E05A1F8FDA0C00925EF3 /* DetailViewController+Datasource.swift in Sources */,
+				C2AD01B41FA7BC720073A500 /* DateFormatte+Extensions.swift in Sources */,
 				7D5E0EC61F857DA6009FD0BB /* AppDelegate.swift in Sources */,
 				7D3407EB1F8A80F200F4115E /* PatientListModel.swift in Sources */,
 				7D3407F71F8A9F8800F4115E /* PatientModel.swift in Sources */,
