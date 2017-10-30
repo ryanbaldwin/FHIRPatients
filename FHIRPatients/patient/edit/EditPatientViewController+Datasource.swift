@@ -50,8 +50,9 @@ extension EditPatientViewController {
             
         case .some(.telecoms):
             let view = AddCollectionItemView.loadFromNib()
-            view.label.text = "add contact point"
-            view.didTouchUpInside = { [unowned self] in
+            view.addButton.setTitle("add contact point", for: .normal)
+            view.addButton.titleLabel?.sizeToFit()
+            view.didTouchUpInside = { [unowned self] _ in
                 self.model.telecoms.append(ContactPoint())
                 tableView.reloadSections(IndexSet(integer: EditPatientViewController.Sections.telecoms.rawValue),
                                          with: .automatic)

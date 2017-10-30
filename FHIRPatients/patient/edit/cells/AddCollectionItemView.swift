@@ -9,24 +9,25 @@
 import UIKit
 
 class AddCollectionItemView: UIView {
-    @IBOutlet weak var label: UILabel!
-    @IBOutlet weak var imageView: UIImageView!
-    var didTouchUpInside: (() -> ())?
+    @IBOutlet weak var addButton: UIButton!
+    var didTouchUpInside: ((Any) -> ())?
     
     override func awakeFromNib() {
         super.awakeFromNib()
-        imageView.tintColor = .green
+        addButton.setImage(#imageLiteral(resourceName: "plus"), for: .normal)
+        addButton.imageView?.tintColor = .green
+        addButton.titleEdgeInsets = UIEdgeInsets(top: addButton.titleEdgeInsets.top,
+                                                 left: 4,
+                                                 bottom: addButton.titleEdgeInsets.bottom,
+                                                 right: -4)
+        addButton.sizeToFit()
     }
     
     static func loadFromNib() -> AddCollectionItemView {
         return Bundle.main.loadNibNamed("AddCollectionItemView", owner: self, options: nil)?.first as! AddCollectionItemView
     }
-    
-    override var intrinsicContentSize: CGSize {
-        return CGSize(width: UIViewNoIntrinsicMetric, height: label.intrinsicContentSize.height + 16)
-    }
-    
-    @IBAction func viewDidTap(_ sender: Any) {
-        didTouchUpInside?()
+
+    @IBAction func addButtonDidTouchUpInside(_ sender: Any) {
+        didTouchUpInside?(self)
     }
 }
