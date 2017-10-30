@@ -9,16 +9,14 @@ It is also recommended to use [Carthage](https://github.com/carthage/carthage) f
 ## Installation
 1. Clone this here project
 2. Run `carthage bootstrap --platform iOS --cache-builds`
-3. [Download the Realm Swift 2.10.2 bundle](https://github.com/realm/realm-cocoa/releases/download/v2.10.2/realm-swift-2.10.2.zip). Unzip it, and copy the contents of the `ios/swift-4.0` directory (`Realm.framework` and `RealmSwift.framework`) into the `Carthage/Build/iOS` directory, located in the root of the FHIRDevDays-Example project directory
-4. Open the project, build it, sell it for millions 💰
+3. Wait. Realm never released Swift 4 binaries via Carthage, so Carthage will build them for you. This will take a while. Go get a coffee.
+3. Open the project, build it, sell it for millions 💰
 
 ## About the App
-This creates a super simple (silly? stupid?) app which allows you to 
+This creates a super simple straight app which allows you to 
 - Query a remote FHIR server for patients by family name,
 - Create, edit, and delete local Patients,
 - Upsert remote patients to the local realm,
 - POST/PUT a local Patient to a remote FHIR server,
 - Get a feel for Restivus, and
 - probably witness the occasional crash.
-
-

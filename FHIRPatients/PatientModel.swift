@@ -147,7 +147,7 @@ class PatientModel {
         }
     }
     
-    /// Permanently persists this patien to the local Realm.
+    /// Permanently persists this patient to the local Realm.
     func save() {
         guard canSave else {
             print("Sorry, but you can't save yet. There are required fields.")
