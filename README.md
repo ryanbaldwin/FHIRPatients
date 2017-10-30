@@ -9,7 +9,7 @@ It is also recommended to use [Carthage](https://github.com/carthage/carthage) f
 ## Installation
 1. Clone this here project
 2. Run `carthage bootstrap --platform iOS --cache-builds`
-3. Wait. Realm never released Swift 4 binaries via Carthage, so Carthage will build them for you. This will take a while. Go get a coffee.
+3. Wait. Realm never released Swift 4 binaries via Carthage (for `realm-cocoa` 2.x), so Carthage will build them for you. This will take a while. Go get a coffee.
 3. Open the project, build it, sell it for millions 💰
 
 ## About the App
