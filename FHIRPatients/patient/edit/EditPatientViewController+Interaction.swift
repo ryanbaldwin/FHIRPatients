@@ -108,7 +108,7 @@ extension EditPatientViewController: UIImagePickerControllerDelegate, UINavigati
     }
     
     func imagePickerControllerDidCancel(_ picker: UIImagePickerController) {
-        imagePicker.dismiss(animated: true)
+        picker.dismiss(animated: true)
     }
     
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : Any]) {

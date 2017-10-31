@@ -39,7 +39,6 @@ class EditPatientViewController: UITableViewController {
         controller.allowsEditing = false
         controller.sourceType = .camera
         controller.cameraCaptureMode = .photo
-        controller.mediaTypes = UIImagePickerController.availableMediaTypes(for: .camera)!
         return controller
     }()
     
