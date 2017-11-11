@@ -36,30 +36,21 @@ class PatientModel {
     /// The Realm used by this instance
     private var realm = try! Realm()
     
-    /// The patient to edit. If this instance is creating a new Patient, then `patient` will be nil.
-    private var patientToEdit: Patient? {
+    /// The patient to edit. If this instance is creating a new Patient, then `patient.` will be nil.
+    private var patient: Patient {
         didSet {
-            if let patient = patientToEdit {
-                setup(withPatient: patient)
-            } else {
-                gender = nil
-                givenName = nil
-                familyName = nil
-                dateOfBirth = nil
-                telecoms = []
-            }
+            setup(withPatient: patient)
         }
     }
     
     /// Returns true if this patient can be downloaded from the remote FHIR server; otherwise false.
     var canDownloadPatient: Bool {
-        return patientToEdit?.id != nil
+        return  patient.id != nil
     }
     
     /// Returns `true` if the patient can be uploaded to the remote FHIR server; otherwise `false`
     var canUploadPatient: Bool {
-        guard let patient = self.patientToEdit else { return false }
-        return realm.object(ofType: Patient.self, forPrimaryKey: patient.pk) != nil
+        return patient.realm != nil
     }
     
     /// Returns the `Reference` for the patient under edit.
@@ -67,7 +58,7 @@ class PatientModel {
     /// or edit a patient which has not been uploaded to the remote FHIR server,
     /// then `reference` returns nil.
     var reference: Reference? {
-        guard let patientId = patientToEdit?.id else { return nil }
+        guard let patientId = patient.id else { return nil }
         return Reference(withReferenceId: "\(Patient.resourceType)/\(patientId)")
     }
     
@@ -118,9 +109,8 @@ class PatientModel {
     /// - Parameter patient: When provided, this instance will operate in "edit mode" for the givne patient;
     ///                      otherwise this instance will create a new patient.
     init(patient: Patient? = nil) {
-        guard let patient = patient else { return }
-        self.patientToEdit = patient
-        setup(withPatient: patient)
+        self.patient = patient ?? Patient()
+        setup(withPatient: self.patient)
     }
     
     /// Setup this instance to operate over the provided `Patient`
@@ -149,52 +139,37 @@ class PatientModel {
     
     /// Permanently persists this patient to the local Realm.
     func save() {
-        guard canSave else {
+        guard canSave,
+            let familyName = self.familyName,
+            let givenName = self.givenName,
+            let gender = self.gender,
+            let dateOfBirth = self.dateOfBirth else {
             print("Sorry, but you can't save yet. There are required fields.")
             return
         }
         
         do {
-            let  patient = patientToEdit == nil
-                ? Patient()
-                : realm.object(ofType: Patient.self, forPrimaryKey: patientToEdit!.pk) ?? Patient()
+            let template = Patient()
+            template.id = patient.id
+            template.name.append(HumanName())
+            template.name.first!.given.append(RealmString(val: givenName))
+            template.name.first!.family.append(RealmString(val: familyName))
+            template.gender = String(describing: gender)
+            template.birthDate = dateOfBirth.fhir_asDate()
+            template.telecom.append(objectsIn: telecoms)
+            
+            if let userImage = image,
+                let jpeg = UIImageJPEGRepresentation(userImage, 0.8) {
+                let attachment = Attachment()
+                attachment.data = Base64Binary(string: jpeg.base64EncodedString(options: .lineLength64Characters))
+                template.photo.append(attachment)
+            }
             
             try realm.write {
-                if patient.name.first == nil {
-                    patient.name.append(HumanName())
+                patient.populate(from: template)
+                if patient.realm == nil {
+                    realm.add(patient)
                 }
-                
-                if patient.name.first!.given.first == nil {
-                    patient.name.first!.given.append(RealmString())
-                }
-                patient.name.first!.given.first!.value = givenName!
-                
-                if patient.name.first!.family.first == nil {
-                    patient.name.first!.family.append(RealmString())
-                }
-                patient.name.first!.family.first!.value = familyName!
-                
-                patient.gender = String(describing: self.gender!)
-                patient.birthDate = dateOfBirth!.fhir_asDate()
-                
-                patient.telecom.cascadeDelete()
-                patient.telecom.append(objectsIn: Array(telecoms.flatMap { $0.copy() as? ContactPoint }))
-                
-                if let userImage = image {
-                    if let jpeg = UIImageJPEGRepresentation(userImage, 0.8) {
-                        if patient.photo.first == nil {
-                            patient.photo.append(Attachment())
-                        }
-                        patient.photo.first!.data = Base64Binary(string: jpeg.base64EncodedString(options: .lineLength64Characters))
-                    }
-                } else if let existingPhoto = patient.photo.first {
-                    patient.photo.remove(objectAtIndex: 0)
-                    realm.delete(existingPhoto)
-                }
-                
-                // if this is a new patient, we must add it to the realm.
-                if patientToEdit == nil { realm.add(patient) }
-                patientToEdit = patient
             }
         } catch let error {
             print("Failed to commit transaction when creating/updating patient: \(error)")
@@ -216,7 +191,7 @@ class PatientModel {
     ///   - The patient cannot be uploaded (possibly because it hasn't been saved yet)
     ///   - The attempt to submit the upload request failed
     func uploadPatient(completion: ((Error?) -> ())? = nil) throws {
-        guard canUploadPatient, let patient = patientToEdit else {
+        guard canUploadPatient else {
             print("Cannot upload the patient at this time. Has the patient been saved?")
             throw PatientOperationError(message: "Cannot upload the patient at this time. Has the patient been saved?",
                                         error: nil)
@@ -227,7 +202,7 @@ class PatientModel {
             _ = try uploadRequest.submit() { [weak self] result in
                 switch result {
                 case let .success(uploadPatient):
-                    try! self?.realm.write { self?.patientToEdit?.populate(from: uploadPatient)}
+                    try! self?.realm.write { self?.patient.populate(from: uploadPatient)}
                     completion?(nil)
                 case let .failure(error):
                     completion?(error)
@@ -269,7 +244,7 @@ class PatientModel {
     ///   - The patient cannot be downloaded.
     ///   - The attempt to download the patient failed
     func downloadPatient(completion: ((Error?) -> ())? = nil) throws {
-        guard canDownloadPatient, let patient = patientToEdit else {
+        guard canDownloadPatient else {
             print("Cannot download the patient at this time. Does the patient have a proper `Reference`?")
             throw PatientOperationError(
                 message: "Cannot download the patient at this time. Does the patient have a proper FHIR Reference?",
@@ -281,7 +256,10 @@ class PatientModel {
                 switch result {
                 case let .success(downloadedPatient):
                     do {
-                        try self?.realm.write { self?.patientToEdit = self?.realm.upsert(downloadedPatient) }
+                        try self?.realm.write {
+                            if let upserted = self?.realm.upsert(downloadedPatient) {
+                                self?.patient = upserted
+                            }}
                         completion?(nil)
                     } catch let error {
                         completion?(error)
