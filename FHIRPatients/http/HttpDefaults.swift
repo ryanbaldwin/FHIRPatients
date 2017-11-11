@@ -17,11 +17,10 @@ extension Restable {
     var baseURL: String { return FHIR_SERVER_BASE_URL }
 }
 
-// MARK: - Default implementation of the Authenticating protocol which will set the `Prefer` header
+// MARK: - Default implementation of the Interceptable protocol which will set the `Prefer` header
 //         such that all requests return a representation of the FHIR Resource in question.
 extension Interceptable {
     
-    /// Returns a new "signed" or otherwise manipulated URLRequest.
     /// By default this function simply adds the `Prefer: return=representation` header so that mutating
     /// requests sent to the remote FHIR Server return the JSON representation of the resource
     /// instead of the default `OperationOutcome`.
