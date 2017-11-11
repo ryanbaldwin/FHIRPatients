@@ -35,20 +35,20 @@ class UploadPatientRequest: Encodable {
 }
 
 /// An `UploadPatientRequest` which will `POST` the Patient to the remote FHIR Server.
-class PostPatientRequest: UploadPatientRequest, Authenticating, Postable {
+class PostPatientRequest: UploadPatientRequest, Interceptable, Postable {
     typealias ResponseType = Patient
     let path = "/Patient"
 }
 
 /// An `UploadPatientRequest` which will `put` the Patient to the remote FHIR Server
-class UpdatePatientRequest: UploadPatientRequest, Authenticating, Puttable {
+class UpdatePatientRequest: UploadPatientRequest, Interceptable, Puttable {
     typealias ResponseType = Patient
     var path: String { return "/Patient/\(patient.id!)" }
 }
 
 /// A request which finds patients matching (fuzzily) a provided `family` name.
 /// Provides a `FireKit.Bundle` of all matches returned by the server.
-struct FindPatientsRequest: Authenticating, Gettable {
+struct FindPatientsRequest: Interceptable, Gettable {
     typealias ResponseType = FireKit.Bundle
     var path: String { return "/Patient?family=\(familyName)" }
     
@@ -57,7 +57,7 @@ struct FindPatientsRequest: Authenticating, Gettable {
 }
 
 /// A request which downloads the Patient with the provided resource ID from the remote FHIR Server.
-struct DownloadPatientRequest: Authenticating, Gettable {
+struct DownloadPatientRequest: Interceptable, Gettable {
     typealias ResponseType = Patient
     var path: String { return "/Patient/\(resourceId)" }
     
